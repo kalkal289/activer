@@ -11,6 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +19,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'account_name',
+        'user_name',
+        'message',
+        'profile_image',
         'email',
         'password',
     ];
@@ -41,4 +45,33 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    //ここからリレーション設定
+    public function usertags() {
+        return $this->belongsToMany(Usertag::class, 'user_usertags', 'user_id', 'usertag_id');
+    }
+    
+    public function followers() {
+        return $this->belongsToMany(Self::class, 'follows', 'followed_id', 'follower_id');
+    }
+    
+    public function followeds() {
+        return $this->belongsToMany(Self::class, 'follows', 'follower_id', 'followed_id');
+    }
+    
+    public function posts() {
+        return $this->hasMany(Post::class);
+    }
+    
+    public function likes() {
+        return $this->hasMany(Like::class);
+    }
+    
+    public function mains() {
+        return $this->hasMany(Main::class);
+    }
+    
+    public function stores() {
+        return $this->hasMany(Store::class);
+    }
 }

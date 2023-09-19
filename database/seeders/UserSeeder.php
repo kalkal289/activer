@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             'account_name' => 'testuser',
-            'user_name' => 'test',
+            'name' => 'test',
             'email' => 'test@example.com',
             'password' => Hash::make('password'),
             'message' => 'よろしくお願いします！',
@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
         
         DB::table('users')->insert([
             'account_name' => 'testuser2',
-            'user_name' => 'test2',
+            'name' => 'test2',
             'email' => 'test2@example.com',
             'password' => Hash::make('password'),
             'message' => '文系の大学生です',
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
         
         DB::table('users')->insert([
             'account_name' => 'testuser3',
-            'user_name' => 'test3',
+            'name' => 'test3',
             'email' => 'test3@example.com',
             'password' => Hash::make('password'),
             'message' => 'カフェめぐりが趣味',

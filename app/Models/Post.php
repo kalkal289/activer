@@ -24,8 +24,7 @@ class Post extends Model
         'is_big_post',
     ];
     
-    //リポスト、コメント先の投稿IDのリレーションが必要かどうか
-    //リポスト機能は必要か
+    //ここからリレーション設定
     
     public function user() {
         return $this->belongsTo(User::class);
@@ -45,5 +44,13 @@ class Post extends Model
     
     public function posttags() {
         return $this->belongsToMany(Posttag::class, 'post_posttags', 'post_id', 'posttag_id');
+    }
+    
+    //SQL抽出
+    
+    public function getPaginateByLimit(int $limit_count = 20)
+    {
+        // updated_atで降順に並べたあと、limitで件数制限をかける
+        return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
 }

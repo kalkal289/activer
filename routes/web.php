@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/', [PostController::class,'index'])->name('index');
+// Route::get('/', [PostController::class,'index'])->name('index');
 
 Route::controller(Postcontroller::class)->middleware('auth')->group(function() {
+    Route::get('/', 'index')->name('index');
     Route::post('/posts', 'store')->name('store');
 });
 

@@ -11,11 +11,11 @@
             
             <h1>トップページ</h1>
             <div class="my-4">
-                <a href="route('create')" class="p-4 rounded border-2 border-black">投稿</a>
+                <a href="/posts/create" class="p-4 rounded border-2 border-black">投稿</a>
             </div>
-            <div class='posts'>
+            <div class='posts w-3/5 mx-auto'>
                 @foreach ($posts as $post)
-                    <div class='post mt-10'>
+                    <div class='post mt-10 w-4/5 mx-auto'>
                         <div class="w-10 h-10 border-1 border-black rounded-full">
                             @if($post->user->profile_image)
                                 <img src="{{ $post->user->profile_image }}" alt="プロフィール画像"/>
@@ -30,18 +30,20 @@
                             @endforeach
                         </div>
                         <p class='body'>{{ $post->content }}</p>
-                        @if($post->image1)
-                            <img src="{{ $post->image1 }}" alt="画像が読み込めません。"/>
-                            @if($post->image2)
-                                <img src="{{ $post->image2 }}" alt="画像が読み込めません。"/>
-                                @if($post->image3)
-                                    <img src="{{ $post->image3 }}" alt="画像が読み込めません。"/>
-                                    @if($post->image4)
-                                        <img src="{{ $post->image4 }}" alt="画像が読み込めません。"/>
+                        <div class="flex overflow-x-scroll">
+                            @if($post->image1)
+                                <img class="w-2/5 ml-4" src="{{ $post->image1 }}" alt="画像が読み込めません。"/>
+                                @if($post->image2)
+                                    <img class="w-2/5 ml-4" src="{{ $post->image2 }}" alt="画像が読み込めません。"/>
+                                    @if($post->image3)
+                                        <img class="w-2/5 ml-4" src="{{ $post->image3 }}" alt="画像が読み込めません。"/>
+                                        @if($post->image4)
+                                            <img class="w-2/5 mx-4" src="{{ $post->image4 }}" alt="画像が読み込めません。"/>
+                                        @endif
                                     @endif
                                 @endif
                             @endif
-                        @endif
+                        </div>
                         <p class='category'>カテゴリー名: {{ $post->category->name }}</p>
                         <p class='comments'>コメント数: {{ $post->comments->count() }}</p>
                         <p class='likes'>いいね数: {{ $post->likes->count() }}</p>

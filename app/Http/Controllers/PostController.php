@@ -16,4 +16,20 @@ class PostController extends Controller
     public function index(Post $post) {
         return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);
     }
+    
+    public function create(Category $category) {
+        return view('posts.create')->with(['categories' => $category->get()]);
+    }
+    
+    public function store(Post $post, Request $request) {
+        $input = $request['post'];
+        $input += ['user_id' => Auth::user()->id];
+        $images = $request->file('image');
+        for($i = 0; $i < count($images); $i++) {
+            $image_url = Cloudinary::upload($images[$i]->getRealPath())->getSecurePath();
+            $input += ['image'.($i + 1) => $image_url];
+        }
+        $post->fill($input)->save();
+        return redirect('/'); 
+    }
 }

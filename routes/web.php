@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,9 +31,12 @@ Route::middleware('auth')->group(function () {
 Route::controller(Postcontroller::class)->middleware('auth')->group(function() {
     Route::get('/', 'index')->name('index');
     Route::post('/posts', 'store')->name('store');
-    Route::post('/posts/comment', 'comment')->name('comment');
     Route::get('/posts/create', 'create')->name('create');
     Route::get('/posts/{post}', 'show')->name('show');
+});
+
+Route::controller(Commentcontroller::class)->middleware('auth')->group(function() {
+    Route::post('/posts/comment', 'comment')->name('comment');
 });
 
 require __DIR__.'/auth.php';

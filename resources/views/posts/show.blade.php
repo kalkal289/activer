@@ -92,15 +92,25 @@
             <div class="mt-10">
                 <form class="flex flex-col text-center w-3/5 mx-auto border border-black rounded p-4" action="/posts/comment" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @if ($errors->any())
+                        <div class="alert alert-danger mb-4">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li class="text-red-600 mb-1">{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <p id="error-txt" class="text-red-600"></p>
                     <input type="hidden" name="comment[user_id]" value="{{ Auth::id() }}">
                     <input type="hidden" name="comment[post_id]" value="{{ $post->id }}">
-                    <textarea column="10" name="comment[content]" placeholder="コメントで投稿を盛り上げよう！"></textarea>
+                    <textarea id="content" column="10" name="comment[content]" placeholder="コメントで投稿を盛り上げよう！">{{ old('comment.content') }}</textarea>
                     <label for="image">4枚まで画像を添付することができます。</label>
                     <input type="file" id="image" name="image[]" accept="image/*" multiple onchange="tooManyImages()">
-                    <input type="submit" value="投稿" class="p-4 text-center border-2 border-black">
+                    <input type="submit" value="投稿" onclick="return formCheck()" class="p-4 text-center border-2 border-black">
                 </form>
             </div>
-            <script src="{{ asset('js/image.js') }}"></script>
+            <script src="{{ asset('js/formCheck.js') }}"></script>
         </body>
     </x-app-layout>
 </html>

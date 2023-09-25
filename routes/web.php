@@ -33,10 +33,12 @@ Route::controller(Postcontroller::class)->middleware('auth')->group(function() {
     Route::post('/posts', 'store')->name('store');
     Route::get('/posts/create', 'create')->name('create');
     Route::get('/posts/{post}', 'show')->name('show');
+    Route::delete('/posts/{post}', 'delete')->name('deletePost');
 });
 
 Route::controller(Commentcontroller::class)->middleware('auth')->group(function() {
-    Route::post('/posts/comment', 'comment')->name('comment');
+    Route::post('/comments', 'comment')->name('comment');
+    Route::delete('/comments/{comment}', 'delete')->name('deleteComment');
 });
 
 require __DIR__.'/auth.php';

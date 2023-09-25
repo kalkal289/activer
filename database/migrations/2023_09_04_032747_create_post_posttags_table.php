@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('post_posttags', function (Blueprint $table) {
-            $table->foreignId('post_id')->constrained();
+            $table->foreignId('post_id')->constrained()->cascadeOnDelete();
             $table->foreignId('posttag_id')->constrained();
             
             $table->unique([

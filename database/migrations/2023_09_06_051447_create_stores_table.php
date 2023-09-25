@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('storecategory_id')->constrained();
             $table->string('title', 50)->comment('タイトル');
             $table->string('content', 500)->comment('本文'); //URLも貼れる

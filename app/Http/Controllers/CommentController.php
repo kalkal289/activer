@@ -14,10 +14,16 @@ class CommentController extends Controller
             $images = $request->file('image');
             for($i = 0; $i < count($images); $i++) {
                 $image_url = Cloudinary::upload($images[$i]->getRealPath())->getSecurePath();
-                $input += ['image'.($i + 1) => $image_url];
+                $input += ['image'. ($i + 1) => $image_url];
             }
         }
         $comment->fill($input)->save();
         return redirect('/posts/'. $comment->post_id); 
+    }
+    
+    public function delete(Comment $comment) {
+        $post_id = $comment->post_id;
+        $comment->delete();
+        return redirect('/posts/'. $post_id);
     }
 }

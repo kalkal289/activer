@@ -23,11 +23,12 @@ class PostController extends Controller
     
     public function store(Post $post, Request $request) {
         $input = $request['post'];
-        $input += ['user_id' => Auth::user()->id];
-        $images = $request->file('image');
-        for($i = 0; $i < count($images); $i++) {
-            $image_url = Cloudinary::upload($images[$i]->getRealPath())->getSecurePath();
-            $input += ['image'.($i + 1) => $image_url];
+        if($request->file('image')) {
+            $images = $request->file('image');
+            for($i = 0; $i < count($images); $i++) {
+                $image_url = Cloudinary::upload($images[$i]->getRealPath())->getSecurePath();
+                $input += ['image'.($i + 1) => $image_url];
+            }
         }
         $post->fill($input)->save();
         return redirect('/'); 
@@ -35,5 +36,18 @@ class PostController extends Controller
     
     public function show(Post $post) {
         return view('posts.show')->with(['post' => $post]);
+    }
+    
+    public function comment(Comment $comment, Request $request) {
+        $input = $request['comment'];
+        if($request->file('image')) {
+            $images = $request->file('image');
+            for($i = 0; $i < count($images); $i++) {
+                $image_url = Cloudinary::upload($images[$i]->getRealPath())->getSecurePath();
+                $input += ['image'.($i + 1) => $image_url];
+            }
+        }
+        $comment->fill($input)->save();
+        return redirect('/posts/'. $comment->post_id); 
     }
 }

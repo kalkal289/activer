@@ -31,20 +31,20 @@
                                     @endforeach
                                 </div>
                                 <p class='body'>{{ $post->content }}</p>
-                                <div class="flex overflow-x-scroll">
                                     @if($post->image1)
-                                        <img class="w-2/5 ml-4" src="{{ $post->image1 }}" alt="画像が読み込めません。"/>
-                                        @if($post->image2)
-                                            <img class="w-2/5 ml-4" src="{{ $post->image2 }}" alt="画像が読み込めません。"/>
-                                            @if($post->image3)
-                                                <img class="w-2/5 ml-4" src="{{ $post->image3 }}" alt="画像が読み込めません。"/>
-                                                @if($post->image4)
-                                                    <img class="w-2/5 mx-4" src="{{ $post->image4 }}" alt="画像が読み込めません。"/>
+                                        <div class="flex overflow-x-scroll">
+                                            <img class="w-2/5" src="{{ $post->image1 }}" alt="画像が読み込めません。"/>
+                                            @if($post->image2)
+                                                <img class="w-2/5 ml-4" src="{{ $post->image2 }}" alt="画像が読み込めません。"/>
+                                                @if($post->image3)
+                                                    <img class="w-2/5 ml-4" src="{{ $post->image3 }}" alt="画像が読み込めません。"/>
+                                                    @if($post->image4)
+                                                        <img class="w-2/5 ml-4" src="{{ $post->image4 }}" alt="画像が読み込めません。"/>
+                                                    @endif
                                                 @endif
                                             @endif
-                                        @endif
+                                        </div>
                                     @endif
-                                </div>
                                 <p class='category'>カテゴリー名: {{ $post->category->name }}</p>
                                 <p class='comments'>コメント数: {{ $post->comments->count() }}</p>
                                 <p class='likes'>いいね数: {{ $post->likes->count() }}</p>

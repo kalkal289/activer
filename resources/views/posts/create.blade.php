@@ -12,6 +12,7 @@
             <div class="form-area">
                 <form class="flex flex-col text-center w-2/5 mx-auto" action="/posts" method="POST" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="post[user_id]" value="{{ Auth::id() }}">
                     <textarea column="10" name="post[content]" placeholder="今日何してた？"></textarea>
                     <div class="flex text-right">
                         <input type="checkbox" name="post[is_bigpost]" value="1">

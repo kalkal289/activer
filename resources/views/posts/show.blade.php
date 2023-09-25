@@ -31,20 +31,20 @@
                             @endforeach
                         </div>
                         <p class='body'>{{ $post->content }}</p>
-                        <div class="flex overflow-x-scroll">
-                            @if($post->image1)
-                                <img class="w-2/5 ml-4" src="{{ $post->image1 }}" alt="画像が読み込めません。"/>
+                        @if($post->image1)
+                            <div class="flex overflow-x-scroll">
+                                <img class="w-2/5" src="{{ $post->image1 }}" alt="画像が読み込めません。"/>
                                 @if($post->image2)
                                     <img class="w-2/5 ml-4" src="{{ $post->image2 }}" alt="画像が読み込めません。"/>
                                     @if($post->image3)
                                         <img class="w-2/5 ml-4" src="{{ $post->image3 }}" alt="画像が読み込めません。"/>
                                         @if($post->image4)
-                                            <img class="w-2/5 mx-4" src="{{ $post->image4 }}" alt="画像が読み込めません。"/>
+                                            <img class="w-2/5 ml-4" src="{{ $post->image4 }}" alt="画像が読み込めません。"/>
                                         @endif
                                     @endif
                                 @endif
-                            @endif
-                        </div>
+                            </div>
+                        @endif
                         <p class='category'>カテゴリー名: {{ $post->category->name }}</p>
                         <p class='comments'>コメント数: {{ $post->comments->count() }}</p>
                         <p class='likes'>いいね数: {{ $post->likes->count() }}</p>
@@ -69,25 +69,38 @@
                                     @endforeach
                                 </div>
                                 <p class='body'>{{ $comment->content }}</p>
-                                <div class="flex overflow-x-scroll">
-                                    @if($comment->image1)
-                                        <img class="w-2/5 ml-4" src="{{ $comment->image1 }}" alt="画像が読み込めません。"/>
+                                @if($comment->image1)
+                                    <div class="flex overflow-x-scroll">
+                                        <img class="w-2/5" src="{{ $comment->image1 }}" alt="画像が読み込めません。"/>
                                         @if($comment->image2)
                                             <img class="w-2/5 ml-4" src="{{ $comment->image2 }}" alt="画像が読み込めません。"/>
                                             @if($comment->image3)
                                                 <img class="w-2/5 ml-4" src="{{ $comment->image3 }}" alt="画像が読み込めません。"/>
                                                 @if($comment->image4)
-                                                    <img class="w-2/5 mx-4" src="{{ $comment->image4 }}" alt="画像が読み込めません。"/>
+                                                    <img class="w-2/5 ml-4" src="{{ $comment->image4 }}" alt="画像が読み込めません。"/>
                                                 @endif
                                             @endif
                                         @endif
-                                    @endif
-                                </div>
+                                    </div>
+                                @endif
                             </div>
                         @endforeach
                     </div>
                 </div>
             </div>
+            
+            <div class="mt-10">
+                <form class="flex flex-col text-center w-3/5 mx-auto border border-black rounded p-4" action="/posts/comment" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="comment[user_id]" value="{{ Auth::id() }}">
+                    <input type="hidden" name="comment[post_id]" value="{{ $post->id }}">
+                    <textarea column="10" name="comment[content]" placeholder="コメントで投稿を盛り上げよう！"></textarea>
+                    <label for="image">4枚まで画像を添付することができます。</label>
+                    <input type="file" id="image" name="image[]" accept="image/*" multiple onchange="tooManyImages()">
+                    <input type="submit" value="投稿" class="p-4 text-center border-2 border-black">
+                </form>
+            </div>
+            <script src="{{ asset('js/image.js') }}"></script>
         </body>
     </x-app-layout>
 </html>

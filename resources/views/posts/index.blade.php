@@ -18,15 +18,17 @@
                         <div class="border border-black rounded mt-10 p-4">
                             <div class="flex justify-between mx-auto">
                                 <div>
-                                    <div class="flex">
-                                        <div class="w-10 h-10 border-1 border-black rounded-full">
-                                            @if($post->user->profile_image)
-                                                <img src="{{ $post->user->profile_image }}" alt="プロフィール画像"/>
-                                            @else
-                                                <img src="https://res.cloudinary.com/drs9gzes2/image/upload/v1695132757/kkrn_icon_user_14_evxlot.png" alt="プロフィール画像"/>
-                                            @endif
-                                        </div>
-                                        <h2 class='user-name'>{{ $post->user->name }}</h2>
+                                    <div>
+                                        <a href="/mypages/{{ $post->user_id }}" class="flex">
+                                            <div class="w-10 h-10 border-1 border-black rounded-full">
+                                                @if($post->user->profile_image)
+                                                    <img src="{{ $post->user->profile_image }}" alt="プロフィール画像"/>
+                                                @else
+                                                    <img src="https://res.cloudinary.com/drs9gzes2/image/upload/v1695132757/kkrn_icon_user_14_evxlot.png" alt="プロフィール画像"/>
+                                                @endif
+                                            </div>
+                                            <h2 class='user-name'>{{ $post->user->name }}</h2>
+                                        </a>
                                     </div>
                                     <div>
                                         @foreach ($post->user->usertags as $usertag)

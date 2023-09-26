@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\MypageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ Route::middleware('auth')->group(function () {
 
 // Route::get('/', [PostController::class,'index'])->name('index');
 
-Route::controller(Postcontroller::class)->middleware('auth')->group(function() {
+Route::controller(PostController::class)->middleware('auth')->group(function() {
     Route::get('/', 'index')->name('index');
     Route::post('/posts', 'store')->name('store');
     Route::get('/posts/create', 'create')->name('create');
@@ -36,9 +37,16 @@ Route::controller(Postcontroller::class)->middleware('auth')->group(function() {
     Route::delete('/posts/{post}', 'delete')->name('deletePost');
 });
 
-Route::controller(Commentcontroller::class)->middleware('auth')->group(function() {
+Route::controller(CommentController::class)->middleware('auth')->group(function() {
     Route::post('/comments', 'comment')->name('comment');
     Route::delete('/comments/{comment}', 'delete')->name('deleteComment');
+});
+
+Route::controller(MypageController::class)->middleware('auth')->group(function() {
+    Route::get('/mypages/{user}', 'mypageMain')->name('mypageMain');
+    Route::get('/mypages/posts/{user}', 'mypagePost')->name('mypagePost');
+    Route::get('/mypages/big/{user}', 'mypageBigPost')->name('mypageBigPost');
+    Route::get('/mypages/store/{user}', 'mypageStore')->name('mypageStore');
 });
 
 require __DIR__.'/auth.php';

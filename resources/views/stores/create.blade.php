@@ -8,9 +8,9 @@
     </head>
     <x-app-layout>
         <body>
-            <h1>投稿</h1>
+            <h1>ストア作成</h1>
             <div class="form-area">
-                <form class="flex flex-col text-center w-2/5 mx-auto" action="/posts" method="POST" enctype="multipart/form-data">
+                <form class="flex flex-col text-center w-2/5 mx-auto" action="/stores" method="POST" enctype="multipart/form-data">
                     @csrf
                     @if ($errors->any())
                         <div class="alert alert-danger mb-4">
@@ -22,21 +22,18 @@
                         </div>
                     @endif
                     <!--<p id="error-txt" class="text-red-600"></p>-->
-                    <input type="hidden" name="post[user_id]" value="{{ Auth::id() }}">
-                    <textarea id="content" rows="6" name="post[content]" placeholder="今日何してた？（300文字以内）">{{ old('post.content') }}</textarea>
-                    <div class="flex text-right">
-                        <input type="checkbox" name="post[is_big_post]" value=1>
-                        <label>ビッグポスト</label>
-                    </div>
-                    <select name="post[category_id]" class="my-2">
+                    <input type="hidden" name="store[user_id]" value="{{ Auth::id() }}">
+                    <input id="title" type="text" name="store[title]" placeholder="タイトル（30文字以内）" class="mb-2">
+                    <textarea id="content" rows="6" name="store[content]" placeholder="今日何してた？（500文字以内）">{{ old('store.content') }}</textarea>
+                    <select name="store[storecategory_id]" class="my-2">
                         @foreach ($categories as $category)
                             <option value={{ $category->id }}>{{ $category->name }}</option>
                         @endforeach
                     </select>
                     <label for="image">4枚まで画像を添付することができます。</label>
-                    <input type="file" id="image" name="image[]" accept="image/*" multiple onChange="imagesTooMany()" class="mb-4">
+                    <input type="file" id="image" name="image[]" accept="image/*" multiple  onChange="imagesTooMany()" class="mb-4">
                     <p id="error-txt-image" class="text-red-600"></p>
-                    <input type="submit" value="投稿" onclick="return PostFormCheck()" class="p-4 text-center border-2 border-black">
+                    <input type="submit" value="投稿" onclick="return contentFormCheck()" class="p-4 text-center border-2 border-black">
                     
                 </form>
             </div>

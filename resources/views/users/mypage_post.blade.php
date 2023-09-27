@@ -8,12 +8,58 @@
     </head>
     <x-app-layout>
         <body>
-            <div class="w-1/2 mx-auto">
-                <h1>トップページ</h1>
-                <div class="my-4">
-                    <a href="/posts/create" class="p-4 rounded border-2 border-black">投稿</a>
+            <div class="w-1/2 mx-auto pb-10">
+                <div class="flex justify-between mt-4">
+                    <div class="flex">
+                        <div class="w-16 h-16 border-1 border-black rounded-full">
+                            @if($user->profile_image)
+                                <img src="{{ $user->profile_image }}" alt="プロフィール画像"/>
+                            @else
+                                <img src="https://res.cloudinary.com/drs9gzes2/image/upload/v1695132757/kkrn_icon_user_14_evxlot.png" alt="プロフィール画像"/>
+                            @endif
+                        </div>
+                        <div>
+                            <h1 class="font-bold">{{ $user->name }}</h1>
+                            <p>@ {{ $user->account_name }}</p>
+                            <div>
+                                @foreach ($user->usertags as $usertag)
+                                    <span class="mr-4 text-blue-400">#{{ $usertag->name }}</span>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="border border-black rounded mt-6 mr-6">
+                            @if($user->id == Auth::id())
+                                <a href="/profile/edit/{{ $user->id }}" class="p-2">プロフィール編集</a>
+                            @else
+                                <a href="/follow/{{ $user->id }}" class="p-2">フォロー</a>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-                <div class='posts'>
+                <div class="p-4 my-4">
+                    <p>{{ $user->message }}</p>
+                </div>
+                <div class="flex pb-6 border-b-2 border-black">
+                    <p>フォロー中 {{ $user->followeds()->count() }}</p>
+                    <p class="ml-4">フォロワー {{ $user->followers()->count() }}</p>
+                </div>
+                <div class="flex justify-around border-b-2 border-black mb-4">
+                    @if($kind == 0) <!--ポストの場合-->
+                        <a href="/mypages/{{ $user->id }}" class="w-1/4 py-2 text-center">Main</a>
+                        <a href="/mypages/posts/{{ $user->id }}" class="w-1/4 py-2 text-center bg-gray-600 text-white">Post</a>
+                        <a href="/mypages/big/{{ $user->id }}" class="w-1/4 py-2 text-center">BigPost</a>
+                        <a href="/mypages/store/{{ $user->id }}" class="w-1/4 py-2 text-center">Store</a>
+                    @else <!--ビッグポストの場合-->
+                        <a href="/mypages/{{ $user->id }}" class="w-1/4 py-2 text-center">Main</a>
+                        <a href="/mypages/posts/{{ $user->id }}" class="w-1/4 py-2 text-center">Post</a>
+                        <a href="/mypages/big/{{ $user->id }}" class="w-1/4 py-2 text-center bg-gray-600 text-white">BigPost</a>
+                        <a href="/mypages/store/{{ $user->id }}" class="w-1/4 py-2 text-center">Store</a>
+                    @endif
+                </div>
+                
+                <div class='contents mt-10'>
                     @foreach ($posts as $post)
                         <div class="border border-black rounded mt-10 p-4">
                             <div class="flex justify-between mx-auto">
@@ -61,7 +107,6 @@
                                     @endif
                                 </div>
                             @endif
-                            <p class='bigpost'>bigpost: {{ $post->is_big_post }}</p>
                             <p class='category'>カテゴリー名: {{ $post->category->name }}</p>
                             <p class='comments'>コメント数: {{ $post->comments->count() }}</p>
                             <p class='likes'>いいね数: {{ $post->likes->count() }}</p>
@@ -73,24 +118,9 @@
                     @endforeach
                 </div>
             </div>
-            
-            <div class="my-4">
-                <form action="/" method="get">
-                    <div class="flex flex-col text-center w-2/5 mx-auto">
-                        <select name="type">
-                            <option value="1" selected>投稿</option>
-                            <option value="2">メインコンテンツ</option>
-                            <option value="3">ストアコンテンツ</option>
-                        </select>
-                        <input type="text" name="keyword" placeholder="キーワードを入力">
-                        <input type="submit" value="検索" class="p-2 border-2 border-black w-1/2 m-auto inline-block">
-                    </div>
-                </form>
-            </div>
             <div class="paginate">
                 {{ $posts->links() }}
             </div>
-            <script src="{{ asset('js/deleteConfirm.js') }}"></script>
         </body>
     </x-app-layout>
 </html>

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('storecategory_id')->constrained();
             $table->string('title', 50)->comment('タイトル');
-            $table->string('content', 500)->comment('本文'); //URLも貼れる
+            $table->string('content', 500)->nullable()->comment('本文'); //URLも貼れる
             $table->string('image1')->nullable()->comment('添付画像1');
             $table->string('image2')->nullable()->comment('添付画像2');
             $table->string('image3')->nullable()->comment('添付画像3');

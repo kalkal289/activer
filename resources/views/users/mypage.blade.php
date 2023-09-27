@@ -74,9 +74,9 @@
                     @if($user->id == Auth::id())
                         <div>
                             @if($kind == 1)
-                                <a href="#" class="inline-block border border-black p-2">メインコンテンツを追加する</a>
+                                <a href="/mains/create" class="inline-block border border-black p-2">メインコンテンツを追加する</a>
                             @else
-                                <a href="#" class="inline-block border border-black p-2">ストアを追加する</a>
+                                <a href="/stores/create" class="inline-block border border-black p-2">ストアを追加する</a>
                             @endif
                         </div>
                     @endif

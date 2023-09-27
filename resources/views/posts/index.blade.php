@@ -61,6 +61,7 @@
                                     @endif
                                 </div>
                             @endif
+                            <p class='bigpost'>bigpost: {{ $post->is_big_post }}</p>
                             <p class='category'>カテゴリー名: {{ $post->category->name }}</p>
                             <p class='comments'>コメント数: {{ $post->comments->count() }}</p>
                             <p class='likes'>いいね数: {{ $post->likes->count() }}</p>

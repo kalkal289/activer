@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class MypageController extends Controller
 {
     function mypageMain(User $user) {
-        return view('users.user_contents')->with([
+        return view('users.mypage')->with([
             'user' => $user,
             'contents' => $user->mains,
             'kind' => 1,
@@ -17,7 +17,7 @@ class MypageController extends Controller
     }
     
     function mypagePost(User $user, Post $post) {
-        return view('users.user_posts')->with([
+        return view('users.mypage')->with([
             'user' => $user,
             'posts' => $post->where('user_id', $user->id)->orderBy('created_at', 'DESC')->paginate(20),
             'kind' => 2,
@@ -25,15 +25,15 @@ class MypageController extends Controller
     }
     
     function mypageBigPost(User $user, Post $post) {
-        return view('users.user_posts')->with([
+        return view('users.mypage')->with([
             'user' => $user,
-            'posts' => $post->where('user_id', $user->id)->where('is_big_post', )->orderBy('created_at', 'DESC')->paginate(20),
+            'posts' => $post->where('user_id', $user->id)->where('is_big_post', 1)->orderBy('created_at', 'DESC')->paginate(20),
             'kind' => 3,
         ]);
     }
     
     function mypageStore(User $user) {
-        return view('users.user_contents')->with([
+        return view('users.mypage')->with([
             'user' => $user,
             'contents' => $user->stores,
             'kind' => 4,

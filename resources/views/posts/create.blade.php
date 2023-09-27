@@ -25,7 +25,7 @@
                     <input type="hidden" name="post[user_id]" value="{{ Auth::id() }}">
                     <textarea id="content" column="10" name="post[content]" placeholder="今日何してた？">{{ old('post.content') }}</textarea>
                     <div class="flex text-right">
-                        <input type="checkbox" name="post[is_big_post]" value=true>
+                        <input type="checkbox" name="post[is_big_post]" value=1>
                         <label>ビッグポスト</label>
                     </div>
                     <select name="post[category_id]">

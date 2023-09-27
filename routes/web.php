@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MypageController;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\StoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +49,24 @@ Route::controller(MypageController::class)->middleware('auth')->group(function()
     Route::get('/mypages/posts/{user}', 'mypagePost')->name('mypagePost');
     Route::get('/mypages/big/{user}', 'mypageBigPost')->name('mypageBigPost');
     Route::get('/mypages/store/{user}', 'mypageStore')->name('mypageStore');
+});
+
+Route::controller(MainController::class)->middleware('auth')->group(function() {
+    Route::post('/mains', 'store')->name('storeMain');
+    Route::get('/mains/create', 'create')->name('createMain');
+    Route::get('/mains/{main}', 'show')->name('showMain');
+    Route::put('/mains/{main}', 'update')->name('updateMain');
+    Route::get('/mains/{main}/edit', 'edit')->name('editMain');
+    Route::delete('/mains/{main}', 'delete')->name('deleteMain');
+});
+
+Route::controller(StoreController::class)->middleware('auth')->group(function() {
+    Route::post('/stores', 'store')->name('storeStore');
+    Route::get('/stores/create', 'create')->name('createStore');
+    Route::get('/stores/{store}', 'show')->name('showStore');
+    Route::put('/stores/{store}', 'update')->name('updateStore');
+    Route::get('/stores/{store}/edit', 'edit')->name('editStore');
+    Route::delete('/stores/{store}', 'delete')->name('deleteStore');
 });
 
 require __DIR__.'/auth.php';

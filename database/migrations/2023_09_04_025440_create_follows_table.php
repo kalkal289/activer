@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('follower_id')->cascadeOnDelete()->constrained('users')->comment('フォローしてる人のID');
             $table->foreignId('followed_id')->cascadeOnDelete()->constrained('users')->comment('フォローされてる人のID');
+            $table->timestamps();
             
             //フォローの重複を防ぐ
             $table->unique([

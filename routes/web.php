@@ -79,6 +79,8 @@ Route::controller(LikeController::class)->middleware('auth')->group(function() {
 Route::controller(FollowController::class)->middleware('auth')->group(function() {
     Route::get('/follow/{user_id}', 'follow')->name('follow');
     Route::get('/unfollow/{user_id}', 'unfollow')->name('unfollow');
+    Route::get('/followeds/{user}', 'followeds')->name('followeds');
+    Route::get('/followers/{user}', 'followers')->name('followers');
 });
 
 require __DIR__.'/auth.php';

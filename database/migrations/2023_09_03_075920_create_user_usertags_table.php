@@ -14,12 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('user_usertags', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->id();
+            $table->foreignId('user_id')->cascadeOnDelete()->constrained();
             $table->foreignId('usertag_id')->constrained();
             
             $table->unique([
                 'user_id',
-                'usertag_id'
+                'usertag_id',
             ]);
         });
     }

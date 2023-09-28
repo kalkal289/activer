@@ -33,7 +33,7 @@
                     @endif
                     <select name="store[storecategory_id]" class="my-2">
                         @foreach ($categories as $category)
-                            <option value={{ $category->id }}>{{ $category->name }}</option>
+                            <option value={{ $category->id }} {{ ($store->storecategory_id == $category->id) ? "selected" : "" }}>{{ $category->name }}</option>
                         @endforeach
                     </select>
                     <label for="image">4枚まで画像を添付することができます。</label>

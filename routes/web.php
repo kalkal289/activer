@@ -7,6 +7,8 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\FollowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +69,16 @@ Route::controller(StoreController::class)->middleware('auth')->group(function() 
     Route::put('/stores/{store}', 'update')->name('updateStore');
     Route::get('/stores/{store}/edit', 'edit')->name('editStore');
     Route::delete('/stores/{store}', 'delete')->name('deleteStore');
+});
+
+Route::controller(LikeController::class)->middleware('auth')->group(function() {
+    Route::get('/like/{post_id}', 'like')->name('like');
+    Route::get('/unlike/{post_id}', 'unlike')->name('unlike');
+});
+
+Route::controller(FollowController::class)->middleware('auth')->group(function() {
+    Route::get('/follow/{user_id}', 'follow')->name('follow');
+    Route::get('/unfollow/{user_id}', 'unfollow')->name('unfollow');
 });
 
 require __DIR__.'/auth.php';

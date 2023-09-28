@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -74,5 +75,18 @@ class User extends Authenticatable
     
     public function stores() {
         return $this->hasMany(Store::class);
+    }
+    
+    //利用中のユーザーが指定のユーザーをフォローしているかの判定
+    public function is_followed_by_auth_user() {
+        $followers = array();
+        foreach($this->followers as $follower) {
+            array_push($followers, $follower->id);
+        }
+        if(in_array(Auth::id(), $followers)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

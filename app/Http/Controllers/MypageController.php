@@ -10,33 +10,33 @@ use Illuminate\Http\Request;
 
 class MypageController extends Controller
 {
-    function mypageMain(User $user, Main $main) {
+    function mypageMain(User $user) {
         return view('users.mypage_main')->with([
             'user' => $user,
-            'mains' => $main->where('user_id', $user->id)->orderBy('updated_at', 'DESC')->get(),
+            'mains' => Main::where('user_id', $user->id)->orderBy('updated_at', 'DESC')->get(),
         ]);
     }
     
-    function mypagePost(User $user, Post $post) {
+    function mypagePost(User $user) {
         return view('users.mypage_post')->with([
             'user' => $user,
-            'posts' => $post->where('user_id', $user->id)->orderBy('created_at', 'DESC')->paginate(20),
+            'posts' => Post::where('user_id', $user->id)->orderBy('created_at', 'DESC')->paginate(20),
             'kind' => 0,
         ]);
     }
     
-    function mypageBigPost(User $user, Post $post) {
+    function mypageBigPost(User $user) {
         return view('users.mypage_post')->with([
             'user' => $user,
-            'posts' => $post->where('user_id', $user->id)->where('is_big_post', 1)->orderBy('created_at', 'DESC')->paginate(20),
+            'posts' => Post::where('user_id', $user->id)->where('is_big_post', 1)->orderBy('created_at', 'DESC')->paginate(20),
             'kind' => 1,
         ]);
     }
     
-    function mypageStore(User $user, Store $store) {
+    function mypageStore(User $user) {
         return view('users.mypage_store')->with([
             'user' => $user,
-            'stores' => $store->where('user_id', $user->id)->orderBy('updated_at', 'DESC')->get(),
+            'stores' => Store::where('user_id', $user->id)->orderBy('updated_at', 'DESC')->get(),
         ]);
     }
 }

@@ -33,7 +33,11 @@
                             @if($user->id == Auth::id())
                                 <a href="/profile/edit/{{ $user->id }}" class="p-2">プロフィール編集</a>
                             @else
-                                <a href="/follow/{{ $user->id }}" class="p-2">フォロー</a>
+                                @if($user->is_followed_by_auth_user())
+                                    <a href="/unfollow/{{ $user->id }}" class="p-2">フォロー解除</a>
+                                @else
+                                    <a href="/follow/{{ $user->id }}" class="p-2">フォロー</a>
+                                @endif
                             @endif
                         </div>
                     </div>
@@ -46,23 +50,16 @@
                     <p class="ml-4">フォロワー {{ $user->followers()->count() }}</p>
                 </div>
                 <div class="flex justify-around border-b-2 border-black mb-4">
-                    @if($kind == 0) <!--ポストの場合-->
-                        <a href="/mypages/{{ $user->id }}" class="w-1/4 py-2 text-center">Main</a>
-                        <a href="/mypages/posts/{{ $user->id }}" class="w-1/4 py-2 text-center bg-gray-600 text-white">Post</a>
-                        <a href="/mypages/big/{{ $user->id }}" class="w-1/4 py-2 text-center">BigPost</a>
-                        <a href="/mypages/store/{{ $user->id }}" class="w-1/4 py-2 text-center">Store</a>
-                    @else <!--ビッグポストの場合-->
-                        <a href="/mypages/{{ $user->id }}" class="w-1/4 py-2 text-center">Main</a>
-                        <a href="/mypages/posts/{{ $user->id }}" class="w-1/4 py-2 text-center">Post</a>
-                        <a href="/mypages/big/{{ $user->id }}" class="w-1/4 py-2 text-center bg-gray-600 text-white">BigPost</a>
-                        <a href="/mypages/store/{{ $user->id }}" class="w-1/4 py-2 text-center">Store</a>
-                    @endif
+                    <a href="/mypages/{{ $user->id }}" class="w-1/4 py-2 text-center">Main</a>
+                    <a href="/mypages/posts/{{ $user->id }}" class="w-1/4 py-2 text-center {{ ($kind == 0) ? "bg-gray-600 text-white" : "" }}">Post</a>
+                    <a href="/mypages/big/{{ $user->id }}" class="w-1/4 py-2 text-center {{ ($kind == 1) ? "bg-gray-600 text-white" : "" }}">BigPost</a>
+                    <a href="/mypages/store/{{ $user->id }}" class="w-1/4 py-2 text-center">Store</a>
                 </div>
                 
                 <div class='contents mt-10'>
                     @foreach ($posts as $post)
-                        <div class="border border-black rounded mt-10 p-4">
-                            <div class="flex justify-between mx-auto">
+                        <div class="border rounded mt-6 p-4 {{ ($post->is_big_post == 0) ? "border-black" : "border-yellow-600" }}">
+                            <div class="flex justify-between mx-auto mb-2">
                                 <div>
                                     <div>
                                         <a href="/mypages/{{ $post->user_id }}" class="flex">
@@ -78,7 +75,7 @@
                                     </div>
                                     <div>
                                         @foreach ($post->user->usertags as $usertag)
-                                            <span class="mr-4">{{ $usertag->name }}</span>
+                                            <span class="mr-4 text-blue-400 text-sm">#{{ $usertag->name }}</span>
                                         @endforeach
                                     </div>
                                 </div>
@@ -92,7 +89,10 @@
                                     </div>
                                 @endif
                             </div>
-                            <p class='body'>{{ $post->content }}</p>
+                            @if($post->is_big_post == 1)
+                                <small>【ビッグポスト】</small>
+                            @endif
+                            <p class='body border-y border-black py-2 mb-2'>{{ $post->content }}</p>
                             @if($post->image1)
                                 <div class="flex overflow-x-scroll">
                                     <img class="w-2/5" src="{{ $post->image1 }}" alt="画像が読み込めません。"/>
@@ -107,9 +107,20 @@
                                     @endif
                                 </div>
                             @endif
-                            <p class='category'>カテゴリー名: {{ $post->category->name }}</p>
-                            <p class='comments'>コメント数: {{ $post->comments->count() }}</p>
-                            <p class='likes'>いいね数: {{ $post->likes->count() }}</p>
+                            <!--<p class='bigpost'>bigpost: { $post->is_big_post }}</p>-->
+                            <div class="flex">
+                                <p class='comments p-2'>
+                                    <a href="/posts/{{ $post->id }}" class="inline-block p-2 border border-yellow-500 text-yellow-500">コメント: {{ $post->comments->count() }}</a>
+                                </p>
+                                <p class='likes p-2 ml-4'>
+                                    @if($post->is_liked_by_auth_user())
+                                        <a class='inline-block p-2 border border-pink-500 bg-pink-500 text-white' href="/unlike/{{ $post->id }}">いいね: {{ $post->likes->count() }}</a>
+                                    @else
+                                        <a class='inline-block p-2 border border-pink-500 text-pink-500' href="/like/{{ $post->id }}">いいね: {{ $post->likes->count() }}</a>
+                                    @endif
+                                </p>
+                            </div>
+                            <small class='category'>カテゴリー名: {{ $post->category->name }}</small>
                             <small>投稿日: {{ $post->created_at }}</small>
                             <div class="text-center mx-auto my-2">
                                 <a href="/posts/{{ $post->id }}" class="inline-block w-10/12 py-2 border border-black">詳細ページへ</a>

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('post_id')->constrained()->restrictOnDelete();
+            $table->foreignId('user_id')->cascadeOnDelete()->constrained();
+            $table->foreignId('post_id')->restrictOnDelete()->constrained();
             $table->string('content', 150)->nullable()->comment('本文');
             $table->string('image1')->nullable()->comment('添付画像1');
             $table->string('image2')->nullable()->comment('添付画像2');

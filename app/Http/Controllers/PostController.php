@@ -21,7 +21,7 @@ class PostController extends Controller
         $input = $request['post'];
         if($request->file('image')) {
             $images = $request->file('image');
-            for($i = 0; $i < count($images); $i++) {
+            for($i = 0; $i < count($images) && $i < 4; $i++) {
                 $image_url = Cloudinary::upload($images[$i]->getRealPath())->getSecurePath();
                 $input += ['image'.($i + 1) => $image_url];
             }

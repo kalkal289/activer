@@ -14,13 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('follows', function (Blueprint $table) {
-            $table->foreignId('follower_id')->constrained('users')->cascadeOnDelete()->comment('フォローしてる人のID');
-            $table->foreignId('followed_id')->constrained('users')->cascadeOnDelete()->comment('フォローされてる人のID');
+            $table->id();
+            $table->foreignId('follower_id')->cascadeOnDelete()->constrained('users')->comment('フォローしてる人のID');
+            $table->foreignId('followed_id')->cascadeOnDelete()->constrained('users')->comment('フォローされてる人のID');
             
             //フォローの重複を防ぐ
             $table->unique([
                 'follower_id',
-                'followed_id'
+                'followed_id',
             ]);
         });
     }

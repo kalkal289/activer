@@ -28,12 +28,12 @@
                         <input id="title" type="text" name="main[title]" placeholder="タイトル（30文字以内" value="{{ old('main.title') }}" class="mb-2">
                         <textarea id="content" rows="6" name="main[content]" placeholder="今日何してた？（500文字以内）">{{ old('main.content') }}</textarea>
                     @else
-                        <input id="title" type="text" name="main[title]" placeholder="タイトル（30文字以内" value="{{ $main->content }}" class="mb-2">
+                        <input id="title" type="text" name="main[title]" placeholder="タイトル（30文字以内" value="{{ $main->title }}" class="mb-2">
                         <textarea id="content" rows="6" name="main[content]" placeholder="今日何してた？（500文字以内">{{ $main->content }}</textarea>
                     @endif
                     <select name="main[category_id]" class="my-2">
                         @foreach ($categories as $category)
-                            <option value={{ $category->id }}>{{ $category->name }}</option>
+                            <option value={{ $category->id }} {{ ($main->category_id == $category->id) ? "selected" : "" }}>{{ $category->name }}</option>
                         @endforeach
                     </select>
                     <label for="image">4枚まで画像を添付することができます。</label>

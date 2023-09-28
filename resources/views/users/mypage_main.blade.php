@@ -46,8 +46,12 @@
                     <p>{{ $user->message }}</p>
                 </div>
                 <div class="flex pb-6 border-b-2 border-black">
-                    <p>フォロー中 {{ $user->followeds()->count() }}</p>
-                    <p class="ml-4">フォロワー {{ $user->followers()->count() }}</p>
+                    <p>
+                        <a href="/followeds/{{ $user->id }}">フォロー中 {{ $user->followeds()->count() }}</a>
+                    </p>
+                    <p class="ml-4">
+                        <a href="/followers/{{ $user->id }}">フォロワー {{ $user->followers()->count() }}</a>
+                    </p>
                 </div>
                 <div class="flex justify-around border-b-2 border-black mb-4">
                     <a href="/mypages/{{ $user->id }}" class="w-1/4 py-2 text-center bg-gray-600 text-white">Main</a>

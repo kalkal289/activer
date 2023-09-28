@@ -11,7 +11,7 @@
             <div class="w-1/2 mx-auto pb-10">
                 <div class="flex justify-between mt-4">
                     <div class="flex">
-                        <div class="w-16 h-16 border-1 border-black rounded-full">
+                        <div class="w-16 h-16 border border-black rounded-full">
                             @if($user->profile_image)
                                 <img src="{{ $user->profile_image }}" alt="プロフィール画像"/>
                             @else
@@ -102,7 +102,7 @@
                                     <p>更新日: {{ $store->updated_at }}</p>
                                 </div>
                                 <div class="flex">
-                                    <div class="w-10 h-10 border-1 border-black rounded-full">
+                                    <div class="w-10 h-10 border border-black rounded-full">
                                         @if($store->user->profile_image)
                                             <img src="{{ $store->user->profile_image }}" alt="プロフィール画像"/>
                                         @else

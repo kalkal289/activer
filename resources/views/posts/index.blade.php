@@ -20,7 +20,7 @@
                                 <div>
                                     <div>
                                         <a href="/mypages/{{ $post->user_id }}" class="flex">
-                                            <div class="w-10 h-10 border-1 border-black rounded-full">
+                                            <div class="w-10 h-10 border border-black rounded-full">
                                                 @if($post->user->profile_image)
                                                     <img src="{{ $post->user->profile_image }}" alt="プロフィール画像"/>
                                                 @else
@@ -49,7 +49,7 @@
                             @if($post->is_big_post == 1)
                                 <small>【ビッグポスト】</small>
                             @endif
-                            <p class='body border-y border-black py-2 mb-2'>{{ $post->content }}</p>
+                            <p class='body border-y border-black p-2 mb-2'>{{ $post->content }}</p>
                             @if($post->image1)
                                 <div class="flex overflow-x-scroll">
                                     <img class="w-2/5" src="{{ $post->image1 }}" alt="画像が読み込めません。"/>
@@ -77,7 +77,7 @@
                                     @endif
                                 </p>
                             </div>
-                            <small class='category'>カテゴリー名: {{ $post->category->name }}</small>
+                            <small class='category block'>カテゴリー名: {{ $post->category->name }}</small>
                             <small>投稿日: {{ $post->created_at }}</small>
                             <div class="text-center mx-auto my-2">
                                 <a href="/posts/{{ $post->id }}" class="inline-block w-10/12 py-2 border border-black">詳細ページへ</a>

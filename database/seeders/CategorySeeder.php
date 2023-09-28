@@ -16,6 +16,14 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
+            'name' => 'カテゴリーなし',
+        ]);
+        
+        DB::table('categories')->insert([
+            'name' => 'つぶやき',
+        ]);
+        
+        DB::table('categories')->insert([
             'name' => 'Webアプリ',
         ]);
         
@@ -32,11 +40,15 @@ class CategorySeeder extends Seeder
         ]);
         
         DB::table('categories')->insert([
-            'name' => 'つぶやき',
+            'name' => '外出',
         ]);
         
         DB::table('categories')->insert([
             'name' => '趣味',
+        ]);
+        
+        DB::table('categories')->insert([
+            'name' => '食事',
         ]);
     }
 }

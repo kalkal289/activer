@@ -46,8 +46,12 @@
                     <p>{{ $user->message }}</p>
                 </div>
                 <div class="flex pb-6 border-b-2 border-black">
-                    <p>フォロー中 {{ $user->followeds()->count() }}</p>
-                    <p class="ml-4">フォロワー {{ $user->followers()->count() }}</p>
+                    <p>
+                        <a href="/followeds/{{ $user->id }}">フォロー中 {{ $user->followeds()->count() }}</a>
+                    </p>
+                    <p class="ml-4">
+                        <a href="/followers/{{ $user->id }}">フォロワー {{ $user->followers()->count() }}</a>
+                    </p>
                 </div>
                 <div class="flex justify-around border-b-2 border-black mb-4">
                     <a href="/mypages/{{ $user->id }}" class="w-1/4 py-2 text-center">Main</a>
@@ -62,6 +66,9 @@
                     </div>
                 @endif
                 <div class='contents mt-10'>
+                    @if(count($stores) == 0)
+                        <p class="text-center text-xl mt-10">まだストアを作成していません。</p>
+                    @endif
                     @foreach($stores as $store)
                         <div class='content border border-black rounded my-2 p-4'>
                             <div class="flex justify-between">

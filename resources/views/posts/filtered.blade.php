@@ -2,67 +2,21 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>トップページ</title>
+        <title>検索結果</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <x-app-layout>
         <body>
-            <div class="w-1/2 mx-auto pb-10">
-                <div class="flex justify-between mt-4">
-                    <div class="flex">
-                        <div class="w-16 h-16 border border-black rounded-full">
-                            @if($user->profile_image)
-                                <img src="{{ $user->profile_image }}" alt="プロフィール画像"/>
-                            @else
-                                <img src="https://res.cloudinary.com/drs9gzes2/image/upload/v1695132757/kkrn_icon_user_14_evxlot.png" alt="プロフィール画像"/>
-                            @endif
-                        </div>
-                        <div>
-                            <h1 class="font-bold">{{ $user->name }}</h1>
-                            <p>@ {{ $user->account_name }}</p>
-                            <div>
-                                @foreach ($user->usertags as $usertag)
-                                    <span class="mr-4 text-blue-400">#{{ $usertag->name }}</span>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="border border-black rounded mt-6 mr-6">
-                            @if($user->id == Auth::id())
-                                <a href="/profile/edit/{{ $user->id }}" class="p-2">プロフィール編集</a>
-                            @else
-                                @if($user->is_followed_by_auth_user())
-                                    <a href="/unfollow/{{ $user->id }}" class="p-2">フォロー解除</a>
-                                @else
-                                    <a href="/follow/{{ $user->id }}" class="p-2">フォロー</a>
-                                @endif
-                            @endif
-                        </div>
-                    </div>
+            <div class="w-1/2 mx-auto">
+                <h1 class="text-center font-bolc text-2xl">【ポスト{{ ($is_followed_user) ? "・フォロー中のみ" : "" }}{{ ($is_big_post) ? "・ビッグポストのみ" : "" }}】</h1>
+                <p class="text-center font-bolc text-2xl">{{ ($keyword) ? "「". $keyword. "」の検索結果" : "" }}</p>
+                <div class="my-4">
+                    <a href="/posts/create" class="p-4 rounded border-2 border-black">投稿</a>
                 </div>
-                <div class="p-4 my-4">
-                    <p>{{ $user->message }}</p>
-                </div>
-                <div class="flex pb-6 border-b-2 border-black">
-                    <p>
-                        <a href="/followeds/{{ $user->id }}">フォロー中 {{ $user->followeds()->count() }}</a>
-                    </p>
-                    <p class="ml-4">
-                        <a href="/followers/{{ $user->id }}">フォロワー {{ $user->followers()->count() }}</a>
-                    </p>
-                </div>
-                <div class="flex justify-around border-b-2 border-black mb-4">
-                    <a href="/mypages/{{ $user->id }}" class="w-1/4 py-2 text-center">Main</a>
-                    <a href="/mypages/posts/{{ $user->id }}" class="w-1/4 py-2 text-center {{ ($kind == 0) ? "bg-gray-600 text-white" : "" }}">Post</a>
-                    <a href="/mypages/big/{{ $user->id }}" class="w-1/4 py-2 text-center {{ ($kind == 1) ? "bg-gray-600 text-white" : "" }}">BigPost</a>
-                    <a href="/mypages/store/{{ $user->id }}" class="w-1/4 py-2 text-center">Store</a>
-                </div>
-                
-                <div class='contents mt-10'>
+                <div class='posts'>
                     @if(count($posts) == 0)
-                        <p class="text-center text-xl mt-10">投稿がありません。</p>
+                        <p class="text-center text-xl mt-10">投稿がありません(´；ω；`)</p>
                     @endif
                     @foreach ($posts as $post)
                         <div class="border rounded mt-6 p-4 {{ ($post->is_big_post == 0) ? "border-black" : "border-yellow-600" }}">
@@ -134,20 +88,38 @@
                             </div>
                         </div>
                     @endforeach
-                    <div class="mp-4 fixed right-0 bottom-0 w-1/5 pb-20">
-                        <div class="flex flex-col text-center w-4/5 mx-auto">
-                            <h3 class="text-center text-xl font-bold">〈 検索 〉</h3>
-                            <form id="search_form" action="/mypages/{{ ($kind == 0) ? "posts" : "big" }}/{{ $user->id }}/filter" method="GET" class="flex flex-col text-center mt-4">
-                                <input type="text" name="keyword" placeholder="キーワードを入力" value="{{ $keyword }}">
-                                <input type="submit" value="検索" class="p-2 border-2 border-black w-1/2 m-auto inline-block mt-4">
-                            </form>
-                        </div>
-                    </div>
                 </div>
             </div>
+            
+            <div class="mp-4 fixed top-0 right-0 bottom-0 h-screen w-1/5 pt-40">
+                <div class="flex flex-col text-center w-4/5 mx-auto">
+                    <h3 class="text-center text-xl font-bold mb-4">〈 検索 〉</h3>
+                    <select id="type_select" name="type" onChange="typeChange()">
+                        <option value="1" selected>投稿</option>
+                        <option value="2">メインコンテンツ</option>
+                        <option value="3">ストアコンテンツ</option>
+                    </select>
+                    <form id="search_form" action="/posts/filter" method="GET" class="flex flex-col text-center mt-4">
+                        <input type="text" name="keyword" placeholder="キーワードを入力" value="{{ $keyword }}">
+                        <div class="flex mt-4">
+                            <input id="is_followed_user" type="checkbox" name="is_followed_user" {{ ($is_followed_user) ? "checked" : "" }}>
+                            <label for="is_followed_user">フォローしている人のみ</label>
+                        </div>
+                        <div id="bigpost_checkbox" class="flex mt-4">
+                            <input id="is_big_post" type="checkbox" name="is_big_post" {{ ($is_big_post) ? "checked" : "" }}>
+                            <label for="is_big_post">ビッグポストのみ</label>
+                        </div>
+                        <input type="submit" value="検索" class="p-2 border-2 border-black w-1/2 m-auto inline-block mt-4">
+                    </form>
+                </div>
+            </div>
+            
             <div class="paginate">
                 {{ $posts->appends(request()->input())->links() }}
             </div>
+            
+            <script src="{{ asset('js/deleteConfirm.js') }}"></script>
+            <script src="{{ asset('js/searchSelect.js') }}"></script>
         </body>
     </x-app-layout>
 </html>

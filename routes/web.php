@@ -37,6 +37,8 @@ Route::controller(PostController::class)->middleware('auth')->group(function() {
     Route::get('/', 'index')->name('index');
     Route::post('/posts', 'store')->name('store');
     Route::get('/posts/create', 'create')->name('create');
+    Route::get('/posts/followeds', 'followeds')->name('followedsPost');
+    Route::get('/posts/filter', 'filter')->name('postFilter');
     Route::get('/posts/{post}', 'show')->name('show');
     Route::delete('/posts/{post}', 'delete')->name('deletePost');
 });
@@ -51,11 +53,14 @@ Route::controller(MypageController::class)->middleware('auth')->group(function()
     Route::get('/mypages/posts/{user}', 'mypagePost')->name('mypagePost');
     Route::get('/mypages/big/{user}', 'mypageBigPost')->name('mypageBigPost');
     Route::get('/mypages/store/{user}', 'mypageStore')->name('mypageStore');
+    Route::get('/mypages/posts/{user}/filter', 'filterPost')->name('mypageFilterPost');
+    Route::get('/mypages/big/{user}/filter', 'filterBigPost')->name('mypageFilterBigPost');
 });
 
 Route::controller(MainController::class)->middleware('auth')->group(function() {
     Route::post('/mains', 'store')->name('storeMain');
     Route::get('/mains/create', 'create')->name('createMain');
+    Route::get('/mains/filter', 'filter')->name('mainFilter');
     Route::get('/mains/{main}', 'show')->name('showMain');
     Route::put('/mains/{main}', 'update')->name('updateMain');
     Route::get('/mains/{main}/edit', 'edit')->name('editMain');
@@ -65,6 +70,7 @@ Route::controller(MainController::class)->middleware('auth')->group(function() {
 Route::controller(StoreController::class)->middleware('auth')->group(function() {
     Route::post('/stores', 'store')->name('storeStore');
     Route::get('/stores/create', 'create')->name('createStore');
+    Route::get('/stores/filter', 'filter')->name('storeFilter');
     Route::get('/stores/{store}', 'show')->name('showStore');
     Route::put('/stores/{store}', 'update')->name('updateStore');
     Route::get('/stores/{store}/edit', 'edit')->name('editStore');

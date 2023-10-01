@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 use App\Models\Category;
 use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Auth;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary; //画像アップロード
 
 class PostController extends Controller
@@ -37,5 +40,65 @@ class PostController extends Controller
     public function delete(Post $post) {
         $post->delete();
         return redirect('/');
+    }
+    
+    //「フォロー中」を押したときの関数
+    public function followeds() {
+        $query = Post::query();
+        $auth_id = Auth::id();
+        $followeds = User::find($auth_id)->followeds()->get();
+        $followeds_id = [];
+        foreach($followeds as $followed) {
+            array_push($followeds_id, $followed->id);
+        }
+        $query->whereIn('user_id', $followeds_id);
+        $posts = $query->orderBy('created_at', 'DESC')->paginate(20);
+        return view('posts.filtered')->with([
+            'is_followed_user' => 'on',
+            'is_big_post' => '',
+            'keyword' => '',
+            'posts' => $posts,
+        ]);
+    }
+    
+    //投稿を検索する関数
+    public function filter(Request $request) {
+        $keyword = $request['keyword'];
+        $is_followed_user = $request['is_followed_user'];
+        $is_big_post = $request['is_big_post'];
+        
+        //何も入力せず検索するとトップページに飛ぶようにする
+        if(!($is_followed_user || $is_big_post || $keyword)) {
+            return redirect('/');
+        }
+        
+        //ここから絞り込み処理
+        $query = Post::query();
+        if($is_followed_user) {
+            $auth_id = Auth::id();
+            $followeds = User::find($auth_id)->followeds()->get();
+            $followeds_id = [];
+            foreach($followeds as $followed) {
+                array_push($followeds_id, $followed->id);
+            }
+            $query->whereIn('user_id', $followeds_id);
+        }
+        if($is_big_post) {
+            $query->where('is_big_post', 1);
+        }
+        if($keyword) {
+            $spaceConversion = mb_convert_kana($keyword, 's');
+            $keywordArray = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
+            foreach($keywordArray as $word) {
+                $query->where('content', 'like', '%'.$word.'%');
+            }
+        }
+        $posts = $query->orderBy('created_at', 'DESC')->paginate(20);
+        return view('posts.filtered')->with([
+            'is_followed_user' => $is_followed_user,
+            'is_big_post' => $is_big_post,
+            'keyword' => $keyword,    
+            'posts' => $posts,
+        ]);
     }
 }

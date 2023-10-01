@@ -14,6 +14,7 @@ class MypageController extends Controller
         return view('users.mypage_main')->with([
             'user' => $user,
             'mains' => Main::where('user_id', $user->id)->orderBy('updated_at', 'DESC')->get(),
+            'keyword' => '',
         ]);
     }
     
@@ -22,6 +23,7 @@ class MypageController extends Controller
             'user' => $user,
             'posts' => Post::where('user_id', $user->id)->orderBy('created_at', 'DESC')->paginate(20),
             'kind' => 0,
+            'keyword' => '',
         ]);
     }
     
@@ -30,6 +32,7 @@ class MypageController extends Controller
             'user' => $user,
             'posts' => Post::where('user_id', $user->id)->where('is_big_post', 1)->orderBy('created_at', 'DESC')->paginate(20),
             'kind' => 1,
+            'keyword' => '',
         ]);
     }
     
@@ -37,6 +40,63 @@ class MypageController extends Controller
         return view('users.mypage_store')->with([
             'user' => $user,
             'stores' => Store::where('user_id', $user->id)->orderBy('updated_at', 'DESC')->get(),
+            'keyword' => '',
+        ]);
+    }
+        
+    //引数のユーザーの投稿を検索する関数
+    public function filterPost(User $user, Request $request) {
+        $keyword = $request['keyword'];
+        
+        //キーワードが入力されなければリダイレクト
+        if(!($keyword)) {
+            return redirect('/mypages/posts/'. $user->id);
+        }
+        
+        //ここから絞り込み処理
+        $query = Post::query();
+        $query->where('user_id', $user->id);
+        if($keyword) {
+            $spaceConversion = mb_convert_kana($keyword, 's');
+            $keywordArray = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
+            foreach($keywordArray as $word) {
+                $query->where('content', 'like', '%'.$word.'%');
+            }
+        }
+        $posts = $query->orderBy('created_at', 'DESC')->paginate(20);
+        return view('users.mypage_post')->with([
+            'keyword' => $keyword,    
+            'posts' => $posts,
+            'user' => $user,
+            'kind' => 0,
+        ]);
+    }
+    
+    //引数のユーザーのビッグポストを検索する関数
+    public function filterBigPost(User $user, Request $request) {
+        $keyword = $request['keyword'];
+        
+        //キーワードが入力されなければリダイレクト
+        if(!($keyword)) {
+            return redirect('/mypages/big/'. $user->id);
+        }
+        
+        //ここから絞り込み処理
+        $query = Post::query();
+        $query->where('user_id', $user->id)->where('is_big_post', 1);
+        if($keyword) {
+            $spaceConversion = mb_convert_kana($keyword, 's');
+            $keywordArray = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
+            foreach($keywordArray as $word) {
+                $query->where('content', 'like', '%'.$word.'%');
+            }
+        }
+        $posts = $query->orderBy('created_at', 'DESC')->paginate(20);
+        return view('users.mypage_post')->with([
+            'keyword' => $keyword,    
+            'posts' => $posts,
+            'user' => $user,
+            'kind' => 1,
         ]);
     }
 }

@@ -56,6 +56,9 @@
                 
                 <h1 class="text-center my-4 pt-2 border-t border-black font-bold text-lg">{{ ($kind == 0) ? "フォロー中 一覧" : "フォロワー 一覧" }}</h1>
                 <div class='users pb-10'>
+                    @if(count($users) == 0)
+                        <p class="text-center text-xl mt-10">{{ ($kind == 0) ? "まだ誰もフォローしていません。" : "まだフォロワーはいません。" }}</p>
+                    @endif
                     @foreach ($users as $user)
                         <div class="border rounded mt-6 p-2 border-black">
                             <div class="flex justify-between mx-auto">

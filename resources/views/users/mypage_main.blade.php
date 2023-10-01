@@ -66,6 +66,9 @@
                     </div>
                 @endif
                 <div class='contents mt-10'>
+                    @if(count($mains) == 0)
+                        <p class="text-center text-xl mt-10">まだメインコンテンツを作成していません。</p>
+                    @endif
                     @foreach($mains as $main)
                         <div class='content border border-black rounded my-2 p-4'>
                             <div class="flex justify-between">

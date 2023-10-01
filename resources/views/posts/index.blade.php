@@ -14,6 +14,9 @@
                     <a href="/posts/create" class="p-4 rounded border-2 border-black">投稿</a>
                 </div>
                 <div class='posts'>
+                    @if(count($posts) == 0)
+                        <p class="text-center text-xl mt-10">投稿がありません(´；ω；`)</p>
+                    @endif
                     @foreach ($posts as $post)
                         <div class="border rounded mt-6 p-4 {{ ($post->is_big_post == 0) ? "border-black" : "border-yellow-600" }}">
                             <div class="flex justify-between mx-auto mb-2">
@@ -87,23 +90,35 @@
                 </div>
             </div>
             
-            <div class="my-4">
-                <form action="/" method="get">
-                    <div class="flex flex-col text-center w-2/5 mx-auto">
-                        <select name="type">
-                            <option value="1" selected>投稿</option>
-                            <option value="2">メインコンテンツ</option>
-                            <option value="3">ストアコンテンツ</option>
-                        </select>
+            <div class="mp-4 fixed top-0 right-0 bottom-0 h-screen w-1/5 pt-40">
+                <div class="flex flex-col text-center w-4/5 mx-auto">
+                    <h3 class="text-center text-xl font-bold mb-4">〈 検索 〉</h3>
+                    <select id="type_select" name="type" onChange="typeChange()">
+                        <option value="1" selected>投稿</option>
+                        <option value="2">メインコンテンツ</option>
+                        <option value="3">ストアコンテンツ</option>
+                    </select>
+                    <form id="search_form" action="/posts/filter" method="GET" class="flex flex-col text-center mt-4">
                         <input type="text" name="keyword" placeholder="キーワードを入力">
-                        <input type="submit" value="検索" class="p-2 border-2 border-black w-1/2 m-auto inline-block">
-                    </div>
-                </form>
+                        <div class="flex mt-4">
+                            <input type="checkbox" name="is_followed_user">
+                            <label>フォローしている人のみ</label>
+                        </div>
+                        <div id="bigpost_checkbox" class="flex mt-4">
+                            <input type="checkbox" name="is_big_post">
+                            <label>ビッグポストのみ</label>
+                        </div>
+                        <input type="submit" value="検索" class="p-2 border-2 border-black w-1/2 m-auto inline-block mt-4">
+                    </form>
+                </div>
             </div>
+            
             <div class="paginate">
                 {{ $posts->links() }}
             </div>
+            
             <script src="{{ asset('js/deleteConfirm.js') }}"></script>
+            <script src="{{ asset('js/searchSelect.js') }}"></script>
         </body>
     </x-app-layout>
 </html>

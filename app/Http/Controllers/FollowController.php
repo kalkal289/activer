@@ -33,21 +33,18 @@ class FollowController extends Controller
     
     //引数のユーザーがフォローしているユーザーを返す
     function followeds(User $user) {
-        $followeds = $user->followeds()->paginate(30);
         return view('users.follows')->with([
             'main_user' => $user,
-            'users' => $followeds,
+            'users' => $user->followeds()->withPivot('created_at AS followed_at')->orderBy('followed_at', 'desc')->paginate(30),
             'kind' => 0,
         ]);
     }
     
-    
     //引数のユーザーのフォロワーを返す
     function followers(User $user) {
-        $followers = $user->followers()->paginate(30);
         return view('users.follows')->with([
             'main_user' => $user,
-            'users' => $followers,
+            'users' => $user->followers()->withPivot('created_at AS followed_at')->orderBy('followed_at', 'desc')->paginate(30),
             'kind' => 1,
         ]);
     }

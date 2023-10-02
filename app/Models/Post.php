@@ -36,7 +36,7 @@ class Post extends Model
     }
     
     public function likes() {
-        return $this->hasMany(Like::class);
+        return $this->belongsToMany(User::class, 'likes', 'post_id', 'user_id');
     }
     
     public function comments() {
@@ -59,7 +59,7 @@ class Post extends Model
     public function is_liked_by_auth_user() {
         $like_users = array();
         foreach($this->likes as $like) {
-            array_push($like_users, $like->user_id);
+            array_push($like_users, $like->id);
         }
         if(in_array(Auth::id(), $like_users)) {
             return true;

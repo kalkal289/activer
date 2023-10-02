@@ -56,6 +56,7 @@ Route::controller(MypageController::class)->middleware('auth')->group(function()
     Route::get('/mypages/store/{user}', 'mypageStore')->name('mypageStore');
     Route::get('/mypages/posts/{user}/filter', 'filterPost')->name('mypageFilterPost');
     Route::get('/mypages/big/{user}/filter', 'filterBigPost')->name('mypageFilterBigPost');
+    Route::get('/mypages/likes/{user}', 'likePost')->name('likePost');
 });
 
 Route::controller(MainController::class)->middleware('auth')->group(function() {

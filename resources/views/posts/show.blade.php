@@ -70,9 +70,9 @@
                             </p>
                             <p class='likes p-2 ml-4'>
                                 @if($post->is_liked_by_auth_user())
-                                    <a class='inline-block p-2 border border-pink-500 bg-pink-500 text-white' href="/unlike/{{ $post->id }}">いいね: {{ $post->likes->count() }}</a>
+                                    <a class='inline-block p-2 border border-pink-500 bg-pink-500 text-white' href="/unlike/{{ $post->id }}">いいね: {{ $post->likes()->count() }}</a>
                                 @else
-                                    <a class='inline-block p-2 border border-pink-500 text-pink-500' href="/like/{{ $post->id }}">いいね: {{ $post->likes->count() }}</a>
+                                    <a class='inline-block p-2 border border-pink-500 text-pink-500' href="/like/{{ $post->id }}">いいね: {{ $post->likes()->count() }}</a>
                                 @endif
                             </p>
                         </div>

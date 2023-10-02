@@ -99,4 +99,11 @@ class MypageController extends Controller
             'kind' => 1,
         ]);
     }
+    
+    function likePost(User $user) {
+        return view('users.like_posts')->with([
+            'user' => $user,
+            'posts' => $user->likes()->withPivot('created_at AS liked_at')->orderBy('liked_at', 'DESC')->paginate(20),
+        ]);
+    }
 }

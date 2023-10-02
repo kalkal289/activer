@@ -11,9 +11,6 @@
             <div class="w-1/2 mx-auto">
                 <h1 class="text-center font-bolc text-2xl">【ポスト{{ ($is_followed_user) ? "・フォロー中のみ" : "" }}{{ ($is_big_post) ? "・ビッグポストのみ" : "" }}】</h1>
                 <p class="text-center font-bolc text-2xl">{{ ($keyword) ? "「". $keyword. "」の検索結果" : "" }}</p>
-                <div class="my-4">
-                    <a href="/posts/create" class="p-4 rounded border-2 border-black">投稿</a>
-                </div>
                 <div class='posts'>
                     @if(count($posts) == 0)
                         <p class="text-center text-xl mt-10">投稿がありません(´；ω；`)</p>
@@ -75,9 +72,9 @@
                                 </p>
                                 <p class='likes p-2 ml-4'>
                                     @if($post->is_liked_by_auth_user())
-                                        <a class='inline-block p-2 border border-pink-500 bg-pink-500 text-white' href="/unlike/{{ $post->id }}">いいね: {{ $post->likes->count() }}</a>
+                                        <a class='inline-block p-2 border border-pink-500 bg-pink-500 text-white' href="/unlike/{{ $post->id }}">いいね: {{ $post->likes()->count() }}</a>
                                     @else
-                                        <a class='inline-block p-2 border border-pink-500 text-pink-500' href="/like/{{ $post->id }}">いいね: {{ $post->likes->count() }}</a>
+                                        <a class='inline-block p-2 border border-pink-500 text-pink-500' href="/like/{{ $post->id }}">いいね: {{ $post->likes()->count() }}</a>
                                     @endif
                                 </p>
                             </div>

@@ -21,11 +21,14 @@
                     <x-nav-link :href="route('followedsPost')" :active="request()->routeIs('followedsPost')">
                         {{ __('フォロー中') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('create')" :active="request()->routeIs('create')">
-                        {{ __('投稿') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('mypageMain', ['user' => Auth::id()])" :active="request()->routeIs('mypageMain', ['user' => Auth::id()])">
                         {{ __('マイページ') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('search')" :active="request()->routeIs('search')">
+                        {{ __('検索') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('create')" :active="request()->routeIs('create')">
+                        {{ __('投稿') }}
                     </x-nav-link>
                 </div>
             </div>

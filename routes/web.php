@@ -39,6 +39,7 @@ Route::controller(PostController::class)->middleware('auth')->group(function() {
     Route::get('/posts/create', 'create')->name('create');
     Route::get('/posts/followeds', 'followeds')->name('followedsPost');
     Route::get('/posts/filter', 'filter')->name('postFilter');
+    Route::get('/posts/search', 'search')->name('search');
     Route::get('/posts/{post}', 'show')->name('show');
     Route::delete('/posts/{post}', 'delete')->name('deletePost');
 });

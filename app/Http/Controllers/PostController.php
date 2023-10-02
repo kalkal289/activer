@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use App\Http\Requests\PostRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary; //画像アップロード
 
@@ -40,6 +40,10 @@ class PostController extends Controller
     public function delete(Post $post) {
         $post->delete();
         return redirect('/');
+    }
+    
+    public function search() {
+        return view('posts.search');
     }
     
     //「フォロー中」を押したときの関数

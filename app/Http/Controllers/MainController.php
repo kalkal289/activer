@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Main;
 use App\Models\Category;
 use App\Http\Requests\MainRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary; //画像アップロード
 
@@ -54,5 +55,36 @@ class MainController extends Controller
     public function delete(Main $main) {
         $main->delete();
         return redirect('/mypages/'. Auth::id());
+    }
+    
+    //メインコンテンツを検索する関数
+    public function filter(Request $request) {
+        $keyword = $request['keyword'];
+        $is_followed_user = $request['is_followed_user'];
+        
+        //ここから絞り込み処理
+        $query = Main::query();
+        if($is_followed_user) {
+            $auth_id = Auth::id();
+            $followeds = User::find($auth_id)->followeds()->get();
+            $followeds_id = [];
+            foreach($followeds as $followed) {
+                array_push($followeds_id, $followed->id);
+            }
+            $query->whereIn('user_id', $followeds_id);
+        }
+        if($keyword) {
+            $spaceConversion = mb_convert_kana($keyword, 's');
+            $keywordArray = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
+            foreach($keywordArray as $word) {
+                $query->where('title', 'like', '%'.$word.'%')->orWhere('content', 'like', '%'.$word.'%');
+            }
+        }
+        $mains = $query->orderBy('created_at', 'DESC')->paginate(20);
+        return view('mains.filtered')->with([
+            'is_followed_user' => $is_followed_user,
+            'keyword' => $keyword,    
+            'mains' => $mains,
+        ]);
     }
 }

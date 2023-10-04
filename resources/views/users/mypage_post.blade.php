@@ -31,7 +31,7 @@
                     <div>
                         <div class="border border-black rounded mt-6 mr-6">
                             @if($user->id == Auth::id())
-                                <a href="/profile/edit/{{ $user->id }}" class="p-2">プロフィール編集</a>
+                                <a href="/mypages/profile/{{ Auth::id() }}" class="p-2">プロフィール編集</a>
                             @else
                                 @if($user->is_followed_by_auth_user())
                                     <a href="/unfollow/{{ $user->id }}" class="p-2">フォロー解除</a>
@@ -45,13 +45,18 @@
                 <div class="p-4 my-4">
                     <p>{{ $user->message }}</p>
                 </div>
-                <div class="flex pb-6 border-b-2 border-black">
-                    <p>
-                        <a href="/followeds/{{ $user->id }}">フォロー中 {{ $user->followeds()->count() }}</a>
-                    </p>
-                    <p class="ml-4">
-                        <a href="/followers/{{ $user->id }}">フォロワー {{ $user->followers()->count() }}</a>
-                    </p>
+                <div class="flex justify-between pb-6 border-b-2 border-black">
+                    <div class="flex">
+                        <p>
+                            <a href="/followeds/{{ $user->id }}">フォロー中 {{ $user->followeds()->count() }}</a>
+                        </p>
+                        <p class="ml-4">
+                            <a href="/followers/{{ $user->id }}">フォロワー {{ $user->followers()->count() }}</a>
+                        </p>
+                    </div>
+                    <div class="mr-10">
+                        <a href="/mypages/likes/{{ $user->id }}">いいねした投稿一覧</a>
+                    </div>
                 </div>
                 <div class="flex justify-around border-b-2 border-black mb-4">
                     <a href="/mypages/{{ $user->id }}" class="w-1/4 py-2 text-center">Main</a>

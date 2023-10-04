@@ -57,6 +57,8 @@ Route::controller(MypageController::class)->middleware('auth')->group(function()
     Route::get('/mypages/posts/{user}/filter', 'filterPost')->name('mypageFilterPost');
     Route::get('/mypages/big/{user}/filter', 'filterBigPost')->name('mypageFilterBigPost');
     Route::get('/mypages/likes/{user}', 'likePost')->name('likePost');
+    Route::get('/mypages/profile/{user}', 'editProfile')->name('editProfile');
+    Route::put('/mypages/profile/{user}', 'updateProfile')->name('updateProfile');
 });
 
 Route::controller(MainController::class)->middleware('auth')->group(function() {

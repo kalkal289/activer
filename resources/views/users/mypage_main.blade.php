@@ -31,7 +31,7 @@
                     <div>
                         <div class="border border-black rounded mt-6 mr-6">
                             @if($user->id == Auth::id())
-                                <a href="/profile/edit/{{ $user->id }}" class="p-2">プロフィール編集</a>
+                                <a href="/mypages/profile/{{ Auth::id() }}" class="p-2">プロフィール編集</a>
                             @else
                                 @if($user->is_followed_by_auth_user())
                                     <a href="/unfollow/{{ $user->id }}" class="p-2">フォロー解除</a>

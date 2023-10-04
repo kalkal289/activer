@@ -6,7 +6,9 @@ use App\Models\User;
 use App\Models\Main;
 use App\Models\Store;
 use App\Models\Post;
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary; //画像アップロード
 
 class MypageController extends Controller
 {
@@ -105,5 +107,20 @@ class MypageController extends Controller
             'user' => $user,
             'posts' => $user->likes()->withPivot('created_at AS liked_at')->orderBy('liked_at', 'DESC')->paginate(20),
         ]);
+    }
+    
+    function editProfile(User $user) {
+        return view('users.profile_edit')->with(['user' => $user]);
+    }
+    
+    function updateProfile(User $user, ProfileRequest $request) {
+        $input = $request['user'];
+        if($request->file('image')) {
+            $image = $request->file('image');
+            $image_url = Cloudinary::upload($image->getRealPath())->getSecurePath();
+            $input += ['profile_image' => $image_url];
+        }
+        $user->fill($input)->save();
+        return redirect('mypages/'. $user->id);
     }
 }

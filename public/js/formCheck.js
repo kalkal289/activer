@@ -1,4 +1,4 @@
-//formの内容をチェック
+//ポストのformの内容をチェック
 function postFormCheck()
 {
     const content = document.getElementById('content');
@@ -13,6 +13,7 @@ function postFormCheck()
     }
 }
 
+//メインコンテンツのformの内容をチェック
 function contentFormCheck()
 {
     const content = document.getElementById('content');
@@ -31,6 +32,20 @@ function contentFormCheck()
     }
 }
 
+//プロフィールのformの内容をチェック
+function profileFormCheck()
+{
+    const name = document.getElementById('name');
+    // const txt = document.getElementById('error-txt');
+    if(name.value == '') {
+        alert("名前を入力してください。");
+        return false;
+    } else {
+        return true;
+    }
+}
+
+//添付する画像の枚数をチェック
 function imagesTooMany() {
     const image = document.getElementById('image');
     if(image.files.length > 4) {

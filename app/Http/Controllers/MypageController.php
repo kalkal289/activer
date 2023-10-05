@@ -16,6 +16,7 @@ class MypageController extends Controller
         return view('users.mypage_main')->with([
             'user' => $user,
             'mains' => Main::where('user_id', $user->id)->orderBy('updated_at', 'DESC')->get(),
+            'kind' => 0,
             'keyword' => '',
         ]);
     }
@@ -24,7 +25,7 @@ class MypageController extends Controller
         return view('users.mypage_post')->with([
             'user' => $user,
             'posts' => Post::where('user_id', $user->id)->orderBy('created_at', 'DESC')->paginate(20),
-            'kind' => 0,
+            'kind' => 1,
             'keyword' => '',
         ]);
     }
@@ -33,7 +34,7 @@ class MypageController extends Controller
         return view('users.mypage_post')->with([
             'user' => $user,
             'posts' => Post::where('user_id', $user->id)->where('is_big_post', 1)->orderBy('created_at', 'DESC')->paginate(20),
-            'kind' => 1,
+            'kind' => 2,
             'keyword' => '',
         ]);
     }
@@ -42,6 +43,7 @@ class MypageController extends Controller
         return view('users.mypage_store')->with([
             'user' => $user,
             'stores' => Store::where('user_id', $user->id)->orderBy('updated_at', 'DESC')->get(),
+            'kind' => 3,
             'keyword' => '',
         ]);
     }

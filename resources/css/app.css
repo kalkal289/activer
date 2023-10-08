@@ -1,3 +1,89 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.all-container {
+  @apply relative w-full max-w-screen-2xl h-screen mx-auto;
+}
+
+.header {
+  @apply fixed w-1/5 max-w-sm h-screen p-6 border-x border-gray-300;
+}
+
+.logo-area {
+  @apply items-center w-full h-1/6 mb-2;
+}
+
+.logo-area img {
+  @apply w-4/5 mx-auto;
+}
+
+.nav {
+  @apply w-full h-2/5;
+}
+
+.nav-list {
+  @apply flex flex-col w-full h-full border-t-2 border-orange-300;
+}
+
+.nav-list>li {
+  @apply w-full h-1/5 border-b-2 border-orange-300;
+}
+
+.nav-list>li>a {
+  @apply flex w-full h-full justify-center items-center text-xl;
+}
+
+.nav-list>li>a:hover {
+  @apply text-white bg-orange-300 transition duration-150;
+}
+
+.nav-list>li>a:active {
+  @apply bg-orange-500;
+}
+
+.create-btn-area {
+  @apply flex w-full h-1/6 justify-center items-center;
+}
+
+.create-btn-area>a {
+  @apply flex w-4/5 h-3/5 justify-center items-center border-2 border-orange-200 rounded-full text-xl;
+}
+
+.create-btn-area>a:hover {
+  @apply text-white bg-orange-400 transition duration-150;
+}
+
+.create-btn-area>a:active {
+  @apply bg-orange-500;
+}
+
+.setting-area {
+  @apply relative inline-block mt-1;
+}
+
+.setting-area span {
+  @apply p-3 text-base border-b border-gray-200;
+}
+
+.setting-list {
+  @apply absolute top-3 opacity-0;
+}
+
+.setting-list>li a {
+  @apply block p-3 rounded-full;
+}
+
+.setting-list>li a:hover {
+  @apply p-3 bg-gray-100;
+}
+
+.setting-list>li a:active {
+  @apply p-3 bg-gray-200;
+}
+
+.setting-area:hover .setting-list {
+  @apply transition duration-300 opacity-100 translate-y-5;
+}
+
+

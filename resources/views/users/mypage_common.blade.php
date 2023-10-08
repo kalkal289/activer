@@ -1,10 +1,10 @@
-<div class="flex justify-between mt-4">
+<div class="flex justify-between">
     <div class="flex">
-        <div class="w-16 h-16 border border-black rounded-full">
+        <div>
             @if($user->profile_image)
-                <img src="{{ $user->profile_image }}" alt="プロフィール画像"/>
+                <img class="w-10 h-10 border border-black rounded-full" src="{{ $user->profile_image }}" alt="プロフィール画像"/>
             @else
-                <img src="https://res.cloudinary.com/drs9gzes2/image/upload/v1695132757/kkrn_icon_user_14_evxlot.png" alt="プロフィール画像"/>
+                <img class="w-10 h-10 border border-black rounded-full" src="https://res.cloudinary.com/drs9gzes2/image/upload/v1695132757/kkrn_icon_user_14_evxlot.png" alt="プロフィール画像"/>
             @endif
         </div>
         <div>

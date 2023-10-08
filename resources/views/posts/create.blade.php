@@ -36,7 +36,7 @@
                     <label for="image">4枚まで画像を添付することができます。</label>
                     <input type="file" id="image" name="image[]" accept="image/*" multiple onChange="imagesTooMany()" class="mb-4">
                     <p id="error-txt-image" class="text-red-600"></p>
-                    <input type="submit" value="投稿" onclick="return PostFormCheck()" class="p-4 text-center border-2 border-black">
+                    <input type="submit" value="投稿" onclick="return postFormCheck()" class="p-4 text-center border-2 border-black">
                     
                 </form>
             </div>

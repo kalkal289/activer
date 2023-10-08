@@ -22,9 +22,9 @@
                                         <a href="/mypages/{{ $post->user_id }}" class="flex">
                                             <div>
                                                 @if($post->user->profile_image)
-                                                    <img class="w-10 h-10 border border-black rounded-full" src="{{ $post->user->profile_image }}" alt="プロフィール画像"/>
+                                                    <img class="w-10 h-10 rounded-full" src="{{ $post->user->profile_image }}" alt="プロフィール画像"/>
                                                 @else
-                                                    <img class="w-10 h-10 border border-black rounded-full" src="https://res.cloudinary.com/drs9gzes2/image/upload/v1695132757/kkrn_icon_user_14_evxlot.png" alt="プロフィール画像"/>
+                                                    <img class="w-10 h-10 rounded-full" src="https://res.cloudinary.com/drs9gzes2/image/upload/v1695132757/kkrn_icon_user_14_evxlot.png" alt="プロフィール画像"/>
                                                 @endif
                                             </div>
                                             <h2 class='user-name'>{{ $post->user->name }}</h2>

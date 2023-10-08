@@ -21,10 +21,10 @@
                     <x-nav-link :href="route('followedsPost')" :active="request()->routeIs('followedsPost')">
                         {{ __('フォロー中') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('mypageMain', ['user' => Auth::id()])" :active="request()->routeIs('mypageMain', ['user' => Auth::id()])">
+                    <x-nav-link :href="route('mypageMain', ['user' => Auth::id()])" :active="request()->routeIs('mypageMain', 'mypagePost', 'mypageBigPost', 'mypageStore')">
                         {{ __('マイページ') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('search')" :active="request()->routeIs('search')">
+                    <x-nav-link :href="route('search')" :active="request()->routeIs('search', 'postFilter', 'mainFilter', 'storeFilter')">
                         {{ __('検索') }}
                     </x-nav-link>
                     <x-nav-link :href="route('create')" :active="request()->routeIs('create')">

@@ -8,7 +8,7 @@
     </head>
     <x-app-layout>
         <body>
-            <div class="w-1/2 mx-auto pb-10">
+            <div class="w-1/2 mx-auto py-4">
                 
                 @include('users.mypage_common', [
                     'user' => $user,
@@ -25,11 +25,11 @@
                                 <div>
                                     <div>
                                         <a href="/mypages/{{ $post->user_id }}" class="flex">
-                                            <div class="w-10 h-10 border border-black rounded-full">
+                                            <div>
                                                 @if($post->user->profile_image)
-                                                    <img src="{{ $post->user->profile_image }}" alt="プロフィール画像"/>
+                                                    <img class="w-10 h-10 border border-black rounded-full" src="{{ $post->user->profile_image }}" alt="プロフィール画像"/>
                                                 @else
-                                                    <img src="https://res.cloudinary.com/drs9gzes2/image/upload/v1695132757/kkrn_icon_user_14_evxlot.png" alt="プロフィール画像"/>
+                                                    <img class="w-10 h-10 border border-black rounded-full" src="https://res.cloudinary.com/drs9gzes2/image/upload/v1695132757/kkrn_icon_user_14_evxlot.png" alt="プロフィール画像"/>
                                                 @endif
                                             </div>
                                             <h2 class='user-name'>{{ $post->user->name }}</h2>

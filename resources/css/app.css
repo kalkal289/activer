@@ -14,6 +14,10 @@
   @apply shadow-[0_0_1px_1px_rgb(0,0,0,0)] shadow-blue-300;
 }
 
+.user-list-shadow-color {
+  @apply shadow-[0_0_1px_1px_rgb(0,0,0,0)] shadow-orange-300;
+}
+
 .all-container {
   @apply relative w-full max-w-screen-2xl h-screen mx-auto;
 }
@@ -150,6 +154,14 @@
   @apply flex w-5/6 h-10;
 }
 
+.list-user-header {
+  @apply w-[calc(100%_-_7rem)] mb-1;
+}
+
+.list-user-profile {
+  @apply flex w-full h-10;
+}
+
 .post-profile-img {
   @apply w-10 h-10 mr-2 rounded-full object-cover bg-slate-200;
 }
@@ -167,7 +179,7 @@
 }
 
 .list-user-tags-area {
-  @apply w-5/6 ml-2 mb-1;
+  @apply w-[calc(100%_-_0.5rem)] h-5 mt-1 ml-2;
 }
 
 .user-tags-list {
@@ -308,6 +320,46 @@
 
 .paginate-style {
   @apply mt-10;
+}
+
+.follow-btn-area {
+  @apply flex justify-center items-center w-24 ml-2;
+}
+
+.follow-btn {
+  @apply block w-full p-2 text-center shadow-[0_0_1px_1.5px_rgb(0,0,0,0)] shadow-orange-300 rounded-full hover:bg-orange-300 hover:text-white active:bg-orange-400;
+}
+
+.unfollow-btn {
+  @apply block w-full p-2 text-center shadow-[0_0_1px_1.5px_rgb(0,0,0,0)] shadow-orange-300 rounded-full bg-orange-300 text-white hover:bg-white hover:text-red-500 hover:shadow-red-500 active:bg-red-500 active:text-white;
+}
+
+.center-user-info-area {
+  @apply fixed z-50 w-3/5 h-40 mx-auto border-b border-orange-500 bg-white bg-opacity-95;
+}
+
+.center-user-info {
+  @apply w-5/6 mx-auto pt-4 pb-3;
+}
+
+.user-follow-info-area {
+  @apply flex ml-2 h-5;
+}
+
+.user-follow-info {
+  @apply mr-4 leading-5 hover:text-gray-500;
+}
+
+.follow-list-title-area {
+  @apply flex items-center h-10 border-t border-orange-500;
+}
+
+.follow-list-title {
+  @apply mx-auto text-orange-300 text-2xl text-center font-bold;
+}
+
+.center-user-list-area {
+  @apply w-full pt-48 pb-10;
 }
 
 /* ここから検索サイドバー */

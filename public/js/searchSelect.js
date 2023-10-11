@@ -9,15 +9,15 @@ function typeChange() {
     
     //「投稿」の場合はビッグポストかどうかのチェックボックスを表示し、それ以外の場合は非表示&無効にする
     const bigpostCheckbox = document.getElementById("bigpost_checkbox");
-    const isBigPost = document.getElementById("is_big_post");
+    const checkboxBigPost = document.getElementById("checkbox_big_post");
     // const checkboxDisplay = new Array("", "none", "none");
     // bigpostCheckbox.style.display = checkboxDisplay[typeNumber];
     if(typeNumber == 0) {
         bigpostCheckbox.classList.remove("hidden");
-        isBigPost.removeAttribute("disabled");
+        checkboxBigPost.removeAttribute("disabled");
     } else {
         bigpostCheckbox.classList.add("hidden");
-        isBigPost.setAttribute("disabled", "");
+        checkboxBigPost.setAttribute("disabled", "");
     }
     
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Store;
+use App\Models\User;
 use App\Models\Storecategory;
 use App\Http\Requests\StoreRequest;
 use Illuminate\Http\Request;
@@ -83,6 +84,7 @@ class StoreController extends Controller
         $stores = $query->orderBy('created_at', 'DESC')->paginate(20);
         return view('stores.filtered')->with([
             'is_followed_user' => $is_followed_user,
+            'is_big_post' => '',
             'keyword' => $keyword,    
             'stores' => $stores,
         ]);

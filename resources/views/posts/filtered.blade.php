@@ -2,121 +2,47 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>検索結果</title>
+        <title>投稿検索結果</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <!--FontAwesome-->
+        <script src="https://kit.fontawesome.com/68afbe7e1a.js" crossorigin="anonymous"></script>
     </head>
     <x-app-layout>
         <body>
-            <div class="w-1/2 mx-auto">
-                <h1 class="text-center font-bolc text-2xl">【ポスト{{ ($is_followed_user) ? "・フォロー中のみ" : "" }}{{ ($is_big_post) ? "・ビッグポストのみ" : "" }}】</h1>
-                <p class="text-center font-bolc text-2xl">{{ ($keyword) ? "「". $keyword. "」の検索結果" : "" }}</p>
-                <div class='posts'>
-                    @if(count($posts) == 0)
-                        <p class="text-center text-xl mt-10">投稿がありません(´；ω；`)</p>
-                    @endif
-                    @foreach ($posts as $post)
-                        <div class="border rounded mt-6 p-4 {{ ($post->is_big_post == 0) ? "border-black" : "border-yellow-600" }}">
-                            <div class="flex justify-between mx-auto mb-2">
-                                <div>
-                                    <div>
-                                        <a href="/mypages/{{ $post->user_id }}" class="flex">
-                                            <div class="w-10 h-10 border border-black rounded-full">
-                                                @if($post->user->profile_image)
-                                                    <img src="{{ $post->user->profile_image }}" alt="プロフィール画像"/>
-                                                @else
-                                                    <img src="https://res.cloudinary.com/drs9gzes2/image/upload/v1695132757/kkrn_icon_user_14_evxlot.png" alt="プロフィール画像"/>
-                                                @endif
-                                            </div>
-                                            <h2 class='user-name'>{{ $post->user->name }}</h2>
-                                        </a>
-                                    </div>
-                                    <div>
-                                        @foreach ($post->user->usertags as $usertag)
-                                            <span class="mr-4 text-blue-400 text-sm">#{{ $usertag->name }}</span>
-                                        @endforeach
-                                    </div>
-                                </div>
-                                @if($post->user_id == Auth::id())
-                                    <div>
-                                        <form action="/posts/{{ $post->id }}" id="deletePost{{ $post->id }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="button" onClick="deletePost({{ $post->id }})" class="z-10 p-2 border border-black">削除</button>
-                                        </form>
-                                    </div>
-                                @endif
+            <div class="window">
+                <div class="all-container">
+                    <main>
+                        <div class="center-area">
+                            <div class="center-title-area">
+                                <h1 class="center-title"><i class="fa-solid fa-pen text-bg-orange-300"></i> ポスト{{ ($is_followed_user) ? " 　フォロー中のみ" : "" }}{{ ($is_big_post) ? "　ビッグポストのみ" : "" }} 　</h1>
+                                <p class="text-center font-bolc text-2xl">{{ ($keyword) ? "「". $keyword. "」の検索結果" : "" }}</p>
+                                <div class="center-title-border"></div>
                             </div>
-                            @if($post->is_big_post == 1)
-                                <small>【ビッグポスト】</small>
-                            @endif
-                            <p class='body border-y border-black p-2 mb-2'>{{ $post->content }}</p>
-                            @if($post->image1)
-                                <div class="flex overflow-x-scroll">
-                                    <img class="w-2/5" src="{{ $post->image1 }}" alt="画像が読み込めません。"/>
-                                    @if($post->image2)
-                                        <img class="w-2/5 ml-4" src="{{ $post->image2 }}" alt="画像が読み込めません。"/>
-                                        @if($post->image3)
-                                            <img class="w-2/5 ml-4" src="{{ $post->image3 }}" alt="画像が読み込めません。"/>
-                                            @if($post->image4)
-                                                <img class="w-2/5 ml-4" src="{{ $post->image4 }}" alt="画像が読み込めません。"/>
-                                            @endif
-                                        @endif
+                            <div class="center-container">
+                                <div class="center-contents-area">
+                                    @if(count($posts) == 0)
+                                        <p class="post-nothing">投稿がありません(´；ω；`)</p>
                                     @endif
+                                    @foreach($posts as $post)
+                                    
+                                        @include('parts.post_template', ['post' => $post,])
+                                    
+                                    @endforeach
+                                    <div class="paginate paginate-style">{{ $posts->appends(request()->input())->links() }}</div>
                                 </div>
-                            @endif
-                            <!--<p class='bigpost'>bigpost: { $post->is_big_post }}</p>-->
-                            <div class="flex">
-                                <p class='comments p-2'>
-                                    <a href="/posts/{{ $post->id }}" class="inline-block p-2 border border-yellow-500 text-yellow-500">コメント: {{ $post->comments->count() }}</a>
-                                </p>
-                                <p class='likes p-2 ml-4'>
-                                    @if($post->is_liked_by_auth_user())
-                                        <a class='inline-block p-2 border border-pink-500 bg-pink-500 text-white' href="/unlike/{{ $post->id }}">いいね: {{ $post->likes()->count() }}</a>
-                                    @else
-                                        <a class='inline-block p-2 border border-pink-500 text-pink-500' href="/like/{{ $post->id }}">いいね: {{ $post->likes()->count() }}</a>
-                                    @endif
-                                </p>
-                            </div>
-                            <small class='category block'>カテゴリー名: {{ $post->category->name }}</small>
-                            <small>投稿日: {{ $post->created_at }}</small>
-                            <div class="text-center mx-auto my-2">
-                                <a href="/posts/{{ $post->id }}" class="inline-block w-10/12 py-2 border border-black">詳細ページへ</a>
                             </div>
                         </div>
-                    @endforeach
+                    </main>
+                    
+                    @include('parts.search_sidebar')
+                
                 </div>
-            </div>
-            
-            <div class="mp-4 fixed top-0 right-0 bottom-0 h-screen w-1/5 pt-40">
-                <div class="flex flex-col text-center w-4/5 mx-auto">
-                    <h3 class="text-center text-xl font-bold mb-4">〈 検索 〉</h3>
-                    <select id="type_select" name="type" onChange="typeChange()">
-                        <option value="1" selected>投稿</option>
-                        <option value="2">メインコンテンツ</option>
-                        <option value="3">ストアコンテンツ</option>
-                    </select>
-                    <form id="search_form" action="/posts/filter" method="GET" class="flex flex-col text-center mt-4">
-                        <input type="text" name="keyword" placeholder="キーワードを入力" value="{{ $keyword }}">
-                        <div class="flex mt-4">
-                            <input id="is_followed_user" type="checkbox" name="is_followed_user" {{ ($is_followed_user) ? "checked" : "" }}>
-                            <label for="is_followed_user">フォローしている人のみ</label>
-                        </div>
-                        <div id="bigpost_checkbox" class="flex mt-4">
-                            <input id="is_big_post" type="checkbox" name="is_big_post" {{ ($is_big_post) ? "checked" : "" }}>
-                            <label for="is_big_post">ビッグポストのみ</label>
-                        </div>
-                        <input type="submit" value="検索" class="p-2 border-2 border-black w-1/2 m-auto inline-block mt-4">
-                    </form>
-                </div>
-            </div>
-            
-            <div class="paginate">
-                {{ $posts->appends(request()->input())->links() }}
             </div>
             
             <script src="{{ asset('js/deleteConfirm.js') }}"></script>
             <script src="{{ asset('js/searchSelect.js') }}"></script>
+            
         </body>
     </x-app-layout>
 </html>

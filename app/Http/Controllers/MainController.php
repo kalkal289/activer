@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Main;
+use App\Models\User;
 use App\Models\Category;
 use App\Http\Requests\MainRequest;
 use Illuminate\Http\Request;
@@ -83,6 +84,7 @@ class MainController extends Controller
         $mains = $query->orderBy('created_at', 'DESC')->paginate(20);
         return view('mains.filtered')->with([
             'is_followed_user' => $is_followed_user,
+            'is_big_post' => '',
             'keyword' => $keyword,    
             'mains' => $mains,
         ]);

@@ -2,16 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+.post-shadow-color {
+  @apply shadow-[0_0_1px_1px_rgb(0,0,0,0)] shadow-orange-200;
+}
+
+.main-shadow-color {
+  @apply shadow-[0_0_1px_1px_rgb(0,0,0,0)] shadow-red-300;
+}
+
+.store-shadow-color {
+  @apply shadow-[0_0_1px_1px_rgb(0,0,0,0)] shadow-blue-300;
+}
+
 .all-container {
   @apply relative w-full max-w-screen-2xl h-screen mx-auto;
 }
 
+/* ここからheader(ナビゲーション) */
+
 .header {
-  @apply fixed w-1/5 max-w-sm h-screen p-6 border-x border-gray-300;
+  @apply fixed z-50 w-1/5 max-w-sm h-screen p-6 border-x border-gray-300;
+}
+
+.header-icon {
+  @apply absolute left-2 text-orange-300;
 }
 
 .logo-area {
-  @apply items-center w-full h-1/6 mb-2;
+  @apply flex items-center w-full h-1/6 mb-2;
 }
 
 .logo-area img {
@@ -31,11 +49,15 @@
 }
 
 .nav-list>li>a {
-  @apply flex w-full h-full justify-center items-center text-xl;
+  @apply relative flex w-full h-full justify-center items-center text-xl whitespace-nowrap;
 }
 
 .nav-list>li>a:hover {
   @apply text-white bg-orange-300 transition duration-150;
+}
+
+.nav-list>li>a:hover .header-icon {
+  @apply text-white;
 }
 
 .nav-list>li>a:active {
@@ -47,11 +69,15 @@
 }
 
 .create-btn-area>a {
-  @apply flex w-4/5 h-3/5 justify-center items-center border-2 border-orange-200 rounded-full text-xl;
+  @apply relative flex w-4/5 h-3/5 justify-center items-center border-2 border-orange-200 rounded-full text-xl;
 }
 
 .create-btn-area>a:hover {
   @apply text-white bg-orange-400 transition duration-150;
+}
+
+.create-btn-area>a:hover .header-icon {
+  @apply text-white;
 }
 
 .create-btn-area>a:active {
@@ -71,7 +97,7 @@
 }
 
 .setting-list>li a {
-  @apply block p-3 rounded-full;
+  @apply block p-3 rounded-full whitespace-nowrap;
 }
 
 .setting-list>li a:hover {
@@ -86,4 +112,259 @@
   @apply transition duration-300 opacity-100 translate-y-5;
 }
 
+/* ここから投稿一覧 */
+
+.center-area {
+  @apply relative w-3/5 mx-auto;
+}
+
+.center-title-area {
+  @apply fixed z-50 w-3/5 h-20 mx-auto border-b border-orange-500 bg-white bg-opacity-95;
+}
+
+.center-title {
+  @apply text-3xl text-center leading-[5rem] font-bold text-orange-300 whitespace-nowrap;
+}
+
+.center-container {
+  @apply w-5/6 mx-auto;
+}
+
+.center-contents-area {
+  @apply w-full pt-28 pb-10;
+}
+
+.post {
+  @apply w-full p-3 mb-4 rounded-md;
+}
+
+.big-post-effect {
+  @apply shadow-yellow-300;
+}
+
+.post-header {
+  @apply flex justify-between max-w-full mb-1;
+}
+
+.post-profile {
+  @apply flex w-5/6 h-10;
+}
+
+.post-profile-img {
+  @apply w-10 h-10 mr-2 rounded-full object-cover bg-slate-200;
+}
+
+.post-user-info {
+  @apply w-[calc(100%_-_3rem)];
+}
+
+.post-user-name {
+  @apply flex h-1/2 items-center font-bold leading-5;
+}
+
+.list-account-name {
+  @apply flex h-1/2 items-center text-sm leading-5 text-gray-400;
+}
+
+.list-user-tags-area {
+  @apply w-5/6 ml-2 mb-1;
+}
+
+.user-tags-list {
+  @apply flex h-5 items-center overflow-x-auto whitespace-nowrap;
+}
+
+.user-tags-list::-webkit-scrollbar{
+  @apply hidden;
+}
+
+.user-tags-list>li {
+  @apply mr-2 leading-4;
+}
+
+.user-tags-list>li>a {
+  @apply text-sm text-blue-400 hover:text-blue-600;
+}
+
+.post-menu {
+  @apply relative;
+}
+
+.post-menu-btn {
+  @apply flex justify-center items-center w-10 h-10 rounded-full;
+}
+
+.post-menu-btn:hover {
+  @apply transition duration-300 bg-orange-50;
+}
+
+.post-menu-list {
+  @apply absolute z-10 hidden flex-col justify-around items-center -top-6 -right-1 w-20 py-2 rounded bg-orange-50 border border-orange-200;
+}
+
+.post-menu-list>li {
+  @apply w-full;
+}
+
+.post-menu-list>li>a, button {
+  @apply block w-16 p-1 mx-auto text-center border-2 rounded;
+}
+
+.delete-btn {
+  @apply border-red-400 text-red-400 hover:text-white hover:bg-red-400 active:bg-red-500;
+}
+
+.edit-btn {
+  @apply mb-1 border-orange-300 hover:text-white hover:bg-orange-300 active:bg-orange-400;
+}
+
+.post-menu-list:hover {
+  @apply transition duration-200 opacity-100 translate-y-5 flex;
+}
+
+.post-menu:active .post-menu-list {
+  @apply flex;
+}
+
+.body-big-post {
+  @apply ml-2 text-yellow-500;
+}
+
+.post-body {
+  @apply px-1;
+}
+
+.post-images {
+  @apply flex items-center overflow-x-auto mt-2;
+}
+
+/* .post-images::-webkit-scrollbar{
+  @apply hidden;
+} */
+
+.post-image-one {
+  @apply w-4/5 first:m-0 rounded;
+}
+
+.post-image-two {
+  @apply w-[calc(50%_-_0.5rem)] h-fit ml-3 first:m-0 rounded;
+}
+
+.post-image-many {
+  @apply w-2/5 h-fit ml-3 first:m-0 rounded;
+}
+
+.post-act-area {
+  @apply flex mt-2;
+}
+
+.post-act-btn {
+  @apply inline-block border rounded-md p-1;
+}
+
+.post-comment-btn {
+  @apply border-yellow-400 text-yellow-400 whitespace-nowrap hover:bg-yellow-300 hover:text-white active:bg-yellow-400 mr-2;
+}
+
+.post-like-btn {
+  @apply border-pink-400 text-pink-400 whitespace-nowrap hover:bg-pink-400 hover:text-white active:bg-pink-500;
+}
+
+.post-unlike-btn {
+  @apply border-pink-400 text-white bg-pink-300 whitespace-nowrap hover:bg-pink-200 hover:text-white active:bg-pink-100;
+}
+
+.post-info {
+  @apply flex justify-between mt-2 whitespace-nowrap;
+}
+
+.post-category {
+  @apply truncate mr-2 whitespace-nowrap;
+}
+
+.content-title-area {
+  @apply w-5/6 ml-2;
+}
+
+.content-title {
+  @apply font-bold text-xl mb-2;
+}
+
+.content-footer {
+  @apply flex justify-between mt-2;
+}
+
+.content-info {
+  @apply flex flex-col justify-end max-w-[47.5%];
+}
+
+.content-profile {
+  @apply flex w-[47.5%] h-10;
+}
+
+.post-nothing {
+  @apply text-center text-xl mt-10;
+}
+
+.paginate-style {
+  @apply mt-10;
+}
+
+/* ここから検索サイドバー */
+
+.side-bar {
+  @apply fixed top-0 right-0 bottom-0 h-screen w-1/5 border-x border-gray-300;
+}
+
+.search-container {
+  @apply w-full h-full flex items-center;
+}
+
+.search-area {
+  @apply flex flex-col w-4/5 mx-auto;
+}
+
+.search-title {
+  @apply text-center text-xl font-bold text-orange-400;
+}
+
+.type-select {
+  @apply border border-orange-400 rounded p-2 mt-4;
+}
+
+.search-form {
+  @apply flex flex-col text-center;
+}
+
+.search-keyword {
+  @apply border border-gray-400 rounded p-2 mt-4;
+}
+
+.search-checkbox {
+  @apply mt-4;
+}
+
+.checkbox-follow {
+  @apply border-2 border-orange-300;
+}
+
+.checkbox-big-post {
+  @apply border-2 border-yellow-300;
+}
+
+.checkbox-label {
+  @apply -translate-y-1 ml-2;
+}
+
+.search-btn {
+  @apply inline-block w-1/2 py-2 mt-6 mx-auto border-2 border-orange-200 rounded-md shadow-[0_2px_0_0_rgba(253,186,116,1)];
+}
+
+.search-btn:hover {
+  @apply -translate-y-0.5 shadow-[0_4px_0_0_rgba(253,186,116,1)];
+}
+
+.search-btn:active {
+  @apply translate-y-0.5 shadow-none;
+}
 

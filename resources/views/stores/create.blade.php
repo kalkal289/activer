@@ -1,44 +1,67 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <meta charset="utf-8">
-        <title>トップページ</title>
+        <meta charset="utf-8" />
+        <title>ストアコンテンツ作成</title>
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" />
+        <!--FontAwesome-->
+        <script src="https://kit.fontawesome.com/68afbe7e1a.js" crossorigin="anonymous"></script>
     </head>
     <x-app-layout>
         <body>
-            <h1>ストア作成</h1>
-            <div class="form-area">
-                <form class="flex flex-col text-center w-2/5 mx-auto" action="/stores" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    @if ($errors->any())
-                        <div class="alert alert-danger mb-4">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li class="text-red-600 mb-1">{{ $error }}</li>
-                                @endforeach
-                            </ul>
+            <div class="window">
+                <div class="all-container">
+                    <main>
+                        <div class="center-area">
+                            <div class="center-title-area">
+                                <h1 class="center-title text-blue-300"><i class="fa-solid fa-store"></i> ストアコンテンツ作成 </h1>
+                            </div>
+                            <div class="center-container">
+                                <div class="center-contents-area">
+                                    <form class="create-form" action="/stores" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger create-alert">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+                                        <input type="hidden" name="store[user_id]" value="{{ Auth::id() }}" />
+                                        <input id="title" class="create-store-title" type="text" name="store[title]" placeholder="タイトル" value="{{ old('store.title') }}">
+                                        <div class="text-count-area">
+                                            <p id="title-count-message">現在 <span id="title-count" class="text-count">0</span>文字 / 50文字</p>
+                                        </div>
+                                        <textarea id="content" class="create-store-body" rows="4" name="store[content]" placeholder="今日何してた？">{{ old('store.content') }}</textarea>
+                                        <div class="text-count-area">
+                                            <p id="text-count-message">現在 <span id="text-count" class="text-count">0</span>文字 / 500文字</p>
+                                        </div>
+                                        <select class="create-store-select" name="store[storecategory_id]">
+                                            @foreach ($categories as $category)
+                                                <option value={{ $category->id }}>{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="create-store-image-area">
+                                            <label class="create-image-label" for="image">○画像を4枚まで添付することができます○</label>
+                                            <input class="create-image" type="file" id="image" name="image[]" accept="image/*" multiple onChange="imagesTooMany()" />
+                                        </div>
+                                        <input class="create-store-submit" type="submit" value="作成" onclick="return contentFormCheck()" />
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                    @endif
-                    <!--<p id="error-txt" class="text-red-600"></p>-->
-                    <input type="hidden" name="store[user_id]" value="{{ Auth::id() }}">
-                    <input id="title" type="text" name="store[title]" placeholder="タイトル（30文字以内）" class="mb-2">
-                    <textarea id="content" rows="6" name="store[content]" placeholder="今日何してた？（500文字以内）">{{ old('store.content') }}</textarea>
-                    <select name="store[storecategory_id]" class="my-2">
-                        @foreach ($categories as $category)
-                            <option value={{ $category->id }}>{{ $category->name }}</option>
-                        @endforeach
-                    </select>
-                    <label for="image">4枚まで画像を添付することができます。</label>
-                    <input type="file" id="image" name="image[]" accept="image/*" multiple  onChange="imagesTooMany()" class="mb-4">
-                    <p id="error-txt-image" class="text-red-600"></p>
-                    <input type="submit" value="投稿" onclick="return contentFormCheck()" class="p-4 text-center border-2 border-black">
-                    
-                </form>
+                    </main>
+                    <aside class="side-bar"></aside>
+                </div>
             </div>
+            
             <script src="{{ asset('js/formCheck.js') }}"></script>
+            <script src="{{ asset('js/contentsStrCount.js') }}"></script>
             <script src="{{ asset('js/textareaHeight.js') }}"></script>
+            
         </body>
     </x-app-layout>
 </html>

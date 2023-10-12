@@ -4,7 +4,7 @@
     
     @include('parts.profile_header', [
         'user' => $user,
-        'need_usertags_area' => '',
+        'kind' => 0,
     ])
     
     <div class="post-body">

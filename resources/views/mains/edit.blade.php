@@ -1,53 +1,71 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <meta charset="utf-8">
-        <title>トップページ</title>
+        <meta charset="utf-8" />
+        <title>メインコンテンツ編集</title>
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" />
+        <!--FontAwesome-->
+        <script src="https://kit.fontawesome.com/68afbe7e1a.js" crossorigin="anonymous"></script>
     </head>
     <x-app-layout>
         <body>
-            <h1>メインコンテンツ編集</h1>
-            <div class="form-area">
-                <form class="flex flex-col text-center w-2/5 mx-auto" action="/mains/{{ $main->id }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
-                    @if ($errors->any())
-                        <div class="alert alert-danger mb-4">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li class="text-red-600 mb-1">{{ $error }}</li>
-                                @endforeach
-                            </ul>
+            <div class="window">
+                <div class="all-container">
+                    <main>
+                        <div class="center-area">
+                            <div class="center-title-area">
+                                <h1 class="center-title text-red-300"><i class="fa-solid fa-star"></i> メインコンテンツ編集 　</h1>
+                            </div>
+                            <div class="center-container">
+                                <div class="center-contents-area">
+                                    <form class="create-form" action="{{ route('updateMain', ['main' => $main->id]) }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger create-alert">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+                                        <input type="hidden" name="main[user_id]" value="{{ Auth::id() }}" />
+                                        <input id="title" class="create-main-title" type="text" name="main[title]" placeholder="タイトル" value="{{ (old('main.title')) ? old('main.title') : $main->title }}">
+                                        <div class="text-count-area">
+                                            <p id="title-count-message">現在 <span id="title-count" class="text-count">0</span>文字 / 50文字</p>
+                                        </div>
+                                        <textarea id="content" class="create-main-body" rows="4" name="main[content]" placeholder="今日何してた？">{{ (old('main.content')) ? old('main.content') : $main->content }}</textarea>
+                                        <div class="text-count-area">
+                                            <p id="text-count-message">現在 <span id="text-count" class="text-count">0</span>文字 / 500文字</p>
+                                        </div>
+                                        <select class="create-main-select" name="main[category_id]">
+                                            @foreach ($categories as $category)
+                                                <option value={{ $category->id }} {{ ($category->id == $main->category_id) ? "selected" : "" }}>{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="create-main-image-area">
+                                            <label class="create-image-label" for="image">○画像を4枚まで添付することができます○</label>
+                                            @if($main->image1)
+                                                <label class="create-image-label" for="image">※ファイルを選択しない場合、変更前の画像が受け継がれます。</label>
+                                            @endif
+                                            <input class="create-image" type="file" id="image" name="image[]" accept="image/*" multiple onChange="imagesTooMany()" />
+                                        </div>
+                                        <input class="create-main-submit" type="submit" value="作成" onclick="return contentFormCheck()" />
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                    @endif
-                    <!--<p id="error-txt" class="text-red-600"></p>-->
-                    <input type="hidden" name="main[user_id]" value="{{ Auth::id() }}">
-                    @if($errors->any())
-                        <input id="title" type="text" name="main[title]" placeholder="タイトル（30文字以内" value="{{ old('main.title') }}" class="mb-2">
-                        <textarea id="content" rows="6" name="main[content]" placeholder="今日何してた？（500文字以内）">{{ old('main.content') }}</textarea>
-                    @else
-                        <input id="title" type="text" name="main[title]" placeholder="タイトル（30文字以内" value="{{ $main->title }}" class="mb-2">
-                        <textarea id="content" rows="6" name="main[content]" placeholder="今日何してた？（500文字以内">{{ $main->content }}</textarea>
-                    @endif
-                    <select name="main[category_id]" class="my-2">
-                        @foreach ($categories as $category)
-                            <option value={{ $category->id }} {{ ($main->category_id == $category->id) ? "selected" : "" }}>{{ $category->name }}</option>
-                        @endforeach
-                    </select>
-                    <label for="image">4枚まで画像を添付することができます。</label>
-                    @if($main->image1)
-                        <label for="image">※ファイルを選択しない場合、変更前の画像が受け継がれます。</label>
-                    @endif
-                    <input type="file" id="image" name="image[]" accept="image/*" multiple  onChange="imagesTooMany()" class="mb-4">
-                    <!--<p id="error-txt-image" class="text-red-600"></p>-->
-                    <input type="submit" value="投稿" onclick="return contentormCheck()" class="p-4 text-center border-2 border-black">
-                    
-                </form>
+                    </main>
+                    <aside class="side-bar"></aside>
+                </div>
             </div>
+            
             <script src="{{ asset('js/formCheck.js') }}"></script>
+            <script src="{{ asset('js/contentsStrCount.js') }}"></script>
             <script src="{{ asset('js/textareaHeight.js') }}"></script>
+            
         </body>
     </x-app-layout>
 </html>

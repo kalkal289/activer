@@ -1,7 +1,7 @@
 //ポストのformの内容をチェック
 function postFormCheck()
 {
-    const content = document.getElementById('content');
+    const content = document.getElementById('post-content');
     const image = document.getElementById('image');
     // const txt = document.getElementById('error-txt');
     if(content.value == '' && image.files.length == 0) { //formが空じゃないかどうか
@@ -9,11 +9,17 @@ function postFormCheck()
         alert("内容を入力するか、画像を添付してください。");
         return false;
     } else {
-        return true;
+        const str = content.value;
+        if(str.length > 300) {
+            alert("内容は300字以内にしてください。");
+            return false;
+        } else {
+            return true;
+        }
     }
 }
 
-//メインコンテンツのformの内容をチェック
+//コンテンツのformの内容をチェック
 function contentFormCheck()
 {
     const content = document.getElementById('content');
@@ -28,7 +34,17 @@ function contentFormCheck()
         alert("内容を入力するか、画像を添付してください。");
         return false;
     } else {
-        return true;
+        const titleStr = title.value;
+        const contentStr = content.value;
+        if(titleStr.length > 50) {
+            alert("タイトルは50字以内にしてください。");
+            return false;
+        } else if(contentStr.length > 500) {
+            alert("内容は500字以内にしてください。");
+            return false;
+        } else {
+            return true;
+        }
     }
 }
 
@@ -36,12 +52,23 @@ function contentFormCheck()
 function profileFormCheck()
 {
     const name = document.getElementById('name');
+    const message = document.getElementById('message');
     // const txt = document.getElementById('error-txt');
     if(name.value == '') {
         alert("名前を入力してください。");
         return false;
     } else {
-        return true;
+        const nameStr = name.value;
+        const messageStr = message.value;
+        if(nameStr.length > 50) {
+            alert("名前は50字以内にしてください。");
+            return false;
+        } else if(messageStr.length > 100) {
+            alert("自己紹介文は100字以内にしてください。");
+            return false;
+        } else {
+            return true;
+        }
     }
 }
 

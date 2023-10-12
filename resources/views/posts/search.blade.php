@@ -1,41 +1,53 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" />
         <title>検索ページ</title>
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" />
+        <!--FontAwesome-->
+        <script src="https://kit.fontawesome.com/68afbe7e1a.js" crossorigin="anonymous"></script>
     </head>
     <x-app-layout>
         <body>
-            <div class="w-1/2 mx-auto">
-                <h1>検索ページ</h1>
-                <div class="my-4">
-                    <a href="/posts/create" class="p-4 rounded border-2 border-black">投稿</a>
-                </div>
-                <div class="flex flex-col text-center w-1/2 mx-auto">
-                    <h3 class="text-center text-xl font-bold mb-4">〈 検索 〉</h3>
-                    <select id="type_select" name="type" onChange="typeChange()">
-                        <option value="1" selected>投稿</option>
-                        <option value="2">メインコンテンツ</option>
-                        <option value="3">ストアコンテンツ</option>
-                    </select>
-                    <form id="search_form" action="/posts/filter" method="GET" class="flex flex-col text-center mt-4">
-                        <input type="text" name="keyword" placeholder="キーワードを入力">
-                        <div class="flex mt-4">
-                            <input type="checkbox" name="is_followed_user">
-                            <label>フォローしている人のみ</label>
+            <div class="window">
+                <div class="all-container">
+                    <main>
+                        <div class="center-area">
+                            <div class="center-title-area">
+                                <h1 class="center-title"><i class="fa-solid fa-magnifying-glass"></i> 検索ページ 　</h1>
+                            </div>
+                            <div class="center-container">
+                                <div class="center-contents-area">
+                                    <div class="search-page-container">
+                                        <select id="type_select" class="type-select" name="type" onChange="typeChange()">
+                                            <option value="1" selected>投稿</option>
+                                            <option value="2">メインコンテンツ</option>
+                                            <option value="3">ストアコンテンツ</option>
+                                        </select>
+                                        <form id="search_form" action="/posts/filter" method="GET" class="search-form">
+                                            <input class="search-keyword" type="text" name="keyword" placeholder="キーワードを入力" />
+                                            <div class="search-checkbox flex">
+                                                <input id="checkbox_follow" class="checkbox-follow" type="checkbox" name="is_followed_user" />
+                                                <label class="checkbox-label" for="checkbox_follow">フォローしている人のみ</label>
+                                            </div>
+                                            <div id="bigpost_checkbox" class="search-checkbox flex">
+                                                <input id="checkbox_big_post" class="checkbox-big-post" type="checkbox" name="is_big_post" />
+                                                <label class="checkbox-label" for="checkbox_big_post">ビッグポストのみ</label>
+                                            </div>
+                                            <input class="search-btn" type="submit" value="検索" />
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div id="bigpost_checkbox" class="flex mt-4">
-                            <input type="checkbox" name="is_big_post">
-                            <label>ビッグポストのみ</label>
-                        </div>
-                        <input type="submit" value="検索" class="p-2 border-2 border-black w-1/2 m-auto inline-block mt-4">
-                    </form>
+                    </main>
+                    <aside class="side-bar"></aside>
                 </div>
             </div>
             
             <script src="{{ asset('js/searchSelect.js') }}"></script>
+        
         </body>
     </x-app-layout>
 </html>

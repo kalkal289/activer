@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>ストア検索結果</title>
+        <title>ストアコンテンツ検索結果</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <!--FontAwesome-->
@@ -15,13 +15,13 @@
                     <main>
                         <div class="center-area">
                             <div class="center-title-area">
-                                <h1 class="center-title"><i class="fa-solid fa-store text-blue-300"></i> ストア{{ ($is_followed_user) ? "　フォロー中のみ" : "" }} 　</h1>
+                                <h1 class="center-title text-blue-300"><i class="fa-solid fa-store"></i> ストアコンテンツ{{ ($is_followed_user) ? "　フォロー中のみ" : "" }} 　</h1>
                                 <div class="center-title-border"></div>
                             </div>
                             <div class="center-container">
                                 <div class="center-contents-area">
                                     @if(count($stores) == 0)
-                                        <p class="post-nothing">ストアがありません(´；ω；`)</p>
+                                        <p class="post-nothing">ストアコンテンツがありません(´；ω；`)</p>
                                     @endif
                                     @foreach($stores as $store)
                                     

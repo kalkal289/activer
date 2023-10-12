@@ -18,6 +18,10 @@
   @apply shadow-[0_0_1px_1px_rgb(0,0,0,0)] shadow-orange-300;
 }
 
+.btn-duration {
+  @apply transition duration-150;
+}
+
 .all-container {
   @apply relative w-full max-w-screen-2xl h-screen mx-auto;
 }
@@ -25,7 +29,7 @@
 /* ここからheader(ナビゲーション) */
 
 .header {
-  @apply fixed z-50 w-1/5 max-w-sm h-screen p-6 border-x border-gray-300;
+  @apply fixed z-50 w-1/5 max-w-sm h-screen p-6 border-x border-gray-300 bg-white;
 }
 
 .header-icon {
@@ -77,7 +81,7 @@
 }
 
 .create-btn-area>a:hover {
-  @apply text-white bg-orange-400 transition duration-150;
+  @apply text-white bg-orange-400 btn-duration;
 }
 
 .create-btn-area>a:hover .header-icon {
@@ -155,7 +159,7 @@
 }
 
 .list-user-header {
-  @apply w-[calc(100%_-_7rem)] mb-1;
+  @apply w-[calc(100%_-_9rem)] mb-1;
 }
 
 .list-user-profile {
@@ -218,16 +222,28 @@
   @apply w-full;
 }
 
-.post-menu-list>li>a, button {
+.post-menu-list>li>a {
+  @apply block w-16 p-1 mx-auto text-center border-2 rounded;
+}
+
+.post-menu-list>li>form>button {
   @apply block w-16 p-1 mx-auto text-center border-2 rounded;
 }
 
 .delete-btn {
-  @apply border-red-400 text-red-400 hover:text-white hover:bg-red-400 active:bg-red-500;
+  @apply border-red-400 text-red-400 active:bg-red-500;
+}
+
+.delete-btn:hover {
+  @apply text-white bg-red-400 btn-duration;
 }
 
 .edit-btn {
-  @apply mb-1 border-orange-300 hover:text-white hover:bg-orange-300 active:bg-orange-400;
+  @apply mb-1 border-orange-300 active:bg-orange-400;
+}
+
+.edit-btn:hover {
+  @apply text-white bg-orange-300 btn-duration;
 }
 
 .post-menu-list:hover {
@@ -247,7 +263,7 @@
 }
 
 .post-images {
-  @apply flex items-center overflow-x-auto mt-2;
+  @apply flex overflow-x-auto mt-2;
 }
 
 /* .post-images::-webkit-scrollbar{
@@ -259,11 +275,11 @@
 }
 
 .post-image-two {
-  @apply w-[calc(50%_-_0.5rem)] h-fit ml-3 first:m-0 rounded;
+  @apply w-[calc(50%_-_0.5rem)] ml-3 first:m-0 rounded;
 }
 
 .post-image-many {
-  @apply w-2/5 h-fit ml-3 first:m-0 rounded;
+  @apply w-2/5 ml-3 first:m-0 rounded;
 }
 
 .post-act-area {
@@ -275,15 +291,27 @@
 }
 
 .post-comment-btn {
-  @apply border-yellow-400 text-yellow-400 whitespace-nowrap hover:bg-yellow-300 hover:text-white active:bg-yellow-400 mr-2;
+  @apply border-yellow-400 text-yellow-400 whitespace-nowrap active:bg-yellow-400 mr-2;
+}
+
+.post-comment-btn:hover {
+  @apply bg-yellow-300 text-white btn-duration;
 }
 
 .post-like-btn {
-  @apply border-pink-400 text-pink-400 whitespace-nowrap hover:bg-pink-400 hover:text-white active:bg-pink-500;
+  @apply border-pink-400 text-pink-400 whitespace-nowrap active:bg-pink-500;
+}
+
+.post-like-btn:hover {
+  @apply bg-pink-400 text-white btn-duration;
 }
 
 .post-unlike-btn {
-  @apply border-pink-400 text-white bg-pink-300 whitespace-nowrap hover:bg-pink-200 hover:text-white active:bg-pink-100;
+  @apply border-pink-400 text-white bg-pink-300 whitespace-nowrap active:bg-pink-100;
+}
+
+.post-unlike-btn:hover {
+  @apply bg-pink-200 text-white btn-duration;
 }
 
 .post-info {
@@ -322,16 +350,40 @@
   @apply mt-10;
 }
 
+
+
+/* ここからフォローリスト */
+
 .follow-btn-area {
   @apply flex justify-center items-center w-24 ml-2;
 }
 
 .follow-btn {
-  @apply block w-full p-2 text-center shadow-[0_0_1px_1.5px_rgb(0,0,0,0)] shadow-orange-300 rounded-full hover:bg-orange-300 hover:text-white active:bg-orange-400;
+  @apply block w-full p-2 text-center shadow-[0_0_1px_1.5px_rgb(0,0,0,0)] shadow-orange-300 rounded-full active:bg-orange-400;
+}
+
+.follow-btn:hover {
+  @apply bg-orange-300 text-white btn-duration;
 }
 
 .unfollow-btn {
-  @apply block w-full p-2 text-center shadow-[0_0_1px_1.5px_rgb(0,0,0,0)] shadow-orange-300 rounded-full bg-orange-300 text-white hover:bg-white hover:text-red-500 hover:shadow-red-500 active:bg-red-500 active:text-white;
+  @apply block w-full p-2 text-center shadow-[0_0_1px_1.5px_rgb(0,0,0,0)] shadow-orange-300 rounded-full bg-orange-300 text-white active:bg-red-500 active:text-white;
+}
+
+.unfollow-btn:hover {
+  @apply bg-white text-red-500 shadow-red-500 btn-duration;
+}
+
+.edit-profile-btn-area {
+  @apply flex justify-center items-center w-32 ml-2;
+}
+
+.edit-profile-btn {
+  @apply block w-full p-2 text-center shadow-[0_0_1px_1.5px_rgb(0,0,0,0)] shadow-green-300 rounded-full active:bg-green-400;
+}
+
+.edit-profile-btn:hover {
+  @apply bg-green-300 text-white btn-duration;
 }
 
 .center-user-info-area {
@@ -358,9 +410,283 @@
   @apply mx-auto text-orange-300 text-2xl text-center font-bold;
 }
 
+.follow-count {
+  @apply font-bold;
+}
+
 .center-user-list-area {
   @apply w-full pt-48 pb-10;
 }
+
+
+
+/* ここからマイページ */
+
+.center-mypage-contents-area {
+  @apply w-full pt-6 pb-10;
+}
+
+.center-mypage-profile-area {
+  @apply w-full py-6;
+}
+
+.profile-body {
+  @apply px-1 mt-3 mb-4;
+}
+
+.profile-user-name {
+  @apply flex h-1/2 items-center text-lg font-bold leading-5;
+}
+
+.mypage-profile-bottom {
+  @apply flex items-center justify-between;
+}
+
+.like-post-list-btn {
+  @apply block w-32 p-1 text-center whitespace-nowrap text-sm shadow-[0_0_1px_1.5px_rgb(0,0,0,0)] shadow-orange-200 rounded active:bg-orange-300;
+}
+
+.like-post-list-btn:hover {
+  @apply text-white bg-orange-200 btn-duration;
+}
+
+.mypage-menu-bar {
+  @apply flex justify-around border-y-2 border-orange-300;
+}
+
+.mypage-menu-btn {
+  @apply w-1/4 py-2 text-center rounded-full;
+}
+
+.mypage-menu-btn:hover {
+  @apply bg-orange-300 text-white btn-duration;
+}
+
+.now-area-btn {
+  @apply bg-orange-100 text-orange-400 font-bold;
+}
+
+.contents-create-btn-area {
+  @apply w-full mt-4 ml-4 -mb-2;
+}
+
+.contents-create-btn-area>a {
+  @apply inline-block px-2 py-1.5 text-center whitespace-nowrap rounded-sm;
+}
+
+.main-create-btn {
+  @apply shadow-[0_0_1px_1.5px_rgb(0,0,0,0)] shadow-red-300　active:bg-red-400;
+}
+
+.main-create-btn:hover {
+  @apply text-white bg-red-300 btn-duration;
+}
+
+.store-create-btn {
+  @apply shadow-[0_0_1px_1.5px_rgb(0,0,0,0)] shadow-blue-300 active:bg-blue-400;
+}
+
+.store-create-btn:hover {
+  @apply text-white bg-blue-300 btn-duration;
+}
+
+
+
+/* ここから投稿ページ */
+
+.post-create-color {
+  @apply border-orange-200;
+}
+
+.create-form {
+  @apply flex flex-col w-3/4 min-w-[calc(100vw_*_0.4)] max-w-full mx-auto;
+}
+
+.create-body {
+  @apply p-2 rounded-md border-2 post-create-color;
+}
+
+.text-count-area {
+  @apply flex justify-end;
+}
+
+.text-count-area>p {
+  @apply text-sm text-gray-500;
+}
+
+.text-count {
+  @apply font-bold;
+}
+
+.big-post-check {
+  @apply flex items-center text-right mt-3;
+}
+
+.create-bigpost-check {
+  @apply w-4 border-2 border-yellow-300 mx-1;
+}
+
+.create-select {
+  @apply p-2 mt-4 rounded-md border-2 post-create-color;
+}
+
+.create-image-area {
+  @apply p-2 my-6 text-center rounded border-2 post-create-color;
+}
+
+.create-image-label {
+  @apply block mx-auto;
+}
+
+.create-image {
+  @apply block mx-auto pt-2;
+}
+
+.create-submit {
+  @apply inline-block w-1/2 py-3 mt-2 mx-auto border border-orange-200 rounded-md shadow-[0_2px_0_0_rgba(253,186,116,1)] text-xl text-orange-400;
+}
+
+.create-submit:hover {
+  @apply -translate-y-0.5 shadow-[0_4px_0_0_rgba(253,186,116,1)];
+}
+
+.create-submit:active {
+  @apply translate-y-0.5 shadow-none;
+}
+
+.create-alert {
+  @apply mb-4;
+}
+
+.create-alert>ul>li {
+  @apply text-red-600 mb-1;
+}
+
+
+
+/* ここからメインコンテンツ投稿ページ */
+
+.main-create-color {
+  @apply border-red-200;
+}
+
+.create-main-title {
+  @apply p-2 rounded-md border-2 main-create-color;
+}
+
+.create-main-body {
+  @apply p-2 mt-4 rounded-md border-2 main-create-color;
+}
+
+.create-main-select {
+  @apply p-2 mt-4 rounded-md border-2 main-create-color;
+}
+
+.create-main-image-area {
+  @apply p-2 my-6 text-center rounded border-2 main-create-color;
+}
+
+.create-main-submit {
+  @apply inline-block w-1/2 py-3 mt-2 mx-auto border border-red-300 rounded-md shadow-[0_2px_0_0_rgba(248,113,113,1)] text-xl text-red-500;
+}
+
+.create-main-submit:hover {
+  @apply -translate-y-0.5 shadow-[0_4px_0_0_rgba(248,113,113,1)];
+}
+
+.create-main-submit:active {
+  @apply translate-y-0.5 shadow-none;
+}
+
+
+
+/* ここからストアコンテンツ投稿ページ */
+
+.store-create-color {
+  @apply border-blue-200;
+}
+
+.create-store-title {
+  @apply p-2 rounded-md border-2 store-create-color;
+}
+
+.create-store-body {
+  @apply p-2 mt-4 rounded-md border-2 main-create-color;
+}
+
+.create-store-select {
+  @apply p-2 mt-4 rounded-md border-2 store-create-color;
+}
+
+.create-store-image-area {
+  @apply p-2 my-6 text-center rounded border-2 store-create-color;
+}
+
+.create-store-submit {
+  @apply inline-block w-1/2 py-3 mt-2 mx-auto border border-blue-300 rounded-md shadow-[0_2px_0_0_rgba(96,165,250,1)] text-xl text-blue-500;
+}
+
+.create-store-submit:hover {
+  @apply -translate-y-0.5 shadow-[0_4px_0_0_rgba(96,165,250,1)];
+}
+
+.create-store-submit:active {
+  @apply translate-y-0.5 shadow-none;
+}
+
+
+
+/* ここからプロフィール編集ページ */
+
+.edit-profile-page-image {
+  @apply ml-1;
+}
+
+.edit-profile-label {
+  @apply pb-px mt-2 ml-2;
+}
+
+.edit-profile-color {
+  @apply border-green-200;
+}
+
+.edit-profile-title {
+  @apply p-2 rounded-md border-2 edit-profile-color;
+}
+
+.edit-profile-body {
+  @apply p-2 rounded-md border-2 edit-profile-color;
+}
+
+.edit-profile-image-area {
+  @apply p-2 mb-6 text-center rounded border-2 edit-profile-color;
+}
+
+.edit-profile-submit {
+  @apply inline-block w-1/2 py-3 mt-2 mx-auto border border-green-300 rounded-md shadow-[0_2px_0_0_rgba(74,222,128,1)] text-xl text-green-500;
+}
+
+.edit-profile-submit:hover {
+  @apply -translate-y-0.5 shadow-[0_4px_0_0_rgba(74,222,128,1)];
+}
+
+.edit-profile-submit:active {
+  @apply translate-y-0.5 shadow-none;
+}
+
+
+
+/* ここからその他のページ */
+
+.search-page-container {
+  @apply flex flex-col w-3/5 mx-auto mt-10;
+}
+
+.like-posts-title {
+  @apply flex justify-center items-center;
+}
+
+
 
 /* ここから検索サイドバー */
 

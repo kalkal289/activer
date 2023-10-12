@@ -20,20 +20,20 @@
                                     
                                     @include('parts.profile_header', [
                                         'user' => $main_user,
-                                        'need_usertags_area' => 'on',
+                                        'kind' => 1,
                                     ])
                                     
                                     <div class="user-follow-info-area">
                                         <p class="user-follow-info">
-                                            <a href="/followeds/{{ $main_user->id }}">フォロー中 {{ $main_user->followeds()->count() }}</a>
+                                            <a href="/followeds/{{ $main_user->id }}">フォロー中 <span class="follow-count">{{ $main_user->followeds()->count() }}</span></a>
                                         </p>
                                         <p class="user-follow-info">
-                                            <a href="/followers/{{ $main_user->id }}">フォロワー {{ $main_user->followers()->count() }}</a>
+                                            <a href="/followers/{{ $main_user->id }}">フォロワー <span class="follow-count">{{ $main_user->followers()->count() }}</span></a>
                                         </p>
                                     </div>
                                 </div>
                                 <div class="follow-list-title-area">
-                                    <h2 id="title" class="follow-list-title">{{ ($kind == 0) ? "フォロー中 一覧" : "フォロワー 一覧" }}</h2>
+                                    <h2 id="title" class="follow-list-title"><i class="fa-solid fa-user-group"></i> {{ ($kind == 0) ? "フォロー中 一覧" : "フォロワー 一覧" }} 　</h2>
                                 </div>
                                 <div class="center-title-border"></div>
                             </div>

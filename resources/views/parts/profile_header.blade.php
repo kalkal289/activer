@@ -1,5 +1,5 @@
 <!--引数1: $user（一人のユーザー）-->
-<!--引数2: $need_usertags_area（ユーザータグが無くてもユーザータグの空間が必要な場合は"on"）-->
+<!--引数2: $kind（ユーザーリスト用 0、リストのメインユーザー用 1、マイページ用 2））-->
 
 <div class="post-header">
     <div class="list-user-header">
@@ -14,7 +14,7 @@
                 </a>
             </div>
             <div class="post-user-info">
-                <div class="post-user-name">
+                <div class="{{ ($kind == 2) ? "profile-user-name" : "post-user-name" }}">
                     <a href="{{ route('mypageMain', ['user' => $user->id]) }}">
                         <h3>{{ $user->name }}</h3>
                     </a>
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        @if(count($user->usertags) || $need_usertags_area)
+        @if(count($user->usertags) || $kind != 0)
             <div class="list-user-tags-area">
                 <ul class="user-tags-list">
                     @foreach ($user->usertags as $usertag)
@@ -46,6 +46,10 @@
                 <a href="/follow/{{ $user->id }}" class="follow-btn">フォロー</a>
             @endif
         </div>
+    @else
+        <div class="edit-profile-btn-area">
+            <a href="{{ route('editProfile', ['user' => $user->id]) }}" class="edit-profile-btn">プロフィール編集</a>
+        </div>    
     @endif
 </div>
             

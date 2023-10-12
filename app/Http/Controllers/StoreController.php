@@ -17,7 +17,7 @@ class StoreController extends Controller
     }
     
     public function edit(Store $store, Storecategory $storecategory) {
-        return view('stores.create')->with([
+        return view('stores.edit')->with([
             'store' => $store,
             'categories' => $storecategory->get(),
         ]);
@@ -54,7 +54,7 @@ class StoreController extends Controller
     }
     
     public function delete(Store $store) {
-        $main->delete();
+        $store->delete();
         return redirect('/mypages/store/'. Auth::id());
     }
     

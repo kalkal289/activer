@@ -15,9 +15,8 @@
                     <main>
                         <div class="center-area">
                             <div class="center-title-area">
-                                <h1 class="center-title"><i class="fa-solid fa-pen text-bg-orange-300"></i> ポスト{{ ($is_followed_user) ? " 　フォロー中のみ" : "" }}{{ ($is_big_post) ? "　ビッグポストのみ" : "" }} 　</h1>
-                                <p class="text-center font-bolc text-2xl">{{ ($keyword) ? "「". $keyword. "」の検索結果" : "" }}</p>
-                                <div class="center-title-border"></div>
+                                <h1 class="center-title"><i class="fa-solid fa-pen text-bg-orange-300"></i> ポスト{{ ($is_followed_user) ? " フォロー中のみ" : "" }}{{ ($is_big_post) ? " ビッグポストのみ" : "" }} 　</h1>
+                                <p class="filter-words">{{ ($keyword) ? "「". $keyword. "」の検索結果" : "" }}</p>
                             </div>
                             <div class="center-container">
                                 <div class="center-contents-area">

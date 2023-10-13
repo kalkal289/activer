@@ -38,10 +38,13 @@
                         'is_big_post' => '',
                         'keyword' => '',
                     ])
-                
                 </div>
+                
+                @include('parts.hamburger_menu')
+                
             </div>
             
+            <script src="{{ asset('js/hamburgerMenuAppear.js') }}"></script>
             <script src="{{ asset('js/deleteConfirm.js') }}"></script>
             <script src="{{ asset('js/searchSelect.js') }}"></script>
             

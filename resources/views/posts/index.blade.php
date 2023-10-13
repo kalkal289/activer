@@ -42,6 +42,7 @@
                 
                 @include('parts.hamburger_menu')
                 
+                <a class="mini-create-btn" href="{{ route('create') }}"><i class="fa-solid fa-pen-to-square"></i> 投稿</a>
             </div>
             
             <script src="{{ asset('js/hamburgerMenuAppear.js') }}"></script>

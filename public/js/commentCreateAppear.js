@@ -7,5 +7,7 @@ function commentAreaAppear() {
 
 function commentAreaHidden() {
     const commentCreateArea = document.getElementById("comment-create-area");
-    commentCreateArea.classList.add("hidden");
+    if(!(commentCreateArea.classList.contains("hidden"))) {
+        commentCreateArea.classList.add("hidden");
+    }
 }

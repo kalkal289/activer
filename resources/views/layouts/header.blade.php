@@ -35,5 +35,9 @@
         </li>
       </ul>
     </div>
+  @else
+    <div class="header-login-btn-area">
+      <a class="header-login-btn" href="{{ route('login') }}"><i class="fa-solid fa-right-to-bracket"></i> ログイン</a>
+    </div>
   @endif
 </header>

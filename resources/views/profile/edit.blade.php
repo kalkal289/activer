@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="flex justify-end">
-        <div class="w-4/5">
+        <div class="w-full md:w-4/5">
             <!--<x-slot name="header">-->
             <!--    <h2 class="font-semibold text-xl text-gray-800 leading-tight">-->
             <!--        { __'Profile') }}-->

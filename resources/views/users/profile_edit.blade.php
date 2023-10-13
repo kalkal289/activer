@@ -56,7 +56,7 @@
                                             <label class="create-image-label" for="image">○プロフィール画像変更○</label>
                                             <input class="create-image" type="file" id="image" name="image" accept="image/*" />
                                         </div>
-                                        <input class="edit-profile-submit" type="submit" value="作成" onclick="return profileFormCheck()" />
+                                        <input class="edit-profile-submit" type="submit" value="更新" onclick="return profileFormCheck()" />
                                     </form>
                                 </div>
                             </div>

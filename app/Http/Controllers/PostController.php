@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Comment;
 use App\Models\Category;
 use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
@@ -34,7 +35,10 @@ class PostController extends Controller
     }
     
     public function show(Post $post) {
-        return view('posts.show')->with(['post' => $post]);
+        return view('posts.show')->with([
+            'post' => $post,
+            'comments' => Comment::where('post_id', $post->id)->orderBy('created_at', 'DESC')->paginate(20),
+        ]);
     }
     
     public function delete(Post $post) {

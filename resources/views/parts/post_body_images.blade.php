@@ -1,7 +1,13 @@
 <!--引数： $post（一つのポスト）-->
 
 <div class="post-body">
-    <p>{{ $post->content }}</p>
+    <p>
+        @if(Request::routeIs('show'))
+            {{ $post->content }}
+        @else
+            <a href="{{ route('show', ['post' => $post->id]) }}">{{ $post->content }}</a>
+        @endif
+    </p>
 </div>
 @if($post->image1)
     <div class="post-images">

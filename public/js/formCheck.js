@@ -6,12 +6,31 @@ function postFormCheck()
     // const txt = document.getElementById('error-txt');
     if(content.value == '' && image.files.length == 0) { //formが空じゃないかどうか
         // txt.innerHTML = '内容を入力するか、画像を添付してください。';
-        alert("内容を入力するか、画像を添付してください。");
+        alert("本文を入力するか、画像を添付してください。");
         return false;
     } else {
         const str = content.value;
         if(str.length > 300) {
-            alert("内容は300字以内にしてください。");
+            alert("投稿は300字以内にしてください。");
+            return false;
+        } else {
+            return true;
+        }
+    }
+}
+
+//コメントのformの内容をチェック
+function commentFormCheck()
+{
+    const content = document.getElementById('content');
+    const image = document.getElementById('image');
+    if(content.value == '' && image.files.length == 0) { //formが空じゃないかどうか
+        alert("コメントを入力するか、画像を添付してください。");
+        return false;
+    } else {
+        const str = content.value;
+        if(str.length > 150) {
+            alert("コメントは150字以内にしてください。");
             return false;
         } else {
             return true;
@@ -31,7 +50,7 @@ function contentFormCheck()
         return false;
     } else if(content.value == '' && image.files.length == 0) { //formが空じゃないかどうか
         // txt.innerHTML = '内容を入力するか、画像を添付してください。';
-        alert("内容を入力するか、画像を添付してください。");
+        alert("本文を入力するか、画像を添付してください。");
         return false;
     } else {
         const titleStr = title.value;
@@ -40,7 +59,7 @@ function contentFormCheck()
             alert("タイトルは50字以内にしてください。");
             return false;
         } else if(contentStr.length > 500) {
-            alert("内容は500字以内にしてください。");
+            alert("本文は500字以内にしてください。");
             return false;
         } else {
             return true;

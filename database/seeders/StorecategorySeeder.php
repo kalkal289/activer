@@ -16,6 +16,10 @@ class StorecategorySeeder extends Seeder
     public function run()
     {
         DB::table('storecategories')->insert([
+            'name' => 'カテゴリーなし',
+        ]);
+        
+        DB::table('storecategories')->insert([
             'name' => 'イラスト作成',
         ]);
         

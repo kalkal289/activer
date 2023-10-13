@@ -16,7 +16,6 @@
                         <div class="center-area">
                             <div class="center-title-area">
                                 <h1 class="center-title">トップページ</h1>
-                                <div class="center-title-border"></div>
                             </div>
                             <div class="center-container">
                                 <div class="center-contents-area">

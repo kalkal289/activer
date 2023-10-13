@@ -37,7 +37,14 @@
     </div>
   @else
     <div class="header-login-btn-area">
-      <a class="header-login-btn" href="{{ route('login') }}"><i class="fa-solid fa-right-to-bracket"></i> ログイン</a>
+      <ul>
+        <li class="header-sign-up-btn">
+          <a href="{{ route('register') }}"><i class="fa-solid fa-user-plus"></i> 新規登録</a>
+        </li>
+        <li class="header-login-btn">
+          <a href="{{ route('login') }}"><i class="fa-solid fa-right-to-bracket"></i> ログイン</a>
+        </li>
+      </ul>
     </div>
   @endif
 </header>

@@ -124,13 +124,35 @@
   @apply mt-6;
 }
 
-.header-login-btn {
-  @apply pr-6 pl-5 py-3 font-bold text-orange-300 border-2 border-orange-300 rounded active:bg-orange-400;
+.header-login-btn-area>ul>li {
+  @apply w-3/4 min-w-[6rem];
 }
 
-.header-login-btn:hover {
+.header-login-btn-area>ul>li>a {
+  @apply inline-block w-full pr-2  py-2 text-center font-bold border-2 rounded whitespace-nowrap;
+}
+
+.header-sign-up-btn>a {
+  @apply text-blue-300 border-blue-300 active:bg-blue-400;
+}
+
+.header-sign-up-btn>a:hover {
+  @apply bg-blue-300 text-white btn-duration;
+}
+
+.header-login-btn {
+  @apply mt-2;
+}
+
+.header-login-btn>a {
+  @apply text-orange-300 border-orange-300 active:bg-orange-400;
+}
+
+.header-login-btn>a:hover {
   @apply bg-orange-300 text-white btn-duration;
 }
+
+
 
 /* ここから投稿一覧 */
 

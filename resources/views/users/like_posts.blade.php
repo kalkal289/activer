@@ -22,7 +22,7 @@
                                         <img class="post-profile-img" src="https://res.cloudinary.com/drs9gzes2/image/upload/v1695132757/kkrn_icon_user_14_evxlot.png" alt="プロフィール画像"/>
                                     @endif
                                 </a>
-                                <h1 class="center-title"><a href="{{ route('mypageMain', ['user' => $user->id]) }}">{{ $user->name }}</a> がいいねした投稿一覧</h1>
+                                <h1 class="center-title"><a href="{{ route('mypageMain', ['user' => $user->id]) }}">{{ $user->name }}</a> のいいね一覧</h1>
                             </div>
                             <div class="center-container">
                                 <div class="center-contents-area">
@@ -39,6 +39,7 @@
                             </div>
                         </div>
                     </main>
+                    <aside class="side-bar"></aside>
                 </div>
             </div>
             

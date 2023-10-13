@@ -17,6 +17,7 @@
     <body class="font-sans antialiased">
         <div class="min-h-screen">
             @include('layouts.header')
+            @include('parts.menu-bar')
 
             <!-- Page Heading -->
             @if (isset($header))

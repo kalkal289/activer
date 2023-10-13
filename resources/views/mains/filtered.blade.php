@@ -15,7 +15,8 @@
                     <main>
                         <div class="center-area">
                             <div class="center-title-area">
-                                <h1 class="center-title"><i class="fa-solid fa-star text-red-300"></i> メインコンテンツ{{ ($is_followed_user) ? "　フォロー中のみ" : "" }} 　</h1>
+                                <h1 class="center-title"><i class="fa-solid fa-star text-red-300"></i> メインコンテンツ{{ ($is_followed_user) ? " フォロー中のみ" : "" }} 　</h1>
+                                <p class="filter-words">{{ ($keyword) ? "「". $keyword. "」の検索結果" : "" }}</p>
                                 <div class="center-title-border"></div>
                             </div>
                             <div class="center-container">

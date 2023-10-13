@@ -29,7 +29,7 @@
 /* ここからheader(ナビゲーション) */
 
 .header {
-  @apply fixed z-50 w-1/5 max-w-sm h-screen p-6 border-x border-gray-300 bg-white;
+  @apply fixed z-50 w-1/5 h-screen p-6 border-x border-gray-300 bg-white hidden md:block;
 }
 
 .header-icon {
@@ -157,11 +157,11 @@
 /* ここから投稿一覧 */
 
 .center-area {
-  @apply relative w-3/5 mx-auto;
+  @apply relative mx-auto w-full md:w-3/5;
 }
 
 .center-title-area {
-  @apply fixed z-50 w-3/5 h-20 mx-auto border-b border-orange-500 bg-white bg-opacity-95;
+  @apply fixed z-50 top-0 h-20 mx-auto border-b border-orange-500 bg-white bg-opacity-95 w-full md:w-3/5;
 }
 
 .center-title {
@@ -421,7 +421,7 @@
 }
 
 .center-user-info-area {
-  @apply fixed z-50 w-3/5 h-40 mx-auto border-b border-orange-500 bg-white bg-opacity-95;
+  @apply fixed z-50 w-full h-40 mx-auto border-b border-orange-500 bg-white bg-opacity-95 md:w-3/5;
 }
 
 .center-user-info {
@@ -501,7 +501,7 @@
 }
 
 .contents-create-btn-area {
-  @apply w-full mt-4 ml-4 -mb-2;
+  @apply w-full mt-4 pl-4 -mb-2;
 }
 
 .contents-create-btn-area>a {
@@ -778,6 +778,78 @@
 
 
 
+/* ここからメニューバー */
+
+.menu-bar {
+  @apply fixed z-[60] right-0 bottom-0 left-0 w-full h-16 border-t-2 border-orange-200 bg-white rounded-t-xl block md:hidden;
+}
+
+.menu-bar-list {
+  @apply flex justify-around;
+}
+
+.menu-bar-list>li {
+  @apply items-center w-1/5;
+}
+
+.menu-bar-list>li>a {
+  @apply inline-block w-full h-full text-center text-2xl leading-[4rem] text-orange-300;
+}
+
+
+
+/* ここからハンバーガーメニュー */
+
+.top-menu-duration {
+  @apply transition duration-300;
+}
+
+.top-menu-btn {
+  @apply fixed z-[70] flex flex-col justify-between p-2 top-[1.125rem] right-5 w-12 h-11 md:hidden;
+}
+
+.top-menu-btn>span {
+  @apply w-full h-1 rounded-full bg-orange-300;
+}
+
+.top-menu-btn-move>span {
+  @apply top-menu-duration;
+}
+
+.top-menu-btn-move>.first-stick {
+  @apply translate-y-3 rotate-[315deg];
+}
+
+.top-menu-btn-move>.middle-stick {
+  @apply opacity-0;
+}
+
+.top-menu-btn-move>.last-stick {
+  @apply -translate-y-3 -rotate-[315deg];
+}
+
+.top-menu {
+  @apply fixed flex justify-center items-center z-[60] top-0 right-0 bottom-0 -left-full w-screen h-screen bg-slate-500 bg-opacity-80 opacity-0 md:hidden;
+}
+
+.top-menu-appear {
+  @apply top-menu-duration translate-x-full opacity-100;
+}
+
+.top-menu-list {
+  @apply w-1/2 h-32 flex flex-col justify-between;
+}
+
+.top-menu-list>li {
+  @apply w-full h-12;
+}
+
+.top-menu-list>li a {
+  @apply inline-block w-full h-full text-center leading-[3rem] rounded-full text-xl bg-white;
+}
+
+
+
 /* ここからその他のページ */
 
 .search-page-container {
@@ -793,7 +865,7 @@
 /* ここから検索サイドバー */
 
 .side-bar {
-  @apply fixed top-0 right-0 bottom-0 h-screen w-1/5 border-x border-gray-300;
+  @apply fixed top-0 right-0 bottom-0 h-screen w-1/5 border-x border-gray-300 hidden md:block;
 }
 
 .search-container {

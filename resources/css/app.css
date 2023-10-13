@@ -157,7 +157,7 @@
 /* ここから投稿一覧 */
 
 .center-area {
-  @apply relative mx-auto w-full md:w-3/5;
+  @apply relative mx-auto w-full md:w-3/5 pb-[6.5rem] md:pb-0;
 }
 
 .center-title-area {
@@ -809,7 +809,7 @@
 }
 
 .top-menu-btn {
-  @apply fixed z-[70] flex flex-col justify-between p-2 top-[1.125rem] right-5 w-12 h-11 md:hidden;
+  @apply fixed z-[70] flex flex-col justify-between p-2 top-[1.125rem] right-3 w-12 h-11 md:hidden;
 }
 
 .top-menu-btn>span {
@@ -850,6 +850,14 @@
 
 .top-menu-list>li a {
   @apply inline-block w-full h-full text-center leading-[3rem] rounded-full text-xl bg-white;
+}
+
+.menu-sign-up-btn {
+  @apply text-blue-300;
+}
+
+.menu-login-btn {
+  @apply text-orange-300;
 }
 
 

@@ -1,3 +1,219 @@
+<!--投稿詳細-->
+
+<!DOCTYPE html>
+<html lang="{{ str_replace'_', '-', app)->getLocale)) }}">
+  <head>
+    <meta charset="utf-8" />
+    <title>トップページ</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" />
+    <!--FontAwesome-->
+    <script src="https://kit.fontawesome.com/68afbe7e1a.js" crossorigin="anonymous"></script>
+  </head>
+  <x-app-layout>
+    <body>
+      <div class="window">
+        <div class="all-container">
+          <header class="header">
+            <div class="logo-area">
+              <a href="{{ route('index') }}">
+                <img src="https://res.cloudinary.com/drs9gzes2/image/upload/v1696507653/Activer_j1kneb.png" alt="logo" class="logo" />
+              </a>
+            </div>
+            <nav class="nav">
+              <ul class="nav-list">
+                <li><a href="{{ route('index') }}">トップ</a></li>
+                <li><a href="{{ route('followedsPost') }}">フォロー中</a></li>
+                <li><a href="{{ route('mypageMain', ['user' => Auth::id()]) }}">マイページ</a></li>
+                <li><a href="{{ route('search') }}">検索</a></li>
+                <li><a href="#">通知</a></li>
+              </ul>
+            </nav>
+            <div class="create-btn-area">
+              <a href="{{ route('create') }}">投稿</a>
+            </div>
+            <div class="setting-area">
+              <span>アカウント</span>
+              <ul class="setting-list">
+                <li>
+                  <a href="{{ route('profile.edit') }}">設定</a>
+                </li>
+                <li>
+                  <form action="{{ route('logout') }}" method="POST">
+                    <!-- @csrf -->
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"> ログアウト </a>
+                  </form>
+                </li>
+              </ul>
+            </div>
+          </header>
+
+          <main>
+            <div class="center-area">
+              <div class="center-post-info-area">
+                <div class="center-post-info">
+                
+                  <article class="post {{ ($post->is_big_post == 1) ? " big-post-effect" : "" }}">
+                    <div class="post-header">
+                      <div class="post-profile">
+                        <div>
+                          <a href="{{ route('profileMain') }}">
+                            <img class="post-profile-img" src="https://res.cloudinary.com/drs9gzes2/image/upload/v1695899747/yvq9jxpoejrbwnza1zgg.jpg" alt="プロフィール画像" />
+                          </a>
+                        </div>
+                        <div class="post-user-info">
+                          <div class="post-user-name">
+                            <a href="{{ route('profileMain') }}">
+                              <h3>かるかる</h3>
+                            </a>
+                          </div>
+                          <ul class="user-tags-list">
+                            <li>
+                              <a href="#">#アプリ開発</a>
+                            </li>
+                            <li>
+                              <a href="#">#イラスト</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="post-menu">
+                        <div class="post-menu-btn">
+                          <i>・・</i>
+                        </div>
+                        <ul class="post-menu-list">
+                          <li>
+                            <a class="edit-btn" href="{{ route('profile.edit') }}">編集</a>
+                          </li>
+                          <li>
+                            <form action="/posts/{{ $post->id }}" id="deletePost{{ $post->id }}" method="post">
+                              <button class="delete-btn" type="button" onClick="deletePost({{ $post->id }})">削除</button>
+                            </form>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="post-body">
+                      <p>あああああああああああああああああああああああああああああああああああああああああああああああああああああああ</p>
+                    </div>
+                    <div class="post-images">
+                      <img class="post-image-two" src="https://res.cloudinary.com/drs9gzes2/image/upload/v1696940865/rqafivgezqr6yjax4tcd.jpg" alt="画像が読み込めません。"/>
+                      <img class="post-image-two" src="https://res.cloudinary.com/drs9gzes2/image/upload/v1696940867/x6yxc61ich6wiqfr9uvz.jpg" alt="画像が読み込めません。"/>
+                      <img class="post-image-many" src="https://res.cloudinary.com/drs9gzes2/image/upload/v1696940865/rqafivgezqr6yjax4tcd.jpg" alt="画像が読み込めません。"/>
+                      <img class="post-image-many" src="https://res.cloudinary.com/drs9gzes2/image/upload/v1696940867/x6yxc61ich6wiqfr9uvz.jpg" alt="画像が読み込めません。"/> -->
+                    </div>
+                    <div class="post-act-area">
+                      <div>
+                        <a href="/posts/{{ $post->id }}" class="post-act-btn post-comment-btn">コメント: 100</a>
+                      </div>
+                      <div>
+                        <a href="/like/{{ $post->id }}" class="post-act-btn post-like-btn">いいね: 32795</a>
+                      </div>
+                    </div>
+                    <div class="post-info">
+                      <small class="post-category">カテゴリー: アプリ開発</small>
+                      <small>投稿日: 20xx-xx-xx</small>
+                    </div>
+                  </article>
+
+                </div>
+                <div class="follow-list-title-area">
+                  <h2 class="follow-list-title">コメント</h2>
+                </div>
+              </div>
+              <div class="comment-create-btn-area">
+                  <span class="comment-create-btn">コメントをする</span>
+              </div>
+              <div class="center-container">
+                <div class="center-post-list-area">
+                  <article class="comment">
+                    <div class="post-header">
+
+                      <div class="post-profile">
+                        <div>
+                          <a href="{{ route('profileMain') }}">
+                            <img class="post-profile-img" src="https://res.cloudinary.com/drs9gzes2/image/upload/v1695899747/yvq9jxpoejrbwnza1zgg.jpg" alt="プロフィール画像" />
+                          </a>
+                        </div>
+                        <div class="post-user-info">
+                          <div class="post-user-name">
+                            <a href="{{ route('profileMain') }}">
+                              <h3>かるかる</h3>
+                            </a>
+                          </div>
+                          <ul class="user-tags-list">
+                            <li>
+                              <a href="#">#アプリ開発</a>
+                            </li>
+                            <li>
+                              <a href="#">#イラスト</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="post-menu">
+                        <div class="post-menu-btn">
+                          <i>・・</i>
+                        </div>
+                        <ul class="post-menu-list">
+                          <li>
+                            <form action="/comments/{{ $comment->id }}" id="deleteComment{{ $comment->id }}" method="post">
+                              <button class="delete-btn" type="button" onClick="deleteComment({{ $comment->id }})">削除</button>
+                            </form>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="post-body">
+                      <p>
+                        <a href="{{ route('mypageMain', ['user' => $user->id]) }}">大学生です！かわいいイラストを描くために日々練習しています！！ラフや完成したイラストを投稿していく予定ですのでよろしくお願いします！！</a>
+                      </p>
+                    </div>
+                  <div class="comment-info">
+                    <small>投稿日: 20xx-xx-xx</small>
+                  </div>
+                  </article>
+
+                </div>
+              </div>
+                    
+              <div class="comment-create-area">
+                <div class="comment-create-header">
+                  <h3>コメント投稿</h3>
+                  <div class="comment-create-remove-btn"><i></i></div>
+                </div>
+                <form class="create-form" action="/comments" method="POST" enctype="multipart/form-data">
+                    <div class="alert alert-danger create-alert">
+                      <ul>
+                        <li>{{ $error }}</li>
+                      </ul>
+                    </div>
+                    <input type="hidden" name="comment[user_id]" value="{{ Auth::id() }}" />
+                    <textarea id="content" class="create-body" rows="3" name="comment[content]" placeholder="コメントで投稿を盛り上げよう！"></textarea>
+                    <div class="text-count-area">
+                      <p>現在 <span id="text-count" class="text-count">0</span>文字 / 150文字</p>
+                    </div>
+                    <div class="create-image-area">
+                      <label class="create-image-label" for="image">○画像を4枚まで添付することができます○
+                      </label>
+                      <input class="create-image" type="file" id="image" name="image[]" accept="image/*" multiple onChange="imagesTooMany()" />
+                    </div>
+                    <input class="create-submit" type="submit" value="投稿" onclick="return postFormCheck()" />
+                  </form>
+              </div>
+
+            </div>
+          </main>
+          <aside class="side-bar"></aside>
+        </div>
+      </div>
+    </body>
+  </x-app-layout>
+</html>
+
+
+
 <!--投稿テンプレート-->
 
 <!DOCTYPE html>
@@ -59,6 +275,7 @@
             </div>
             <div class="center-container">
               <div class="center-contents-area">
+                
                 <article class="post {{ ($post->is_big_post == 1) ? " big-post-effect" : "" }}">
                   <div class="post-header">
                     <div class="post-profile">
@@ -121,6 +338,7 @@
                     <small>投稿日: 20xx-xx-xx</small>
                   </div>
                 </article>
+                
               </div>
             </div>
           </div>

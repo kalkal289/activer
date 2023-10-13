@@ -1,5 +1,5 @@
 <!--引数1：$post（一つのポスト）-->
-<!--引数2: $kind（投稿は 'on'、メインとストアは ''）-->
+<!--引数2: $is_post（投稿とコメントは 'on'、メインとストアは ''）-->
 
 <div class="{{ ($is_post) ? "post-profile" : "content-profile" }}">
     <div>

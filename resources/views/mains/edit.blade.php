@@ -36,7 +36,7 @@
                                         <div class="text-count-area">
                                             <p id="title-count-message">現在 <span id="title-count" class="text-count">0</span>文字 / 50文字</p>
                                         </div>
-                                        <textarea id="content" class="create-main-body" rows="4" name="main[content]" placeholder="今日何してた？">{{ (old('main.content')) ? old('main.content') : $main->content }}</textarea>
+                                        <textarea id="content" class="create-main-body" rows="4" name="main[content]" placeholder="メインコンテンツの内容を書きましょう！">{{ (old('main.content')) ? old('main.content') : $main->content }}</textarea>
                                         <div class="text-count-area">
                                             <p id="text-count-message">現在 <span id="text-count" class="text-count">0</span>文字 / 500文字</p>
                                         </div>

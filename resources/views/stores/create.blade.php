@@ -35,7 +35,7 @@
                                         <div class="text-count-area">
                                             <p id="title-count-message">現在 <span id="title-count" class="text-count">0</span>文字 / 50文字</p>
                                         </div>
-                                        <textarea id="content" class="create-store-body" rows="4" name="store[content]" placeholder="今日何してた？">{{ old('store.content') }}</textarea>
+                                        <textarea id="content" class="create-store-body" rows="4" name="store[content]" placeholder="ストアコンテンツの内容を書きましょう！">{{ old('store.content') }}</textarea>
                                         <div class="text-count-area">
                                             <p id="text-count-message">現在 <span id="text-count" class="text-count">0</span>文字 / 500文字</p>
                                         </div>

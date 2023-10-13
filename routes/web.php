@@ -31,10 +31,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Route::get('/', [PostController::class,'index'])->name('index');
+Route::get('/', [PostController::class,'index'])->name('index');
 
 Route::controller(PostController::class)->middleware('auth')->group(function() {
-    Route::get('/', 'index')->name('index');
+    // Route::get('/', 'index')->name('index');
     Route::post('/posts', 'store')->name('store');
     Route::get('/posts/create', 'create')->name('create');
     Route::get('/posts/followeds', 'followeds')->name('followedsPost');

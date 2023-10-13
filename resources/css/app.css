@@ -120,6 +120,18 @@
   @apply transition duration-300 opacity-100 translate-y-5;
 }
 
+.header-login-btn-area {
+  @apply mt-6;
+}
+
+.header-login-btn {
+  @apply pr-6 pl-5 py-3 font-bold text-orange-300 border-2 border-orange-300 rounded active:bg-orange-400;
+}
+
+.header-login-btn:hover {
+  @apply bg-orange-300 text-white btn-duration;
+}
+
 /* ここから投稿一覧 */
 
 .center-area {

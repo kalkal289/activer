@@ -4,6 +4,7 @@
     <span class="last-stick"></span>
 </div>
 <div id="top-menu" class="top-menu">
+    <div class="top-menu-back" onClick="humburgerMenuAppear()"></div>
     <ul class="top-menu-list">
         @if(!Auth::guest())
             <li>

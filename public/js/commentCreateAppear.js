@@ -2,12 +2,9 @@
 
 function commentAreaAppear() {
     const commentCreateArea = document.getElementById("comment-create-area");
-    commentCreateArea.classList.remove("hidden");
-}
-
-function commentAreaHidden() {
-    const commentCreateArea = document.getElementById("comment-create-area");
-    if(!(commentCreateArea.classList.contains("hidden"))) {
+    if(commentCreateArea.classList.contains("hidden")) {
+        commentCreateArea.classList.remove("hidden");
+    } else {
         commentCreateArea.classList.add("hidden");
     }
 }

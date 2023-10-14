@@ -13,8 +13,13 @@
                     <main>
                         <div class="center-area">
                             <div class="center-title-area">
-                                <h1 class="center-title"><i class="fa-solid fa-pen text-bg-orange-300"></i> ポスト{{ ($is_followed_user) ? " フォロー中のみ" : "" }}{{ ($is_big_post) ? " ビッグポストのみ" : "" }} 　</h1>
-                                <p class="filter-words">{{ ($keyword) ? "「". $keyword. "」の検索結果" : "" }}</p>
+                                <h1 class="center-title"><i class="fa-solid fa-pen text-bg-orange-300"></i> ポスト 　</h1>
+                                <ul class="filter-options">
+                                    <li>{{ ($is_followed_user) ? "　フォロー中のみ　" : "" }}{{ ($is_big_post) ? "　ビッグポストのみ　" : "" }}</li>
+                                    @if($keyword)
+                                        <li>「 <span class="filter-keyword">{{ $keyword }}</span> 」の検索結果</li>
+                                    @endif
+                                </ul>
                             </div>
                             <div class="center-container">
                                 <div class="center-contents-area">

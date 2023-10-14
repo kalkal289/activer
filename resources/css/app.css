@@ -876,6 +876,18 @@
   @apply flex justify-center items-center;
 }
 
+.filter-options {
+  @apply absolute top-16 right-0 left-0 w-full text-center bg-white bg-opacity-95 md:hidden md:top-20;
+}
+
+.filter-options>li {
+  @apply flex justify-center items-center w-full h-5 px-4 text-orange-400 whitespace-nowrap;
+}
+
+.filter-keyword {
+  @apply inline-block max-w-[calc(100%_-_8rem)] truncate;
+}
+
 
 
 /* ここから検索サイドバー */

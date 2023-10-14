@@ -5,8 +5,6 @@
     <title>トップページ</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" />
-    <!--FontAwesome-->
-    <script src="https://kit.fontawesome.com/68afbe7e1a.js" crossorigin="anonymous"></script>
   </head>
   <x-app-layout>
     <body>
@@ -72,10 +70,11 @@
                   <div class="paginate paginate-style">{{ $comments->links() }}</div>
                 </div>
               </div>
+              
               <div id="comment-create-area" class="comment-create-area hidden">
                 <div class="comment-create-header">
                   <h3><i class="fa-solid fa-comment text-yellow-400"></i> コメント投稿 　</h3>
-                  <div class="comment-create-remove-btn" onClick="commentAreaHidden()">
+                  <div class="comment-create-remove-btn" onClick="commentAreaAppear()">
                     <i class="fa-solid fa-xmark"></i>
                   </div>
                 </div>

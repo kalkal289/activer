@@ -5,8 +5,6 @@
         <title>{{ $user->name }}がいいねした投稿一覧</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <!--FontAwesome-->
-        <script src="https://kit.fontawesome.com/68afbe7e1a.js" crossorigin="anonymous"></script>
     </head>
     <x-app-layout>
         <body>

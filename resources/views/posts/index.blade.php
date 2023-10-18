@@ -18,7 +18,7 @@
                             <div class="center-container">
                                 <div class="center-contents-area">
                                     @if(count($posts) == 0)
-                                        <p class="post-nothing">投稿がありません(´；ω；`)</p>
+                                        <p class="post-nothing">投稿がありません</p>
                                     @endif
                                     @foreach ($posts as $post)
                                     
@@ -47,6 +47,7 @@
             <script src="{{ asset('js/hamburgerMenuAppear.js') }}"></script>
             <script src="{{ asset('js/deleteConfirm.js') }}"></script>
             <script src="{{ asset('js/searchSelect.js') }}"></script>
+            <script src="{{ asset('js/postMenuAppear.js') }}"></script>
             
         </body>
     </x-app-layout>

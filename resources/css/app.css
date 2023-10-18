@@ -161,7 +161,7 @@
 }
 
 .center-title-area {
-  @apply fixed z-50 top-0 right-0 left-0 flex justify-center items-center w-full h-16 border-b border-orange-500 bg-white bg-opacity-95 w-full md:w-3/5 md:h-20 md:right-[20%] md:left-[20%];
+  @apply fixed z-30 top-0 right-0 left-0 flex justify-center items-center w-full h-16 border-b border-orange-500 bg-white bg-opacity-95 w-full md:w-3/5 md:h-20 md:right-[20%] md:left-[20%];
 }
 
 .center-title {
@@ -249,7 +249,11 @@
 }
 
 .post-menu-list {
-  @apply absolute z-10 hidden flex-col justify-around items-center -top-6 -right-1 w-20 py-2 rounded bg-orange-50 border border-orange-200;
+  @apply absolute -z-10 flex-col justify-around items-center -top-6 -right-1 w-20 py-2 opacity-0 rounded bg-orange-50 border border-orange-200;
+}
+
+.post-menu-list-appear {
+  @apply z-20 flex transition duration-200 opacity-100 translate-y-6;
 }
 
 .post-menu-list>li {
@@ -278,10 +282,6 @@
 
 .edit-btn:hover {
   @apply text-white bg-orange-300 btn-duration;
-}
-
-.post-menu-list:hover {
-  @apply transition duration-200 opacity-100 translate-y-5 flex;
 }
 
 .post-menu:active .post-menu-list {
@@ -321,7 +321,7 @@
 }
 
 .post-act-btn {
-  @apply inline-block border rounded-md p-1;
+  @apply inline-block border rounded-full p-1;
 }
 
 .post-comment-btn {
@@ -349,7 +349,7 @@
 }
 
 .post-info {
-  @apply flex justify-between mt-2 whitespace-nowrap;
+  @apply flex flex-col justify-between mt-2 whitespace-nowrap md:flex-row;
 }
 
 .post-category {
@@ -533,7 +533,7 @@
 }
 
 .create-form {
-  @apply flex flex-col w-3/4 min-w-[calc(100vw_*_0.4)] max-w-full mx-auto;
+  @apply flex flex-col w-5/6 min-w-[calc(100vw_*_0.4)] max-w-full mx-auto md:w-3/4;
 }
 
 .create-body {
@@ -573,7 +573,7 @@
 }
 
 .create-image {
-  @apply block mx-auto pt-2;
+  @apply block mx-auto pt-2 max-w-full;
 }
 
 .create-submit {
@@ -760,12 +760,16 @@
   @apply text-white btn-duration;
 }
 
+.comment-create-btn-on {
+  @apply text-white bg-orange-300;
+}
+
 
 
 /* ここからコメント投稿ページ */
 
 .comment-create-area {
-  @apply fixed z-50 w-11/12 p-4 pb-6 border-2 border-orange-300 rounded-lg bg-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:w-1/2;
+  @apply w-full py-4 pb-6 mt-10 mx-auto border-2 border-orange-300 rounded-lg bg-white;
 }
 
 .comment-create-header {
@@ -773,7 +777,7 @@
 }
 
 .comment-create-remove-btn {
-  @apply absolute flex justify-center items-center top-0 right-0 w-12 h-12 rounded-full hover:bg-gray-200 transition duration-300;
+  @apply absolute z-20 flex justify-center items-center top-0 right-4 w-12 h-12 text-orange-300 rounded-full hover:bg-gray-200 transition duration-300;
 }
 
 
@@ -893,7 +897,7 @@
 /* ここから検索サイドバー */
 
 .side-bar {
-  @apply fixed top-0 right-0 bottom-0 h-screen w-1/5 border-x border-gray-300 hidden md:block;
+  @apply fixed z-30 top-0 right-0 bottom-0 h-screen w-1/5 border-x border-gray-300 hidden md:block;
 }
 
 .search-container {

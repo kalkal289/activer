@@ -6,11 +6,11 @@
             <h2 class="content-title">{{ $main->title }}</h2>
         </div>
         @if($main->user_id == Auth::id())
-            <div class="post-menu">
-                <div class="post-menu-btn">
+            <div class="post-menu" onmouseleave="postMenuHidden({{ $main->id }})">
+                <div class="post-menu-btn" onclick="postMenuAppear({{ $main->id }})">
                     <i class="fa-solid fa-ellipsis"></i>
                 </div>
-                <ul class="post-menu-list">
+                <ul id="post-menu-list{{ $main->id }}" class="post-menu-list">
                     <li>
                         <a class="edit-btn" href="{{ route('editMain', ['main' => $main->id]) }}">編集</a>
                     </li>

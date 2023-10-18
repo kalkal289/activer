@@ -41,6 +41,7 @@
             
             <script src="{{ asset('js/deleteConfirm.js') }}"></script>
             <script src="{{ asset('js/unfollowBtn.js') }}"></script>
+            <script src="{{ asset('js/postMenuAppear.js') }}"></script>
         
         </body>
     </x-app-layout>

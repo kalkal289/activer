@@ -9,11 +9,11 @@
         ])
         
         @if($post->user_id == Auth::id())
-            <div class="post-menu">
-                <div class="post-menu-btn">
+            <div class="post-menu" onmouseleave="postMenuHidden({{ $post->id }})">
+                <div class="post-menu-btn" onclick="postMenuAppear({{ $post->id }})">
                     <i class="fa-solid fa-ellipsis"></i>
                 </div>
-                <ul class="post-menu-list">
+                <ul id="post-menu-list{{ $post->id }}" class="post-menu-list hidden">
                     <li>
                         <form action="/posts/{{ $post->id }}" id="deletePost{{ $post->id }}" method="post">
                             @csrf 

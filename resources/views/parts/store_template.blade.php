@@ -6,11 +6,11 @@
             <h2 class="content-title">{{ $store->title }}</h2>
         </div>
         @if($store->user_id == Auth::id())
-            <div class="post-menu">
-                <div class="post-menu-btn">
+            <div class="post-menu" onmouseleave="postMenuHidden({{ $store->id }})">
+                <div class="post-menu-btn" onclick="postMenuAppear({{ $store->id }})">
                     <i class="fa-solid fa-ellipsis"></i>
                 </div>
-                <ul class="post-menu-list">
+                <ul id="post-menu-list{{ $store->id }}" class="post-menu-list">
                     <li>
                         <a class="edit-btn" href="{{ route('editStore', ['store' => $store->id]) }}">編集</a>
                     </li>

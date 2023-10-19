@@ -60,7 +60,7 @@ https://activer-8261697db362.herokuapp.com/
 11. 画像拡大表示機能
 
 ## DB設計（ER図）
-![image](https://github.com/kalkal289/activer/assets/101095592/88f3eee7-1db4-4dc4-a30b-9d01a2ed42cc)<img src="https://github.com/kalkal289/activer/assets/101095592/d24c31b7-bbeb-4a75-8c08-228689d57e66" width="40%">
+（作成途中）
 
 ## ローカルでの動作方法
 （作成途中）

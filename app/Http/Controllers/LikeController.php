@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Like;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -14,20 +15,23 @@ class LikeController extends Controller
         $this->middleware(['auth', 'verified'])->only(['like', 'unlike']);
     }
     
-    //引数のIDに基づくポストをいいねする
-    function like($post_id) {
-        Like::create([
-            'user_id' => Auth::id(),
-            'post_id' => $post_id,
-        ]);
+    function like(Request $request) {
+        $user_id = Auth::id();
+        $post_id = $request->post_id;
+        $already_liked = Like::where('user_id', $user_id)->where('post_id', $post_id)->first();
+        if(!$already_liked) {
+            Like::create([
+                'user_id' => $user_id,
+                'post_id' => $post_id,
+            ]);
+        } else {
+            Like::where('user_id', $user_id)->where('post_id', $post_id)->delete();
+        }
+        $post_likes_count = Post::withCount('likes')->findOrFail($post_id)->likes_count;
+        $param = [
+            'post_likes_count' => $post_likes_count,
+        ];
+        return response()->json($param);
         
-        return redirect()->back();
-    }
-    
-    //引数のIDに基づくポストのいいねを解除する
-    function unlike($post_id) {
-        $like = Like::where('user_id', Auth::id())->where('post_id', $post_id)->first();
-        $like->delete();
-        return redirect()->back();
     }
 }

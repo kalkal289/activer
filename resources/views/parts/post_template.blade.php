@@ -29,18 +29,27 @@
     @if($post->is_big_post == 1)
         <small class="body-big-post">【ビッグポスト】</small>
     @endif
+    <div class="post-body">
+        <p>
+            @if(Request::routeIs('show'))
+                {{ $post->content }}
+            @else
+                <a href="{{ route('show', ['post_id' => $post->id]) }}">{{ $post->content }}</a>
+            @endif
+        </p>
+    </div>
     
-    @include('parts.post_body_images', ['post' => $post,])
+    @include('parts.post_images', ['post' => $post])
     
     <div class="post-act-area">
         <div>
-            <a href="/posts/{{ $post->id }}" class="post-act-btn post-comment-btn"><i class="fa-solid fa-comment"></i>コメント {{ $post->comments->count() }}</a>
+            <a href="{{ route('show', ['post_id' => $post->id]) }}" class="post-act-btn post-comment-btn"><i class="fa-solid fa-comment"></i>コメント {{ $post->comments->count() }}</a>
         </div>
         <div>
             @if($post->is_liked_by_auth_user())
-                <a href="/unlike/{{ $post->id }}" class="post-act-btn post-unlike-btn"><i class="fa-solid fa-heart"></i>いいね {{ $post->likes()->count() }}</a>
+                <span class="like-btn post-act-btn post-unlike-btn" data-post-id="{{ $post->id }}"><i class="fa-solid fa-heart"></i>いいね <span class="likes-count">{{ $post->likes_count }}</span></span>
             @else
-                <a href="/like/{{ $post->id }}" class="post-act-btn post-like-btn"><i class="fa-solid fa-heart"></i>いいね {{ $post->likes()->count() }}</a>
+                <span class="like-btn post-act-btn post-like-btn" data-post-id="{{ $post->id }}"><i class="fa-solid fa-heart"></i>いいね <span class="likes-count">{{ $post->likes_count }}</span></span>
             @endif
         </div>
     </div>

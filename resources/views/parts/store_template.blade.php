@@ -25,8 +25,13 @@
             </div>
         @endif
     </div>
+    <div class="post-body">
+        <p>
+            <a href="#">{{ $store->content }}</a>
+        </p>
+    </div>
     
-    @include('parts.post_body_images', ['post' => $store,])
+    @include('parts.post_images', ['post' => $store])
     
     <div class="content-footer">
         <div class="content-info">

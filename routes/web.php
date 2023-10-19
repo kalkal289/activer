@@ -40,7 +40,7 @@ Route::controller(PostController::class)->middleware('auth')->group(function() {
     Route::get('/posts/followeds', 'followeds')->name('followedsPost');
     Route::get('/posts/filter', 'filter')->name('postFilter');
     Route::get('/posts/search', 'search')->name('search');
-    Route::get('/posts/{post}', 'show')->name('show');
+    Route::get('/posts/{post_id}', 'show')->name('show');
     Route::delete('/posts/{post}', 'delete')->name('deletePost');
 });
 
@@ -82,8 +82,7 @@ Route::controller(StoreController::class)->middleware('auth')->group(function() 
 });
 
 Route::controller(LikeController::class)->middleware('auth')->group(function() {
-    Route::get('/like/{post_id}', 'like')->name('like');
-    Route::get('/unlike/{post_id}', 'unlike')->name('unlike');
+    Route::post('/like', 'like')->name('like');
 });
 
 Route::controller(FollowController::class)->middleware('auth')->group(function() {

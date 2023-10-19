@@ -24,7 +24,7 @@ class MypageController extends Controller
     function mypagePost(User $user) {
         return view('users.mypage_post')->with([
             'user' => $user,
-            'posts' => Post::where('user_id', $user->id)->orderBy('created_at', 'DESC')->paginate(20),
+            'posts' => Post::where('user_id', $user->id)->withCount('likes')->orderBy('created_at', 'DESC')->paginate(20),
             'kind' => 1,
             'keyword' => '',
         ]);
@@ -33,7 +33,7 @@ class MypageController extends Controller
     function mypageBigPost(User $user) {
         return view('users.mypage_post')->with([
             'user' => $user,
-            'posts' => Post::where('user_id', $user->id)->where('is_big_post', 1)->orderBy('created_at', 'DESC')->paginate(20),
+            'posts' => Post::where('user_id', $user->id)->withCount('likes')->where('is_big_post', 1)->orderBy('created_at', 'DESC')->paginate(20),
             'kind' => 2,
             'keyword' => '',
         ]);

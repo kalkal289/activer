@@ -333,7 +333,7 @@
 }
 
 .post-like-btn {
-  @apply border-pink-400 text-pink-400 whitespace-nowrap active:bg-pink-500;
+  @apply border-pink-400 text-pink-400 whitespace-nowrap cursor-pointer active:bg-pink-500;
 }
 
 .post-like-btn:hover {
@@ -341,7 +341,7 @@
 }
 
 .post-unlike-btn {
-  @apply border-pink-400 text-white bg-pink-300 whitespace-nowrap active:bg-pink-100;
+  @apply border-pink-400 text-white bg-pink-300 whitespace-nowrap cursor-pointer active:bg-pink-100;
 }
 
 .post-unlike-btn:hover {

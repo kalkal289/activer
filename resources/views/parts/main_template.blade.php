@@ -25,8 +25,13 @@
             </div>
         @endif
     </div>
+    <div class="post-body">
+        <p>
+            <a href="#">{{ $main->content }}</a>
+        </p>
+    </div>
     
-    @include('parts.post_body_images', ['post' => $main,])
+    @include('parts.post_images', ['post' => $main])
     
     <div class="content-footer">
         <div class="content-info">

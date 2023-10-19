@@ -93,8 +93,13 @@
                           </div>
                         @endif
                       </div>
+                      <div class="post-body">
+                          <p>
+                              <a href="#">{{ $comment->content }}</a>
+                          </p>
+                      </div>
                       
-                      @include('parts.post_body_images', ['post' => $comment])
+                      @include('parts.post_images', ['post' => $comment])
                       
                       <div class="comment-info">
                         <small>投稿日: {{ $comment->created_at }}</small>
@@ -116,6 +121,7 @@
       <script src="{{ asset('js/textareaHeight.js') }}"></script>
       <script src="{{ asset('js/commentCreateAppear.js') }}"></script>
       <script src="{{ asset('js/postMenuAppear.js') }}"></script>
+      <script src="{{ asset('js/like.js') }}"></script>
       
     </body>
   </x-app-layout>

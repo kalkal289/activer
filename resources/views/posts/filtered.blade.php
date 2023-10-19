@@ -45,6 +45,7 @@
             <script src="{{ asset('js/deleteConfirm.js') }}"></script>
             <script src="{{ asset('js/searchSelect.js') }}"></script>
             <script src="{{ asset('js/postMenuAppear.js') }}"></script>
+            <script src="{{ asset('js/like.js') }}"></script>
             
         </body>
     </x-app-layout>

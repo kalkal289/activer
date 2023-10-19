@@ -34,10 +34,11 @@ class PostController extends Controller
         return redirect('/'); 
     }
     
-    public function show(Post $post) {
+    public function show($post_id) {
+        $post = Post::withCount('likes')->find($post_id);
         return view('posts.show')->with([
             'post' => $post,
-            'comments' => Comment::where('post_id', $post->id)->orderBy('created_at', 'DESC')->paginate(20),
+            'comments' => Comment::where('post_id', $post_id)->orderBy('created_at', 'DESC')->paginate(20),
         ]);
     }
     
@@ -60,7 +61,7 @@ class PostController extends Controller
             array_push($followeds_id, $followed->id);
         }
         $query->whereIn('user_id', $followeds_id);
-        $posts = $query->orderBy('created_at', 'DESC')->paginate(20);
+        $posts = $query->withCount('likes')->orderBy('created_at', 'DESC')->paginate(20);
         return view('posts.filtered')->with([
             'is_followed_user' => 'on',
             'is_big_post' => '',
@@ -101,7 +102,7 @@ class PostController extends Controller
                 $query->where('content', 'like', '%'.$word.'%');
             }
         }
-        $posts = $query->orderBy('created_at', 'DESC')->paginate(20);
+        $posts = $query->withCount('likes')->orderBy('created_at', 'DESC')->paginate(20);
         return view('posts.filtered')->with([
             'is_followed_user' => $is_followed_user,
             'is_big_post' => $is_big_post,

@@ -317,7 +317,7 @@
 }
 
 .post-act-btn {
-  @apply inline-block rounded-full btn-duration p-1 pr-2;
+  @apply inline-block rounded-full btn-duration p-1;
 }
 
 .post-act-btn>i {

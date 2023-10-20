@@ -19,7 +19,7 @@
 }
 
 .btn-duration {
-  @apply transition duration-150;
+  @apply md:transition md:duration-150;
 }
 
 .all-container {
@@ -61,11 +61,11 @@
 }
 
 .nav-list>li>a:hover {
-  @apply text-white bg-orange-300 transition duration-150;
+  @apply md:text-white md:bg-orange-300 md:transition md:duration-150;
 }
 
 .nav-list>li>a:hover .header-icon {
-  @apply text-white;
+  @apply md:text-white;
 }
 
 .nav-list>li>a:active {
@@ -81,11 +81,11 @@
 }
 
 .create-btn-area>a:hover {
-  @apply text-white bg-orange-400 btn-duration;
+  @apply md:text-white md:bg-orange-400 btn-duration;
 }
 
 .create-btn-area>a:hover .header-icon {
-  @apply text-white;
+  @apply md:text-white;
 }
 
 .create-btn-area>a:active {
@@ -109,7 +109,7 @@
 }
 
 .setting-list>li a:hover {
-  @apply p-3 bg-gray-100;
+  @apply md:p-3 md:bg-gray-100;
 }
 
 .setting-list>li a:active {
@@ -137,7 +137,7 @@
 }
 
 .header-sign-up-btn>a:hover {
-  @apply bg-blue-300 text-white btn-duration;
+  @apply md:bg-blue-300 md:text-white btn-duration;
 }
 
 .header-login-btn {
@@ -149,7 +149,7 @@
 }
 
 .header-login-btn>a:hover {
-  @apply bg-orange-300 text-white btn-duration;
+  @apply md:bg-orange-300 md:text-white btn-duration;
 }
 
 
@@ -157,7 +157,7 @@
 /* ここから投稿一覧 */
 
 .center-area {
-  @apply relative mx-auto w-full md:w-3/5 pb-[6.5rem] md:pb-0;
+  @apply relative mx-auto w-full md:w-3/5 pb-[6.5rem] bg-white md:pb-0;
 }
 
 .center-title-area {
@@ -245,15 +245,15 @@
 }
 
 .post-menu-btn:hover {
-  @apply transition duration-300 bg-orange-50;
+  @apply md:transition md:duration-300 md:bg-orange-50;
 }
 
 .post-menu-list {
-  @apply absolute -z-10 flex-col justify-around items-center -top-6 -right-1 w-20 py-2 opacity-0 rounded bg-orange-50 border border-orange-200;
+  @apply absolute -z-10 flex-col justify-around items-center -top-6 -right-1 w-20 py-2 opacity-0 rounded bg-orange-50 border border-orange-200 transition duration-200;
 }
 
 .post-menu-list-appear {
-  @apply z-20 flex transition duration-200 opacity-100 translate-y-6;
+  @apply z-20 opacity-100 translate-y-6;
 }
 
 .post-menu-list>li {
@@ -269,23 +269,19 @@
 }
 
 .delete-btn {
-  @apply border-red-400 text-red-400 active:bg-red-500;
+  @apply border-red-400 text-red-400 active:bg-red-500 active:text-white;
 }
 
 .delete-btn:hover {
-  @apply text-white bg-red-400 btn-duration;
+  @apply md:text-white md:bg-red-400 btn-duration;
 }
 
 .edit-btn {
-  @apply mb-1 border-orange-300 active:bg-orange-400;
+  @apply mb-1 border-orange-300 active:bg-orange-400 active:text-white;
 }
 
 .edit-btn:hover {
-  @apply text-white bg-orange-300 btn-duration;
-}
-
-.post-menu:active .post-menu-list {
-  @apply flex;
+  @apply md:text-white md:bg-orange-300 btn-duration;
 }
 
 .body-big-post {
@@ -321,31 +317,43 @@
 }
 
 .post-act-btn {
-  @apply inline-block border rounded-full p-1;
+  @apply inline-block rounded-full btn-duration p-1 pr-2;
+}
+
+.post-act-btn>i {
+  @apply pr-1;
 }
 
 .post-comment-btn {
-  @apply border-yellow-400 text-yellow-400 whitespace-nowrap active:bg-yellow-400 mr-2;
+  @apply text-yellow-400 whitespace-nowrap;
 }
 
 .post-comment-btn:hover {
-  @apply bg-yellow-300 text-white btn-duration;
+  @apply md:text-yellow-500 md:bg-yellow-100 btn-duration;
+}
+
+.comments-count {
+  @apply ml-1 font-bold text-yellow-400 whitespace-nowrap mr-4;
 }
 
 .post-like-btn {
-  @apply border-pink-400 text-pink-400 whitespace-nowrap cursor-pointer active:bg-pink-500;
+  @apply relative text-pink-400 whitespace-nowrap cursor-pointer;
 }
 
 .post-like-btn:hover {
-  @apply bg-pink-400 text-white btn-duration;
+  @apply md:text-pink-500 md:bg-pink-100 btn-duration;
 }
 
-.post-unlike-btn {
-  @apply border-pink-400 text-white bg-pink-300 whitespace-nowrap cursor-pointer active:bg-pink-100;
+.likes-count {
+  @apply ml-1 font-bold text-pink-400 whitespace-nowrap;
 }
 
-.post-unlike-btn:hover {
-  @apply bg-pink-200 text-white btn-duration;
+.flow-heart {
+  @apply absolute -z-10 top-1 left-1 transition duration-700 opacity-100;
+}
+
+.flow-heart-move {
+  @apply z-10 -translate-y-10 opacity-0;
 }
 
 .post-info {
@@ -397,7 +405,7 @@
 }
 
 .follow-btn:hover {
-  @apply bg-orange-300 text-white btn-duration;
+  @apply md:bg-orange-300 md:text-white btn-duration;
 }
 
 .unfollow-btn {
@@ -405,7 +413,7 @@
 }
 
 .unfollow-btn:hover {
-  @apply bg-white text-red-500 shadow-red-500 btn-duration;
+  @apply md:bg-white md:text-red-500 md:shadow-red-500 btn-duration;
 }
 
 .edit-profile-btn-area {
@@ -417,7 +425,7 @@
 }
 
 .edit-profile-btn:hover {
-  @apply bg-green-300 text-white btn-duration;
+  @apply md:bg-green-300 md:text-white btn-duration;
 }
 
 .center-user-info-area {
@@ -481,7 +489,7 @@
 }
 
 .like-post-list-btn:hover {
-  @apply text-white bg-orange-200 btn-duration;
+  @apply md:text-white md:bg-orange-200 btn-duration;
 }
 
 .mypage-menu-bar {
@@ -493,7 +501,7 @@
 }
 
 .mypage-menu-btn:hover {
-  @apply bg-orange-300 text-white btn-duration;
+  @apply md:bg-orange-300 md:text-white btn-duration;
 }
 
 .now-area-btn {
@@ -513,7 +521,7 @@
 }
 
 .main-create-btn:hover {
-  @apply text-white bg-red-300 btn-duration;
+  @apply md:text-white md:bg-red-300 btn-duration;
 }
 
 .store-create-btn {
@@ -521,7 +529,7 @@
 }
 
 .store-create-btn:hover {
-  @apply text-white bg-blue-300 btn-duration;
+  @apply md:text-white md:bg-blue-300 btn-duration;
 }
 
 
@@ -581,7 +589,7 @@
 }
 
 .create-submit:hover {
-  @apply -translate-y-0.5 shadow-[0_4px_0_0_rgba(253,186,116,1)];
+  @apply md:-translate-y-0.5 md:shadow-[0_4px_0_0_rgba(253,186,116,1)];
 }
 
 .create-submit:active {
@@ -625,7 +633,7 @@
 }
 
 .create-main-submit:hover {
-  @apply -translate-y-0.5 shadow-[0_4px_0_0_rgba(248,113,113,1)];
+  @apply md:-translate-y-0.5 md:shadow-[0_4px_0_0_rgba(248,113,113,1)];
 }
 
 .create-main-submit:active {
@@ -661,7 +669,7 @@
 }
 
 .create-store-submit:hover {
-  @apply -translate-y-0.5 shadow-[0_4px_0_0_rgba(96,165,250,1)];
+  @apply md:-translate-y-0.5 md:shadow-[0_4px_0_0_rgba(96,165,250,1)];
 }
 
 .create-store-submit:active {
@@ -701,7 +709,7 @@
 }
 
 .edit-profile-submit:hover {
-  @apply -translate-y-0.5 shadow-[0_4px_0_0_rgba(74,222,128,1)];
+  @apply md:-translate-y-0.5 md:shadow-[0_4px_0_0_rgba(74,222,128,1)];
 }
 
 .edit-profile-submit:active {
@@ -749,7 +757,7 @@
 }
 
 .comment-create-btn:hover {
-  @apply text-white bg-orange-300 btn-duration;
+  @apply md:text-white md:bg-orange-300 btn-duration;
 }
 
 .comment-create-btn-icon {
@@ -757,7 +765,7 @@
 }
 
 .comment-create-btn:hover .comment-create-btn-icon {
-  @apply text-white btn-duration;
+  @apply md:text-white btn-duration;
 }
 
 .comment-create-btn-on {
@@ -769,7 +777,11 @@
 /* ここからコメント投稿ページ */
 
 .comment-create-area {
-  @apply w-full py-4 pb-6 mt-10 mx-auto border-2 border-orange-300 rounded-lg bg-white;
+  @apply w-full py-4 pb-6 mt-10 mx-auto border-2 border-orange-300 rounded-lg bg-white opacity-0 transition duration-500;
+}
+
+.comment-create-area-appear {
+  @apply opacity-100;
 }
 
 .comment-create-header {
@@ -945,7 +957,7 @@
 }
 
 .search-btn:hover {
-  @apply -translate-y-0.5 shadow-[0_4px_0_0_rgba(253,186,116,1)];
+  @apply md:-translate-y-0.5 md:shadow-[0_4px_0_0_rgba(253,186,116,1)];
 }
 
 .search-btn:active {

@@ -1,7 +1,9 @@
 function postMenuAppear(id) {
     const postMenuList = document.getElementById(`post-menu-list${id}`);
     postMenuList.classList.remove("hidden");
-    postMenuList.classList.add("post-menu-list-appear");
+    setTimeout(function() {
+        postMenuList.classList.add("post-menu-list-appear");
+    }, 10);
 }
 
 function postMenuHidden(id) {
@@ -13,7 +15,9 @@ function postMenuHidden(id) {
 function commentMenuAppear(id) {
     const commentMenuList = document.getElementById(`comment-menu-list${id}`);
     commentMenuList.classList.remove("hidden");
-    commentMenuList.classList.add("post-menu-list-appear");
+    setTimeout(function() {
+        commentMenuList.classList.add("post-menu-list-appear");
+    }, 10);
 }
 
 function commentMenuHidden(id) {

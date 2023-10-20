@@ -121,7 +121,7 @@
       <script src="{{ asset('js/textareaHeight.js') }}"></script>
       <script src="{{ asset('js/commentCreateAppear.js') }}"></script>
       <script src="{{ asset('js/postMenuAppear.js') }}"></script>
-      <script src="{{ asset('js/like.js') }}"></script>
+      <script src="{{ asset('js/like.js') }}" type="module"></script>
       
     </body>
   </x-app-layout>

@@ -13,7 +13,7 @@
                 <div class="post-menu-btn" onclick="postMenuAppear({{ $post->id }})">
                     <i class="fa-solid fa-ellipsis"></i>
                 </div>
-                <ul id="post-menu-list{{ $post->id }}" class="post-menu-list hidden">
+                <ul id="post-menu-list{{ $post->id }}" class="post-menu-list flex hidden">
                     <li>
                         <form action="/posts/{{ $post->id }}" id="deletePost{{ $post->id }}" method="post">
                             @csrf 
@@ -43,13 +43,13 @@
     
     <div class="post-act-area">
         <div>
-            <a href="{{ route('show', ['post_id' => $post->id]) }}" class="post-act-btn post-comment-btn"><i class="fa-solid fa-comment"></i>コメント {{ $post->comments->count() }}</a>
+            <a href="{{ route('show', ['post_id' => $post->id]) }}" class="post-act-btn post-comment-btn"><i class="fa-regular fa-comment"></i>コメント</a><span class="comments-count">{{ $post->comments->count() }}</span>
         </div>
         <div>
             @if($post->is_liked_by_auth_user())
-                <span class="like-btn post-act-btn post-unlike-btn" data-post-id="{{ $post->id }}"><i class="fa-solid fa-heart"></i>いいね <span class="likes-count">{{ $post->likes_count }}</span></span>
+                <span class="post-act-btn post-like-btn" data-post-id="{{ $post->id }}"><span class="liked-heart hidden"><i class="fa-regular fa-heart"></i></span><span class="not-liked-heart"><i class="fa-solid fa-heart"></i></span>いいね<span class="flow-heart"><i class="fa-solid fa-heart"></i></span></span><span class="likes-count">{{ $post->likes_count }}</span>
             @else
-                <span class="like-btn post-act-btn post-like-btn" data-post-id="{{ $post->id }}"><i class="fa-solid fa-heart"></i>いいね <span class="likes-count">{{ $post->likes_count }}</span></span>
+                <span class="post-act-btn post-like-btn" data-post-id="{{ $post->id }}"><span class="liked-heart"><i class="fa-regular fa-heart"></i></span><span class="not-liked-heart hidden"><i class="fa-solid fa-heart"></i></span>いいね<span class="flow-heart"><i class="fa-solid fa-heart"></i></span></span><span class="likes-count">{{ $post->likes_count }}</span>
             @endif
         </div>
     </div>

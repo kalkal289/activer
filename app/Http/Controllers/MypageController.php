@@ -67,7 +67,7 @@ class MypageController extends Controller
                 $query->where('content', 'like', '%'.$word.'%');
             }
         }
-        $posts = $query->orderBy('created_at', 'DESC')->paginate(20);
+        $posts = $query->withCount('likes')->orderBy('created_at', 'DESC')->paginate(20);
         return view('users.mypage_post')->with([
             'keyword' => $keyword,    
             'posts' => $posts,
@@ -95,7 +95,7 @@ class MypageController extends Controller
                 $query->where('content', 'like', '%'.$word.'%');
             }
         }
-        $posts = $query->orderBy('created_at', 'DESC')->paginate(20);
+        $posts = $query->withCount('likes')->orderBy('created_at', 'DESC')->paginate(20);
         return view('users.mypage_post')->with([
             'keyword' => $keyword,    
             'posts' => $posts,
@@ -107,7 +107,7 @@ class MypageController extends Controller
     function likePost(User $user) {
         return view('users.like_posts')->with([
             'user' => $user,
-            'posts' => $user->likes()->withPivot('created_at AS liked_at')->orderBy('liked_at', 'DESC')->paginate(20),
+            'posts' => $user->likes()->withPivot('created_at AS liked_at')->withCount('likes')->orderBy('liked_at', 'DESC')->paginate(20),
         ]);
     }
     

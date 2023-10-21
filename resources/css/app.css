@@ -249,11 +249,11 @@
 }
 
 .post-menu-list {
-  @apply absolute -z-10 flex-col justify-around items-center -top-6 -right-1 w-20 py-2 opacity-0 rounded bg-orange-50 border border-orange-200 transition duration-200;
+  @apply absolute z-20 flex flex-col justify-around items-center top-0 -right-1 w-20 py-2 rounded bg-orange-50 border border-orange-200 transition duration-150 opacity-0 scale-0 origin-[calc(100%_-_1.25rem)_1.25rem];
 }
 
 .post-menu-list-appear {
-  @apply z-20 opacity-100 translate-y-6;
+  @apply opacity-100 scale-100;
 }
 
 .post-menu-list>li {
@@ -320,10 +320,6 @@
   @apply inline-block rounded-full btn-duration p-1;
 }
 
-.post-act-btn>i {
-  @apply pr-1;
-}
-
 .post-comment-btn {
   @apply text-yellow-400 whitespace-nowrap;
 }
@@ -353,11 +349,11 @@
 }
 
 .flow-heart-move {
-  @apply z-10 -translate-y-10 opacity-0;
+  @apply z-10 -translate-y-8 scale-125 opacity-0;
 }
 
 .post-info {
-  @apply flex flex-col justify-between mt-2 whitespace-nowrap md:flex-row;
+  @apply flex flex-col justify-between mt-2 text-gray-500 whitespace-nowrap md:flex-row;
 }
 
 .post-category {
@@ -513,19 +509,27 @@
 }
 
 .contents-create-btn-area>a {
-  @apply inline-block px-2 py-1.5 text-center whitespace-nowrap rounded-sm;
+  @apply inline-block py-1.5 text-center whitespace-nowrap rounded-sm;
 }
 
 .main-create-btn {
-  @apply shadow-[0_0_1px_1.5px_rgb(0,0,0,0)] shadow-red-300　active:bg-red-400;
+  @apply px-2 shadow-[0_0_1px_1.5px_rgb(0,0,0,0)] shadow-red-300　active:bg-red-400;
 }
 
 .main-create-btn:hover {
   @apply md:text-white md:bg-red-300 btn-duration;
 }
 
+.post-create-btn {
+  @apply shadow-[0_0_1px_1.5px_rgb(0,0,0,0)] px-10 shadow-orange-300 active:bg-orange-400;
+}
+
+.post-create-btn:hover {
+  @apply md:text-white md:bg-orange-300 btn-duration;
+}
+
 .store-create-btn {
-  @apply shadow-[0_0_1px_1.5px_rgb(0,0,0,0)] shadow-blue-300 active:bg-blue-400;
+  @apply px-2 shadow-[0_0_1px_1.5px_rgb(0,0,0,0)] shadow-blue-300 active:bg-blue-400;
 }
 
 .store-create-btn:hover {
@@ -883,6 +887,22 @@
 
 
 /* ここからその他のページ */
+
+.main-text-color {
+  @apply text-red-300;
+}
+
+.store-text-color {
+  @apply text-blue-300;
+}
+
+.main-border-color {
+  @apply border-red-500;
+}
+
+.store-border-color {
+  @apply border-blue-500;
+}
 
 .search-page-container {
   @apply flex flex-col w-3/5 mx-auto mt-10;

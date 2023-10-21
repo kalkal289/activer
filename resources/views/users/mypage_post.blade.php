@@ -17,7 +17,12 @@
                             'user' => $user,
                             'kind' => $kind,
                             ])
-                        
+                            
+                            @if($user->id == Auth::id())
+                                <div class="contents-create-btn-area">
+                                    <a class="post-create-btn" href="{{ route('create') }}"><i class="fa-solid fa-pen text-orange-300"></i> 投稿する</a>
+                                </div>
+                            @endif
                             <div class="center-container">
                                 <div class="center-mypage-contents-area">
                                     @if(count($posts) == 0)

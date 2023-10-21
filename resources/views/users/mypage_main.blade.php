@@ -17,10 +17,12 @@
                             'user' => $user,
                             'kind' => $kind,
                             ])
-
-                            <div class="contents-create-btn-area">
-                                <a class="main-create-btn" href="{{ route('createMain') }}">メインコンテンツを作成する</a>
-                            </div>
+                            
+                            @if($user->id == Auth::id())
+                                <div class="contents-create-btn-area">
+                                    <a class="main-create-btn" href="{{ route('createMain') }}"><i class="fa-solid fa-star text-red-300"></i> メインコンテンツを作成する</a>
+                                </div>
+                            @endif
                             <div class="center-container">
                                 <div class="center-mypage-contents-area">
                                     @if(count($mains) == 0)

@@ -13,7 +13,7 @@
                 <div class="post-menu-btn" onclick="postMenuAppear({{ $post->id }})">
                     <i class="fa-solid fa-ellipsis"></i>
                 </div>
-                <ul id="post-menu-list{{ $post->id }}" class="post-menu-list flex hidden">
+                <ul id="post-menu-list{{ $post->id }}" class="post-menu-list">
                     <li>
                         <form action="/posts/{{ $post->id }}" id="deletePost{{ $post->id }}" method="post">
                             @csrf 

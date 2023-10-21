@@ -12,7 +12,7 @@ class LikeController extends Controller
     // only()の引数内のメソッドはログイン時のみ有効
     public function __construct()
     {
-        $this->middleware(['auth', 'verified'])->only(['like', 'unlike']);
+        $this->middleware(['auth', 'verified'])->only(['like']);
     }
     
     function like(Request $request) {

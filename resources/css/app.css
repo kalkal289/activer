@@ -161,7 +161,7 @@
 }
 
 .center-title-area {
-  @apply fixed z-30 top-0 right-0 left-0 flex justify-center items-center w-full h-16 border-b border-orange-500 bg-white bg-opacity-95 w-full md:w-3/5 md:h-20 md:right-[20%] md:left-[20%];
+  @apply fixed z-30 top-0 right-0 left-0 flex justify-center items-center w-full h-16 border-b border-orange-500 bg-white bg-opacity-95 md:w-3/5 md:h-20 md:right-[20%] md:left-[20%];
 }
 
 .center-title {
@@ -882,6 +882,74 @@
 
 .menu-login-btn {
   @apply text-orange-300;
+}
+
+
+
+/* ここからエントランスページ */
+
+.entrance-upper-area {
+  @apply w-full h-1/3;
+}
+
+.back-btn-area {
+  @apply flex items-end w-full h-1/5;
+}
+
+.back-btn {
+  @apply max-h-full ml-2 px-2 py-1 rounded-full cursor-pointer btn-duration;
+}
+
+.back-btn:hover {
+  @apply md:bg-gray-100;
+}
+
+.entrance-title-area {
+  @apply flex justify-center items-center w-full h-4/5;
+}
+
+.entrance-title-area>h1 {
+  @apply px-4 text-3xl font-bold tracking-wide leading-relaxed text-orange-300 md:text-4xl;
+}
+
+.entrance-keyword {
+  @apply text-white bg-orange-300 rounded whitespace-nowrap px-1;
+}
+
+.entrance-like {
+  @apply bg-pink-300;
+}
+
+.entrance-comment {
+  @apply bg-yellow-300;
+}
+
+.entrance-area {
+  @apply w-full h-screen;
+}
+
+.entrance-img {
+  @apply flex items-end h-1/6;
+}
+
+.entrance-img>img {
+  @apply max-w-[60%] max-h-full ml-[15%];
+}
+
+.entrance-btn-area {
+  @apply h-1/2;
+}
+
+.entrance-btn-area>ul {
+  @apply flex flex-col items-center;
+}
+
+.entrance-btn-area>ul>li>a {
+  @apply py-4 font-bold text-xl rounded-full;
+}
+
+.entrance-message-area {
+  @apply flex justify-center px-4 mt-[5%];
 }
 
 

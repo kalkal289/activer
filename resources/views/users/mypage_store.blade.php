@@ -17,10 +17,12 @@
                             'user' => $user,
                             'kind' => $kind,
                             ])
-
-                            <div class="contents-create-btn-area">
-                                <a class="store-create-btn" href="{{ route('createStore') }}">ストアコンテンツを作成する</a>
-                            </div>
+                            
+                            @if($user->id == Auth::id())
+                                <div class="contents-create-btn-area">
+                                    <a class="store-create-btn" href="{{ route('createStore') }}"><i class="fa-solid fa-store text-blue-300"></i> ストアコンテンツを作成する</a>
+                                </div>
+                            @endif
                             <div class="center-container">
                                 <div class="center-mypage-contents-area">
                                     @if(count($stores) == 0)

@@ -1,9 +1,3 @@
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-    }
-});
-
 $(function() {
     let like = $('.post-like-btn');
     like.on('click', function() {

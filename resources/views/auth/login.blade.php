@@ -44,4 +44,10 @@
             </x-primary-button>
         </div>
     </form>
+    
+    <div class="absolute top-1 left-1">
+        <h2 class="text-lg mt-8">○テストアカウント</h2>
+        <p>Email: test2@example.com</p>
+        <p>Passsord: password</p>
+    </div>
 </x-guest-layout>

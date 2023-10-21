@@ -19,8 +19,10 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen">
-            @include('layouts.header')
-            @include('parts.menu-bar')
+            @if(!Request::routeIs('entrance'))
+                @include('layouts.header')
+                @include('parts.menu_bar')
+            @endif
 
             <!-- Page Heading -->
             @if (isset($header))

@@ -12,8 +12,8 @@
                 <div class="all-container">
                     <main>
                         <div class="center-area">
-                            <div class="center-title-area">
-                                <h1 class="center-title"><i class="fa-solid fa-store text-blue-300"></i> ストアコンテンツ編集 　</h1>
+                            <div class="center-title-area store-border-color">
+                                <h1 class="center-title store-text-color"><i class="fa-solid fa-store"></i> ストアコンテンツ編集 　</h1>
                             </div>
                             <div class="center-container">
                                 <div class="center-contents-area">

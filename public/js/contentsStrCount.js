@@ -6,6 +6,16 @@ const contentTitle = document.getElementById('title');
 const titleCount = document.getElementById('title-count');
 const titleCountMessage = document.getElementById('title-count-message');
 const contentBody = document.getElementById('content');
+
+window.onload = function() {
+    let titleStr = contentTitle.value;
+    let titleNum = titleStr.length;
+    titleCount.textContent = titleNum;
+    let bodyStr = contentBody.value;
+    let bodyNum = bodyStr.length;
+    textCount.textContent = bodyNum;
+}
+
 contentTitle.addEventListener('keyup', () => {
     let str = contentTitle.value;
     let num = str.length;

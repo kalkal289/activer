@@ -37,7 +37,11 @@
                         'keyword' => '',
                     ])
                     
-                    <a class="mini-create-btn" href="{{ route('create') }}"><i class="fa-solid fa-pen-to-square"></i> 投稿</a>
+                    @if(Auth::guest())
+                        <a class="mini-create-btn" href="{{ route('entrance', ['kind' => 2]) }}"><i class="fa-solid fa-pen-to-square"></i> 投稿</a>
+                    @else
+                        <a class="mini-create-btn" href="{{ route('create') }}"><i class="fa-solid fa-pen-to-square"></i> 投稿</a>
+                    @endif
                 </div>
                 
                 @include('parts.hamburger_menu')

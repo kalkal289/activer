@@ -13,7 +13,7 @@
                     <main>
                         <div class="center-area">
                             <div class="center-title-area">
-                                <h1 class="center-title text-greeb-300"><i class="fa-solid fa-user"></i> プロフィール編集 　</h1>
+                                <h1 class="center-title"><i class="fa-solid fa-user"></i> プロフィール編集 　</h1>
                             <div class="center-title-border"></div>
                             </div>
                             <div class="center-container">

@@ -17,7 +17,11 @@
                     <input id="checkbox_big_post" class="checkbox-big-post" type="checkbox" name="is_big_post" {{ ($is_big_post) ? "checked" : "" }} />
                     <label class="checkbox-label" for="checkbox_big_post">ビッグポストのみ</label>
                 </div>
-                <input class="search-btn" type="submit" value="検索" />
+                @if(Auth::guest())
+                    <a href="{{ route('entrance', ['kind' => 5]) }}" class="search-btn">検索</a>
+                @else
+                    <input class="search-btn" type="submit" value="検索" />
+                @endif
             </form>
         </div>
     </div>

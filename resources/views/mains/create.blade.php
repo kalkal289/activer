@@ -12,8 +12,8 @@
                 <div class="all-container">
                     <main>
                         <div class="center-area">
-                            <div class="center-title-area">
-                                <h1 class="center-title text-red-300"><i class="fa-solid fa-star"></i> メインコンテンツ作成 　</h1>
+                            <div class="center-title-area main-border-color">
+                                <h1 class="center-title main-text-color"><i class="fa-solid fa-star"></i> メインコンテンツ作成 　</h1>
                             </div>
                             <div class="center-container">
                                 <div class="center-contents-area">

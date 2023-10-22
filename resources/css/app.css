@@ -465,7 +465,7 @@
 }
 
 .center-mypage-profile-area {
-  @apply w-full py-6;
+  @apply w-full pt-6 pb-4 md:pb-6;
 }
 
 .profile-body {
@@ -481,7 +481,7 @@
 }
 
 .like-post-list-btn {
-  @apply block w-32 p-1 text-center whitespace-nowrap text-sm shadow-[0_0_1px_1.5px_rgb(0,0,0,0)] shadow-orange-200 rounded active:bg-orange-300;
+  @apply block w-auto p-1 text-center whitespace-nowrap text-sm shadow-[0_0_1px_1.5px_rgb(0,0,0,0)] shadow-orange-200 rounded active:bg-orange-300 md:w-28;
 }
 
 .like-post-list-btn:hover {
@@ -657,7 +657,7 @@
 }
 
 .create-store-body {
-  @apply p-2 mt-4 rounded-md border-2 main-create-color;
+  @apply p-2 mt-4 rounded-md border-2 store-create-color;
 }
 
 .create-store-select {
@@ -693,7 +693,7 @@
 }
 
 .edit-profile-color {
-  @apply border-green-200;
+  @apply border-orange-200;
 }
 
 .edit-profile-title {
@@ -709,11 +709,11 @@
 }
 
 .edit-profile-submit {
-  @apply inline-block w-1/2 py-3 mt-2 mx-auto border border-green-300 rounded-md shadow-[0_2px_0_0_rgba(74,222,128,1)] text-xl text-green-500;
+  @apply inline-block w-1/2 py-3 mt-2 mx-auto border border-orange-300 rounded-md shadow-[0_2px_0_0_rgba(253,186,116,1)] text-xl text-orange-500;
 }
 
 .edit-profile-submit:hover {
-  @apply md:-translate-y-0.5 md:shadow-[0_4px_0_0_rgba(74,222,128,1)];
+  @apply md:-translate-y-0.5 md:shadow-[0_4px_0_0_rgba(253,186,116,1)];
 }
 
 .edit-profile-submit:active {

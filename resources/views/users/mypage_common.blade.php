@@ -21,7 +21,7 @@
                 </p>
             </div>
             <div>
-                <a class="like-post-list-btn" href="/mypages/likes/{{ $user->id }}">いいねした投稿一覧</a>
+                <a class="like-post-list-btn" href="/mypages/likes/{{ $user->id }}">いいね一覧</a>
             </div>
         </div>
     </div>

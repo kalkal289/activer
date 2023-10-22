@@ -45,8 +45,8 @@
         </div>
     </form>
     
-    <div class="absolute top-1 left-1">
-        <h2 class="text-lg mt-8">○テストアカウント</h2>
+    <div class="absolute bottom-4 left-4  p-4 rounded border border-black md:left-10">
+        <h2 class="text-lg">○テストアカウント</h2>
         <p>Email: test2@example.com</p>
         <p>Passsord: password</p>
     </div>

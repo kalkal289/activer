@@ -18,7 +18,7 @@
                     <p class="back-btn" onClick="history.back()"><span class="text-orange-300"><i class="fa-solid fa-arrow-left"></i></span> back</p>
                   </div>
                   <div class="entrance-title-area">
-                      <!--$kindはいいねなら0、コメントなら1、投稿なら2、フォロー中なら3、マイページなら4、検索なら5、通知なら6-->
+                      <!--$kindはいいねなら0、コメントなら1、投稿なら2、フォロー中なら3、マイページなら4、検索なら5、通知なら6、投稿詳細なら7、他ユーザーページなら8-->
                       @if($kind == 0)
                         <h1>あなたもログインしてお気に入りの投稿に<span class="entrance-keyword entrance-like"><i class="fa-solid fa-heart"></i>いいね</span>しよう！</h1>
                       @elseif($kind == 1)
@@ -33,6 +33,10 @@
                         <h1>あなたもログインして投稿を<span class="entrance-keyword"><i class="fa-solid fa-magnifying-glass"></i>検索</span>しよう！</h1>
                       @elseif($kind == 6)
                         <h1>あなたもログインして<span class="entrance-keyword"><i class="fa-solid fa-magnifying-glass"></i>通知</span>を受け取ろう！</h1>
+                      @elseif($kind == 7)
+                        <h1>あなたもログインして<span class="entrance-keyword"><i class="fa-solid fa-file"></i>投稿詳細画面</span>で投稿のコメントを見てみよう！</h1>
+                      @elseif($kind == 8)
+                        <h1>あなたもログインしてお気に入りのユーザーの<span class="entrance-keyword"><i class="fa-solid fa-user"></i>マイページ</span>を見てみよう！</h1>
                       @endif
                   </div>
                 </div>

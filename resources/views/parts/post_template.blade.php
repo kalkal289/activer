@@ -33,6 +33,8 @@
         <p>
             @if(Request::routeIs('show'))
                 {{ $post->content }}
+            @elseif(Auth::guest())
+                <a href="{{ route('entrance', ['kind' => 7]) }}">{{ $post->content }}</a>
             @else
                 <a href="{{ route('show', ['post_id' => $post->id]) }}">{{ $post->content }}</a>
             @endif

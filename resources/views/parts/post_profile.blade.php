@@ -3,7 +3,7 @@
 
 <div class="{{ ($is_post) ? "post-profile" : "content-profile" }}">
     <div>
-        <a href="{{ route('mypageMain', ['user' => $post->user->id]) }}">
+        <a href="{{ Auth::guest() ? route('entrance', ['kind' => 8]) : route('mypageMain', ['user' => $post->user->id]) }}">
             @if($post->user->profile_image)
                 <img class="post-profile-img" src="{{ $post->user->profile_image }}" alt="プロフィール画像" />
             @else
@@ -13,7 +13,7 @@
     </div>
     <div class="post-user-info">
         <div class="post-user-name">
-            <a href="{{ route('mypageMain', ['user' => $post->user->id]) }}">
+            <a href="{{ Auth::guest() ? route('entrance', ['kind' => 8]) : route('mypageMain', ['user' => $post->user->id]) }}">
                 <h3>{{ $post->user->name }}</h3>
             </a>
         </div>

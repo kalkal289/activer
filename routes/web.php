@@ -10,6 +10,7 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\EntranceController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,6 +94,10 @@ Route::controller(FollowController::class)->middleware('auth')->group(function()
     Route::get('/unfollow/{user_id}', 'unfollow')->name('unfollow');
     Route::get('/followeds/{user}', 'followeds')->name('followeds');
     Route::get('/followers/{user}', 'followers')->name('followers');
+});
+
+Route::controller(UserController::class)->middleware('auth')->group(function() {
+    Route::get('/users/filter', 'filter')->name('userFilter');
 });
 
 require __DIR__.'/auth.php';

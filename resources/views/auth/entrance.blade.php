@@ -30,7 +30,7 @@
                       @elseif($kind == 4)
                         <h1>あなたもログインして自分の<span class="entrance-keyword"><i class="fa-solid fa-user"></i>マイページ</span>を作成しよう！</h1>
                       @elseif($kind == 5)
-                        <h1>あなたもログインして投稿を<span class="entrance-keyword"><i class="fa-solid fa-magnifying-glass"></i>検索</span>しよう！</h1>
+                        <h1>あなたもログインして投稿やユーザーを<span class="entrance-keyword"><i class="fa-solid fa-magnifying-glass"></i>検索</span>しよう！</h1>
                       @elseif($kind == 6)
                         <h1>あなたもログインして<span class="entrance-keyword"><i class="fa-solid fa-magnifying-glass"></i>通知</span>を受け取ろう！</h1>
                       @elseif($kind == 7)

@@ -48,6 +48,6 @@
     <div class="absolute bottom-4 left-4  p-4 rounded border border-black md:left-10">
         <h2 class="text-lg">○テストアカウント</h2>
         <p>Email: test2@example.com</p>
-        <p>Passsord: password</p>
+        <p>Password: password</p>
     </div>
 </x-guest-layout>

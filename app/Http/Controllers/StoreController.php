@@ -78,7 +78,9 @@ class StoreController extends Controller
             $spaceConversion = mb_convert_kana($keyword, 's');
             $keywordArray = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
             foreach($keywordArray as $word) {
-                $query->where('title', 'like', '%'.$word.'%')->orWhere('content', 'like', '%'.$word.'%');
+                $query->where(function($query) use($word) {
+                    $query->where('title', 'like', '%'. $word. '%')->orWhere('content', 'like', '%'. $word. '%');
+                });
             }
         }
         $stores = $query->orderBy('created_at', 'DESC')->paginate(20);

@@ -26,9 +26,7 @@
         @endif
     </div>
     <div class="post-body">
-        <p>
-            <a href="#">{{ $store->content }}</a>
-        </p>
+        <p>{!! nl2br($store->makeLink(e($store->content))) !!}</p>
     </div>
     
     @include('parts.post_images', ['post' => $store])

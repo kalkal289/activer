@@ -29,7 +29,7 @@
                                             </div>
                                         @endif
                                         <input type="hidden" name="post[user_id]" value="{{ Auth::id() }}">
-                                        <textarea id="post-content" class="create-body" rows="4" name="post[content]" placeholder="今日何してた？">{{ old('post.content') }}</textarea>
+                                        <textarea id="post-content" class="create-body" rows="4" name="content" placeholder="今日何してた？">{!! nl2br(old('content')) !!}</textarea>
                                         <div class="text-count-area">
                                             <p id="text-count-message">現在 <span id="text-count" class="text-count">0</span>文字 / 300文字</p>
                                         </div>

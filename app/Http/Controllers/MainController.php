@@ -25,6 +25,8 @@ class MainController extends Controller
     
     public function store(Main $main, MainRequest $request) {
         $input = $request['main'];
+        
+        //添付画像をアップロードしURLを取得
         if($request->file('image')) {
             $images = $request->file('image');
             for($i = 0; $i < count($images) && $i < 4; $i++) {

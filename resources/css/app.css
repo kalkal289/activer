@@ -177,7 +177,7 @@
 }
 
 .post {
-  @apply w-full p-3 mb-4 rounded-md;
+  @apply relative w-full p-3 mb-4 rounded-md;
 }
 
 .big-post-effect {
@@ -955,6 +955,10 @@
 
 
 /* ここからその他のページ */
+
+.hyper-link {
+  @apply text-[#1d9bf0] hover:underline hover:underline-offset-1;
+}
 
 .main-text-color {
   @apply text-red-300;

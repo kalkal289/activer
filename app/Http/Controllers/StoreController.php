@@ -25,6 +25,8 @@ class StoreController extends Controller
     
     public function store(Store $store, StoreRequest $request) {
         $input = $request['store'];
+        
+        //添付画像をアップロードしURLを取得
         if($request->file('image')) {
             $images = $request->file('image');
             for($i = 0; $i < count($images) && $i < 4; $i++) {

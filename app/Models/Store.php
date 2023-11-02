@@ -29,4 +29,10 @@ class Store extends Model
     public function storecategory() {
         return $this->belongsTo(Storecategory::class);
     }
+    
+    public function makeLink($text) {
+        $pattern = '/((?:https?|ftp):\/\/[-_.!~*\'()a-zA-Z0-9;\/?:@&=+$,%#]+)/';
+        $replace = '<a href="$1" class="hyper-link" target="_blank">$1</a>';
+        return preg_replace($pattern, $replace, $text);
+    }
 }

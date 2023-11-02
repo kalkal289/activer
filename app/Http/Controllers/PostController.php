@@ -23,6 +23,15 @@ class PostController extends Controller
     
     public function store(Post $post, PostRequest $request) {
         $input = $request['post'];
+        
+        //本文のURLをaタグに置換
+        $content = $request['content'];
+        $pattern = '/((?:https?|ftp):\/\/[-_.!~*\'()a-zA-Z0-9;\/?:@&=+$,%#]+)/';
+        $replace = '<a href="$1" class="hyper-link" target="_blank">$1</a>';
+        $content = preg_replace($pattern, $replace, $content);
+        $input += ['content' => $content];
+        
+        //添付画像をアップロードしURLを取得
         if($request->file('image')) {
             $images = $request->file('image');
             for($i = 0; $i < count($images) && $i < 4; $i++) {

@@ -30,15 +30,7 @@
         <small class="body-big-post">【ビッグポスト】</small>
     @endif
     <div class="post-body">
-        <p>
-            @if(Request::routeIs('show'))
-                {{ $post->content }}
-            @elseif(Auth::guest())
-                <a href="{{ route('entrance', ['kind' => 7]) }}">{{ $post->content }}</a>
-            @else
-                <a href="{{ route('show', ['post_id' => $post->id]) }}">{{ $post->content }}</a>
-            @endif
-        </p>
+        <p>{!! nl2br($post->content) !!}</p>
     </div>
     
     @include('parts.post_images', ['post' => $post])

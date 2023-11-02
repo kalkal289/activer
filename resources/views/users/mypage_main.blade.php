@@ -17,6 +17,8 @@
                             'user' => $user,
                             'kind' => $kind,
                             ])
+                            <div id="log"></div>
+                            <div id="log2"></div>
                             
                             @if($user->id == Auth::id())
                                 <div class="contents-create-btn-area">

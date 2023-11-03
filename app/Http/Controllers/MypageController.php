@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Main;
 use App\Models\Store;
 use App\Models\Post;
+use App\Models\Usertag;
+use App\Models\UserUsertag;
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary; //画像アップロード
@@ -117,6 +119,23 @@ class MypageController extends Controller
     
     function updateProfile(User $user, ProfileRequest $request) {
         $input = $request['user'];
+        
+        //ユーザータグを更新
+        $tags = $request['tags'];
+        $user->usertags()->detach();
+        for($i = 0; $i < 5; $i++) {
+            if($tags[$i] != null) {
+                if(!Usertag::where('name', $tags[$i])->exists()) {
+                    Usertag::create(['name' => $tags[$i]]);
+                }
+                $usertag = Usertag::where('name', $tags[$i])->first();
+                if(!UserUsertag::where('user_id', $user->id)->where('usertag_id', $usertag->id)->exists()) {
+                    $user->usertags()->attach($usertag->id);
+                }
+            }
+        }
+        
+        //変更されたプロフィール画像をアップロードしURLを取得
         if($request->file('image')) {
             $image = $request->file('image');
             $image_url = Cloudinary::upload($image->getRealPath())->getSecurePath();

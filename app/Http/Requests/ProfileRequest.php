@@ -15,8 +15,9 @@ class ProfileRequest extends FormRequest
     {
         return [
             'user.name' => 'required|string|max:50', //必須
-            'user.message' => 'string|max:100',
+            'user.message' => 'string|max:100|nullable',
             'image' => 'image',
+            'tags.*' => 'string|max:30|nullable',
         ];
     }
 }

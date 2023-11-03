@@ -54,6 +54,22 @@
                                             <label class="create-image-label" for="image">○プロフィール画像変更○</label>
                                             <input class="create-image" type="file" id="image" name="image" accept="image/*" />
                                         </div>
+                                        
+                                        <label class="edit-profile-label" for="image">ユーザータグ（5つまで）</label>
+                                        <div class="edit-user-tag-area">
+                                            <p id="usertag-alert" class="text-red-500"></p>
+                                            <div class="edit-user-tags">
+                                                <?php $i = 0 ?>
+                                                @foreach($user->usertags as $usertag)
+                                                    <input id="tag{{ $i }}" class="edit-user-tag" type="text" name="tags[{{ $i }}]" placeholder="ユーザータグ{{ $i + 1 }}" value="{{ old('tag['.$i. ']') ? old('tag['.$i. ']') : $usertag->name }}" onChange="usertagAlert()">
+                                                    <?php $i++ ?>
+                                                @endforeach
+                                                @for($i; $i < 5; $i++)
+                                                    <input id="tag{{ $i }}" class="edit-user-tag" type="text" name="tags[{{ $i }}]" placeholder="ユーザータグ{{ $i + 1 }}" value="{{ old('tag['.$i. ']') }}" onChange="usertagAlert()">
+                                                @endfor
+                                            </div>
+                                        </div>
+                                        
                                         <input class="edit-profile-submit" type="submit" value="更新" onclick="return profileFormCheck()" />
                                     </form>
                                 </div>

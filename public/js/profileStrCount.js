@@ -3,6 +3,7 @@
 const textCount = document.getElementById('text-count');
 const textCountMessage = document.getElementById('text-count-message');
 const contentTitle = document.getElementById('name');
+
 const titleCount = document.getElementById('title-count');
 const titleCountMessage = document.getElementById('title-count-message');
 const contentBody = document.getElementById('message');

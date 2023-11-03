@@ -86,6 +86,14 @@ function profileFormCheck()
             alert("自己紹介文は100字以内にしてください。");
             return false;
         } else {
+            for(let i = 0; i < 5; i++) {
+                let usertag = document.getElementById(`tag${i}`);
+                let usertagStr = usertag.value;
+                if(usertagStr.length > 30) {
+                    alert(`ユーザータグ${i + 1}を30字以内にしてください。`);
+                    return false;
+                }
+            }
             return true;
         }
     }

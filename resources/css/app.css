@@ -705,7 +705,15 @@
 }
 
 .edit-profile-image-area {
-  @apply p-2 mb-6 text-center rounded border-2 edit-profile-color;
+  @apply p-2 mb-4 text-center rounded border-2 edit-profile-color;
+}
+
+.edit-user-tags {
+  @apply grid grid-cols-2 gap-2 md:grid-cols-3 mb-6;
+}
+
+.edit-user-tag {
+  @apply p-1 rounded-md border-2 edit-profile-color text-sm;
 }
 
 .edit-profile-submit {

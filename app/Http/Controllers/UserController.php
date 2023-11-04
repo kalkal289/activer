@@ -29,9 +29,16 @@ class UserController extends Controller
             $spaceConversion = mb_convert_kana($keyword, 's');
             $keywordArray = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
             foreach($keywordArray as $word) {
-                $query->where(function($query) use($word) {
-                    $query->where('name', 'like', '%'. $word. '%')->orWhere('message', 'like', '%'. $word. '%');
-                });
+                if(substr($word, 0, 1) == '#') {
+                    $tag_word = substr($word, 1);
+                    $query->whereHas('usertags', function ($query) use ($tag_word) {
+                        $query->where('name', 'like', '%' .$tag_word. '%');
+                    });
+                } else {
+                    $query->where(function($query) use ($word) {
+                        $query->where('name', 'like', '%'. $word. '%')->orWhere('message', 'like', '%'. $word. '%');
+                    });
+                }
             }
         }
         

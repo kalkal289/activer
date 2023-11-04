@@ -3,10 +3,10 @@
         <div class="search-area">
             <h4 class="search-title"><i class="fa-solid fa-magnifying-glass"></i> 検索</h4>
             <select id="type_select" class="type-select" name="type" onChange="typeChange()">
-                <option value="1" {{ (Request::routeIs('index', 'postFilter')) ? "selected" : "" }}>投稿</option>
-                <option value="2" {{ (Request::routeIs('mainFilter')) ? "selected" : "" }}>メインコンテンツ</option>
-                <option value="3" {{ (Request::routeIs('storeFilter')) ? "selected" : "" }}>ストアコンテンツ</option>
-                <option value="4" {{ (Request::routeIs('userFilter')) ? "selected" : "" }}>ユーザー</option>
+                <option value="1" {{ Request::routeIs('index', 'postFilter') ? "selected" : "" }}>投稿</option>
+                <option value="2" {{ Request::routeIs('mainFilter') ? "selected" : "" }}>メインコンテンツ</option>
+                <option value="3" {{ Request::routeIs('storeFilter') ? "selected" : "" }}>ストアコンテンツ</option>
+                <option value="4" {{ Request::routeIs('userFilter') ? "selected" : "" }}>ユーザー</option>
             </select>
             <form id="search_form" action="{{ Request::routeIs('mainFilter') ? "/mains/filter" : (Request::routeIs('storeFilter') ? "/stores/filter" : (Request::routeIs('userFilter') ? "/users/filter" : "/posts/filter" )) }}" method="GET" class="search-form">
                 <input class="search-keyword" type="text" name="keyword" placeholder="キーワードを入力"  value="{{ $keyword }}" />

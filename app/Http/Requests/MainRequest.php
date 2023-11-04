@@ -15,7 +15,7 @@ class MainRequest extends FormRequest
     {
         return [
             'main.title' => 'required|string|max:30',
-            'main.content' => 'nullable|string|max:300',
+            'main.content' => 'string|max:300|nullable',
             'image.*' => 'image',
             'main.content' => 'exclude_unless:image,null|required', //imageがnullなら必須
             'image' => 'exclude_unless:main.content,null|required', //main.contentがnullなら必須

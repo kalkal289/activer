@@ -312,12 +312,16 @@
   @apply w-2/5 ml-3 first:m-0 rounded;
 }
 
+.post-btn-area {
+  @apply mt-2 flex justify-between;
+}
+
 .post-act-area {
-  @apply flex mt-2;
+  @apply flex;
 }
 
 .post-act-btn {
-  @apply inline-block rounded-full btn-duration p-1;
+  @apply inline-block rounded-md btn-duration p-1;
 }
 
 .post-comment-btn {
@@ -350,6 +354,14 @@
 
 .flow-heart-move {
   @apply z-10 -translate-y-8 scale-125 opacity-0;
+}
+
+.post-detail-btn {
+  @apply flex w-full p-1 text-center text-gray-500 items-center justify-center text-sm rounded-md cursor-pointer grow max-w-[50%] ml-2;
+}
+
+.post-detail-btn:hover {
+  @apply md:text-white md:bg-orange-100 md:text-orange-500 btn-duration;
 }
 
 .post-info {

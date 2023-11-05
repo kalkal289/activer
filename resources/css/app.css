@@ -177,7 +177,7 @@
 }
 
 .post {
-  @apply relative w-full p-3 mb-4 rounded-md;
+  @apply relative w-full p-3 mb-2 rounded-md;
 }
 
 .big-post-effect {
@@ -756,8 +756,40 @@
   @apply w-full mt-8 pb-10 border-t border-orange-400;
 }
 
-.comment-list-title {
-  @apply mx-auto text-yellow-400 text-2xl text-center font-bold;
+.show-contents-area {
+  @apply w-full;
+}
+
+.show-list-title-area {
+  @apply sticky z-50 top-16 flex justify-around h-10 border-b border-orange-500 bg-white bg-opacity-95 md:top-20;
+}
+
+.show-title {
+  @apply flex w-1/2 h-full justify-center items-center rounded-full font-bold;
+}
+
+.show-title-comment {
+  @apply text-yellow-400;
+}
+
+.show-title-comment:hover {
+  @apply md:bg-yellow-200 md:text-white btn-duration;
+}
+
+.now-show-btn-comment {
+  @apply bg-yellow-100 text-yellow-400 font-bold;
+}
+
+.show-title-like {
+  @apply text-pink-300;
+}
+
+.show-title-like:hover {
+  @apply md:bg-pink-200 md:text-white btn-duration;
+}
+
+.now-show-btn-like {
+  @apply bg-pink-100 text-pink-400 font-bold;
 }
 
 .comment {

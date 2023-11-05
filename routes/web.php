@@ -45,6 +45,7 @@ Route::controller(PostController::class)->middleware('auth')->group(function() {
     Route::get('/posts/filter', 'filter')->name('postFilter');
     Route::get('/posts/search', 'search')->name('search');
     Route::get('/posts/{post_id}', 'show')->name('show');
+    Route::get('/posts/{post_id}/likes', 'showLikes')->name('showLikes');
     Route::delete('/posts/{post}', 'delete')->name('deletePost');
 });
 

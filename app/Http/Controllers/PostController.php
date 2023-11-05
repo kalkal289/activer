@@ -51,6 +51,14 @@ class PostController extends Controller
         ]);
     }
     
+    public function showLikes($post_id) {
+        $post = Post::withCount('likes')->find($post_id);
+        return view('posts.show')->with([
+            'post' => $post,
+            'users' => $post->likes()->withPivot('created_at AS liked_at')->orderBy('liked_at', 'desc')->paginate(30),
+        ]);
+    }
+    
     public function delete(Post $post) {
         $post->delete();
         return redirect('/');

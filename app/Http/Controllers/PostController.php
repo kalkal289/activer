@@ -6,6 +6,8 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Comment;
 use App\Models\Category;
+use App\Models\Posttag;
+use App\Models\PostPosttag;
 use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,13 +26,6 @@ class PostController extends Controller
     public function store(Post $post, PostRequest $request) {
         $input = $request['post'];
         
-        //本文のURLをaタグに置換
-        $content = $request['content'];
-        $pattern = '/((?:https?|ftp):\/\/[-_.!~*\'()a-zA-Z0-9;\/?:@&=+$,%#]+)/';
-        $replace = '<a href="$1" class="hyper-link" target="_blank">$1</a>';
-        $content = preg_replace($pattern, $replace, $content);
-        $input += ['content' => $content];
-        
         //添付画像をアップロードしURLを取得
         if($request->file('image')) {
             $images = $request->file('image');
@@ -39,7 +34,19 @@ class PostController extends Controller
                 $input += ['image'.($i + 1) => $image_url];
             }
         }
+        
+        //投稿の保存
         $post->fill($input)->save();
+        
+        //ポストタグの紐づけ
+        preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u', $input['content'], $tags);
+        foreach($tags[1] as $tag) {
+            Posttag::firstOrCreate(['name' => $tag]);
+            $posttag = Posttag::where('name', $tag)->first();
+            if(!PostPosttag::where('post_id', $post->id)->where('posttag_id', $posttag->id)->exists()) {
+                $post->posttags()->attach($posttag->id);
+            }
+        }
         return redirect('/'); 
     }
     
@@ -116,7 +123,16 @@ class PostController extends Controller
             $spaceConversion = mb_convert_kana($keyword, 's');
             $keywordArray = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
             foreach($keywordArray as $word) {
-                $query->where('content', 'like', '%'.$word.'%');
+                if(substr($word, 0, 1) == '#') {
+                    $tag_word = substr($word, 1);
+                    $query->whereHas('posttags', function ($query) use ($tag_word) {
+                        $query->where('name', 'like', '%' .$tag_word. '%');
+                    });
+                } else {
+                    $query->where(function($query) use ($word) {
+                        $query->where('content', 'like', '%'.$word.'%');
+                    });
+                }
             }
         }
         $posts = $query->withCount('likes')->orderBy('created_at', 'DESC')->paginate(20);

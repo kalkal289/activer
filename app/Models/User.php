@@ -89,4 +89,16 @@ class User extends Authenticatable
             return false;
         }
     }
+    
+    public function makeLinkUsertag($usertag) {
+        //ユーザータグをリンク化
+        return '<a href="/users/filter?keyword=%23'. $usertag. '" class="hyper-link">#'. $usertag. '</a>';
+    }
+    
+    public function makeLinkText($text) {
+        //検索キーワードにユーザータグがあれば青くする
+        $pattern_tag = '/(#[a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u';
+        $replace_tag = '<span class="text-[#1d9bf0]">$1</span>';
+        return preg_replace($pattern_tag, $replace_tag, $text);
+    }
 }

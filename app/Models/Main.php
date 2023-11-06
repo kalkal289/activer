@@ -35,4 +35,9 @@ class Main extends Model
         $replace = '<a href="$1" class="hyper-link" target="_blank">$1</a>';
         return preg_replace($pattern, $replace, $text);
     }
+    
+    public function makeLinkUsertag($usertag) {
+        //ユーザータグをリンク化
+        return '<a href="/users/filter?keyword=%23'. $usertag. '" class="hyper-link">#'. $usertag. '</a>';
+    }
 }

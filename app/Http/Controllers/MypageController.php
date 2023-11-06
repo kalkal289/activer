@@ -125,9 +125,7 @@ class MypageController extends Controller
         $user->usertags()->detach();
         for($i = 0; $i < 5; $i++) {
             if($tags[$i] != null) {
-                if(!Usertag::where('name', $tags[$i])->exists()) {
-                    Usertag::create(['name' => $tags[$i]]);
-                }
+                Usertag::firstOrCreate(['name' => $tags[$i]]);
                 $usertag = Usertag::where('name', $tags[$i])->first();
                 if(!UserUsertag::where('user_id', $user->id)->where('usertag_id', $usertag->id)->exists()) {
                     $user->usertags()->attach($usertag->id);

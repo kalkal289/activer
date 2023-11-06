@@ -15,9 +15,11 @@
                             <div class="center-title-area">
                                 <h1 class="center-title"><i class="fa-solid fa-pen text-bg-orange-300"></i> ポスト 　</h1>
                                 <ul class="filter-options">
-                                    <li>{{ ($is_followed_user) ? "　フォロー中のみ　" : "" }}{{ ($is_big_post) ? "　ビッグポストのみ　" : "" }}</li>
+                                    @if($is_followed_user || $is_big_post)
+                                        <li>{{ ($is_followed_user) ? "　フォロー中のみ　" : "" }}{{ ($is_big_post) ? "　ビッグポストのみ　" : "" }}</li>
+                                    @endif
                                     @if($keyword)
-                                        <li>「 <span class="filter-keyword">{{ $keyword }}</span> 」の検索結果</li>
+                                        <li>「 <span id="search-text" class="filter-keyword">{{ $keyword }}</span> 」の検索結果</li>
                                     @endif
                                 </ul>
                             </div>

@@ -30,7 +30,7 @@
         <small class="body-big-post">【ビッグポスト】</small>
     @endif
     <div class="post-body">
-        <p>{!! nl2br($post->content) !!}</p>
+        <p>{!! nl2br($post->makeLinkPost(e($post->content))) !!}</p>
     </div>
     
     @include('parts.post_images', ['post' => $post])

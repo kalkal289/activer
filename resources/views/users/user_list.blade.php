@@ -16,7 +16,7 @@
                                 <h1 class="center-title"><i class="fa-solid fa-user-group"></i> ユーザー検索 　</h1>
                                 <ul class="filter-options">
                                     @if($keyword)
-                                        <li>「 <span class="filter-keyword">{{ $keyword }}</span> 」の検索結果</li>
+                                        <li>「 <span id="search-text" class="filter-keyword">{{ $keyword }}</span> 」の検索結果</li>
                                     @endif
                                 </ul>
                             </div>

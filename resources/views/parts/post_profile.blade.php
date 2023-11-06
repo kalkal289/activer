@@ -19,9 +19,7 @@
         </div>
         <ul class="user-tags-list">
             @foreach ($post->user->usertags as $usertag)
-                <li>
-                    <a href="#">#{{ $usertag->name }}</a>
-                </li>
+                <li>{!! $post->makeLinkUsertag(e($usertag->name)) !!}</li>
             @endforeach
         </ul>
     </div>

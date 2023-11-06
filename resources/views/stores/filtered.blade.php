@@ -15,7 +15,9 @@
                             <div class="center-title-area store-border-color">
                                 <h1 class="center-title store-text-color"><i class="fa-solid fa-store"></i> ストアコンテンツ 　</h1>
                                 <ul class="filter-options">
-                                    <li>{{ ($is_followed_user) ? "　フォロー中のみ　" : "" }}</li>
+                                    @if($is_followed_user)
+                                        <li>{{ ($is_followed_user) ? "　フォロー中のみ　" : "" }}</li>
+                                    @endif
                                     @if($keyword)
                                         <li>「 <span class="filter-keyword">{{ $keyword }}</span> 」の検索結果</li>
                                     @endif

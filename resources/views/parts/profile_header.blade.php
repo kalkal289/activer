@@ -30,9 +30,7 @@
             <div class="list-user-tags-area">
                 <ul class="user-tags-list">
                     @foreach ($user->usertags as $usertag)
-                        <li>
-                            <a href="#">#{{ $usertag->name }}</a>
-                        </li>
+                        <li>{!! $user->makeLinkUsertag(e($usertag->name)) !!}</li>
                     @endforeach
                 </ul>
             </div>

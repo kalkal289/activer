@@ -67,4 +67,21 @@ class Post extends Model
             return false;
         }
     }
+    
+    public function makeLinkPost($text) {
+        //URLをリンク化
+        $pattern_url = '/((?:https?|ftp):\/\/[-_.!~*\'()a-zA-Z0-9;\/?:@&=+$,%#]+)/';
+        $replace_url = '<a href="$1" class="hyper-link" target="_blank">$1</a>';
+        $text = preg_replace($pattern_url, $replace_url, $text);
+        
+        //ポストタグをリンク化
+        $pattern_tag = '/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u';
+        $replace_tag = '<a href="/posts/filter?keyword=%23$1" class="hyper-link">#$1</a>';
+        return preg_replace($pattern_tag, $replace_tag, $text);
+    }
+    
+    public function makeLinkUsertag($usertag) {
+        //ユーザータグをリンク化
+        return '<a href="/users/filter?keyword=%23'. $usertag. '" class="hyper-link">#'. $usertag. '</a>';
+    }
 }

@@ -15,10 +15,10 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'content' => 'string|max:300',
+            'post.content' => 'string|max:300|nullable',
             'image.*' => 'image',
-            'content' => 'exclude_unless:image,null|required', //imageがnullなら必須
-            'image' => 'exclude_unless:content,null|required', //post.contentがnullなら必須
+            'post.content' => 'exclude_unless:image,null|required', //imageがnullなら必須
+            'image' => 'exclude_unless:post.content,null|required', //post.contentがnullなら必須
         ];
     }
 }

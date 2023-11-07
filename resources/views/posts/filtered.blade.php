@@ -13,13 +13,13 @@
                     <main>
                         <div class="center-area">
                             <div class="center-title-area">
-                                <h1 class="center-title"><i class="fa-solid fa-pen text-bg-orange-300"></i> ポスト 　</h1>
+                                <h1 class="center-title"><i class="fa-solid fa-pen text-bg-orange-300"></i> 投稿 　</h1>
                                 <ul class="filter-options">
                                     @if($is_followed_user || $is_big_post)
                                         <li>{{ ($is_followed_user) ? "　フォロー中のみ　" : "" }}{{ ($is_big_post) ? "　ビッグポストのみ　" : "" }}</li>
                                     @endif
                                     @if($keyword)
-                                        <li>「 <span id="search-text" class="filter-keyword">{{ $keyword }}</span> 」の検索結果</li>
+                                        <li>「 <span id="search-text" class="filter-keyword">{!! $new_keyword !!}</span> 」の検索結果</li>
                                     @endif
                                 </ul>
                             </div>

@@ -13,7 +13,7 @@
                     <main>
                         <div class="center-area">
                             <div class="center-title-area store-border-color">
-                                <h1 class="center-title store-text-color"><i class="fa-solid fa-store"></i> ストアコンテンツ 　</h1>
+                                <h1 class="center-title store-text-color"><i class="fa-solid fa-store"></i> ストアコンテンツ検索 　</h1>
                                 <ul class="filter-options">
                                     @if($is_followed_user)
                                         <li>{{ ($is_followed_user) ? "　フォロー中のみ　" : "" }}</li>

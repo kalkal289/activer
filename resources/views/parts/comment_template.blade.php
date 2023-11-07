@@ -26,9 +26,7 @@
         @endif
     </div>
     <div class="post-body">
-        <p>
-            <a href="#">{{ $comment->content }}</a>
-        </p>
+        <p>{!! $comment->makeLink(e($comment->content)) !!}</p>
     </div>
     
     @include('parts.post_images', ['post' => $comment])

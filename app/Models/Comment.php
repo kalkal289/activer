@@ -28,4 +28,16 @@ class Comment extends Model
     public function post() {
         return $this->belongsTo(Post::class);
     }
+    
+    public function makeLink($text) {
+        //URLをリンク化
+        $pattern = '/((?:https?|ftp):\/\/[-_.!~*\'()a-zA-Z0-9;\/?:@&=+$,%#]+)/';
+        $replace = '<a href="$1" class="hyper-link" target="_blank">$1</a>';
+        return preg_replace($pattern, $replace, $text);
+    }
+    
+    public function makeLinkUsertag($usertag) {
+        //ユーザータグをリンク化
+        return '<a href="/users/filter?keyword=%23'. $usertag. '" class="hyper-link">#'. $usertag. '</a>';
+    }
 }

@@ -2,13 +2,21 @@
 
 @if($post->image1)
     <div class="post-images">
-    <img class="{{ ($post->image3) ? "post-image-many" : (($post->image2) ? "post-image-two" : "post-image-one") }}" src="{{ $post->image1 }}" alt="画像が読み込めません。"/>
+        <a href="{{ $post->image1 }}" data-lightbox="post-image{{ $post->id }}" class="{{ $post->image3 ? "post-image-many" : ($post->image2 ? "post-image-two" : "post-image-one") }}">
+            <img class="post-image" src="{{ $post->image1 }}" alt="画像が読み込めません。" onClick="imageScaleUp({{ $post->image1 }})"/>
+        </a>
         @if($post->image2)
-            <img class="{{ ($post->image3) ? "post-image-many" : "post-image-two" }}" src="{{ $post->image2 }}" alt="画像が読み込めません。"/>
+            <a href="{{ $post->image2 }}" data-lightbox="post-image{{ $post->id }}" class="{{ $post->image3 ? "post-image-many" : "post-image-two" }}">
+                <img class="post-image" src="{{ $post->image2 }}" alt="画像が読み込めません。"/>
+            </a>
             @if($post->image3)
-                <img class="post-image-many" src="{{ $post->image3 }}" alt="画像が読み込めません。"/>
+                <a href="{{ $post->image3 }}" data-lightbox="post-image{{ $post->id }}" class="post-image-many">
+                    <img class="post-image" src="{{ $post->image3 }}" alt="画像が読み込めません。"/>
+                </a>
                 @if($post->image4)
-                    <img class="post-image-many" src="{{ $post->image4 }}" alt="画像が読み込めません。"/>
+                    <a href="{{ $post->image4 }}" data-lightbox="post-image{{ $post->id }}" class="post-image-many">
+                        <img class="post-image" src="{{ $post->image4 }}" alt="画像が読み込めません。"/>
+                    </a>
                 @endif
             @endif
         @endif

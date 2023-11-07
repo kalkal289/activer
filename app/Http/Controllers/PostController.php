@@ -136,11 +136,18 @@ class PostController extends Controller
             }
         }
         $posts = $query->withCount('likes')->orderBy('created_at', 'DESC')->paginate(20);
+        
+        //キーワード内のタグを青色にする
+        $pattern_tag = '/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u';
+        $replace_tag = '<span class="text-link">#$1</span>';
+        $newKeyword = preg_replace($pattern_tag, $replace_tag, $keyword);
+        
         return view('posts.filtered')->with([
             'is_followed_user' => $is_followed_user,
             'is_big_post' => $is_big_post,
             'keyword' => $keyword,    
             'posts' => $posts,
+            'new_keyword' => $newKeyword,
         ]);
     }
 }

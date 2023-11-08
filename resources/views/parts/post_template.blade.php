@@ -62,7 +62,7 @@
         @endif
     </div>
     <div class="post-info">
-        <small class="post-category">カテゴリー: {{ $post->category->name }}</small>
+        <small class="post-category">カテゴリー: {{ $post->category ? $post->category->name : "カテゴリーなし" }}</small>
         <small>投稿日: {{ $post->created_at }}</small>
     </div>
 </article>

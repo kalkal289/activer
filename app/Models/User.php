@@ -77,6 +77,10 @@ class User extends Authenticatable
         return $this->hasMany(Store::class);
     }
     
+    public function categories() {
+        return $this->hasMany(Category::class);
+    }
+    
     //利用中のユーザーが指定のユーザーをフォローしているかの判定
     public function is_followed_by_auth_user() {
         $followers = array();

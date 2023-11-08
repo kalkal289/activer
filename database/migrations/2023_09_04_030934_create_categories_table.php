@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->cascadeOnDelete()->constrained();
             $table->string('name', 30)->comment('カテゴリー名');
             $table->timestamps();
         });

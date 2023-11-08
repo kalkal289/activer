@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->cascadeOnDelete()->constrained();
-            $table->foreignId('category_id')->nullOnDelete()->constrained()->comment('カテゴリーID'); //ID「0」は「カテゴリーなし」
+            $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete()->comment('カテゴリーID'); //「null」は「カテゴリーなし」
             $table->string('content', 300)->nullable()->comment('本文');
             $table->string('image1')->nullable()->comment('添付画像1');
             $table->string('image2')->nullable()->comment('添付画像2');

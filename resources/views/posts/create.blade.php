@@ -37,7 +37,11 @@
                                             @foreach ($categories as $category)
                                                 <option value={{ $category->id }}>{{ $category->name }}</option>
                                             @endforeach
+                                            <option value="">カテゴリーなし</option>
                                         </select>
+                                        <div class="category-setting-btn-area">
+                                            <a href="{{ route('editCategory') }}" class="category-setting-btn">マイカテゴリー設定</a>
+                                        </div>
                                         <div class="big-post-check">
                                             <input id="create-bigpost-check" class="create-bigpost-check" type="checkbox" name="post[is_big_post]" value=1>
                                             <label for="create-bigpost-check">ビッグポスト</label>

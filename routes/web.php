@@ -11,6 +11,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\EntranceController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,6 +100,13 @@ Route::controller(FollowController::class)->middleware('auth')->group(function()
 
 Route::controller(UserController::class)->middleware('auth')->group(function() {
     Route::get('/users/filter', 'filter')->name('userFilter');
+});
+
+Route::controller(CategoryController::class)->middleware('auth')->group(function() {
+    Route::get('/categories', 'edit')->name('editCategory');
+    Route::post('/categories', 'store')->name('storeCategory');
+    Route::put('/categories/{category}', 'update')->name('updateCategory');
+    Route::delete('/categories/{category}', 'delete')->name('deleteCategory');
 });
 
 require __DIR__.'/auth.php';

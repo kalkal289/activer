@@ -33,7 +33,7 @@
     
     <div class="content-footer">
         <div class="content-info">
-          <small class="post-category">カテゴリー: {{ $main->category->name }}</small>
+          <small class="post-category">カテゴリー: {{ $main->category ? $main->category->name : "カテゴリーなし" }}</small>
           <small>更新日: {{ $main->updated_at }}</small>
         </div>
         

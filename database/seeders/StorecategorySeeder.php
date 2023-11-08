@@ -20,31 +20,43 @@ class StorecategorySeeder extends Seeder
         ]);
         
         DB::table('storecategories')->insert([
-            'name' => 'イラスト作成',
+            'name' => 'イラスト',
         ]);
         
         DB::table('storecategories')->insert([
-            'name' => '動画作成',
+            'name' => '動画',
         ]);
         
         DB::table('storecategories')->insert([
-            'name' => 'ライブ2D作成',
+            'name' => 'ライブ2D',
         ]);
         
         DB::table('storecategories')->insert([
-            'name' => '3Dモデル作成',
+            'name' => '3Dモデル',
         ]);
         
         DB::table('storecategories')->insert([
-            'name' => 'オリジナルグッズ',
+            'name' => 'ライティング',
         ]);
         
         DB::table('storecategories')->insert([
-            'name' => '書籍販売',
+            'name' => 'Webデザイン',
         ]);
         
         DB::table('storecategories')->insert([
-            'name' => 'その他物品販売',
+            'name' => 'プログラミング',
+        ]);
+        
+        DB::table('storecategories')->insert([
+            'name' => 'グッズ',
+        ]);
+        
+        DB::table('storecategories')->insert([
+            'name' => '書籍',
+        ]);
+        
+        DB::table('storecategories')->insert([
+            'name' => 'その他物品',
         ]);
         
         DB::table('storecategories')->insert([
@@ -52,7 +64,11 @@ class StorecategorySeeder extends Seeder
         ]);
         
         DB::table('storecategories')->insert([
-            'name' => '定額サービス',
+            'name' => 'サブスクリプション',
+        ]);
+        
+        DB::table('storecategories')->insert([
+            'name' => '講座・教材',
         ]);
         
         DB::table('storecategories')->insert([

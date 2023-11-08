@@ -41,7 +41,11 @@
                                             @foreach ($categories as $category)
                                                 <option value={{ $category->id }}>{{ $category->name }}</option>
                                             @endforeach
+                                            <option value="">カテゴリーなし</option>
                                         </select>
+                                        <div class="category-setting-btn-area">
+                                            <a href="{{ route('editCategory') }}" class="category-setting-btn">マイカテゴリー設定</a>
+                                        </div>
                                         <div class="create-main-image-area">
                                             <label class="create-image-label" for="image">○画像を4枚まで添付することができます○</label>
                                             <input class="create-image" type="file" id="image" name="image[]" accept="image/*" multiple onChange="imagesTooMany()" />

@@ -20,7 +20,8 @@
                             
                             @if($user->id == Auth::id())
                                 <div class="contents-create-btn-area">
-                                    <a class="post-create-btn" href="{{ route('create') }}"><i class="fa-solid fa-pen text-orange-300"></i> 投稿する</a>
+                                    <a class="post-create-btn" href="{{ route('create') }}"><i class="fa-solid fa-pen contents-create-icon-post contents-create-icon"></i> 投稿する</a>
+                                    <a class="edit-category-btn" href="{{ route('editCategory') }}">マイカテゴリー設定</a>
                                 </div>
                             @endif
                             <div class="center-container">

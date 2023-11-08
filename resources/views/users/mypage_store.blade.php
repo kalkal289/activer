@@ -20,7 +20,7 @@
                             
                             @if($user->id == Auth::id())
                                 <div class="contents-create-btn-area">
-                                    <a class="store-create-btn" href="{{ route('createStore') }}"><i class="fa-solid fa-store text-blue-300"></i> ストアコンテンツを作成する</a>
+                                    <a class="store-create-btn" href="{{ route('createStore') }}"><i class="fa-solid fa-store contents-create-icon-store contents-create-icon"></i> ストアコンテンツを作成する</a>
                                 </div>
                             @endif
                             <div class="center-container">

@@ -22,7 +22,8 @@
                             
                             @if($user->id == Auth::id())
                                 <div class="contents-create-btn-area">
-                                    <a class="main-create-btn" href="{{ route('createMain') }}"><i class="fa-solid fa-star text-red-300"></i> メインコンテンツを作成する</a>
+                                    <a class="main-create-btn" href="{{ route('createMain') }}"><i class="fa-solid fa-star contents-create-icon-main contents-create-icon"></i> メインコンテンツを作成する</a>
+                                    <a class="edit-category-btn" href="{{ route('editCategory') }}">マイカテゴリー設定</a>
                                 </div>
                             @endif
                             <div class="center-container">

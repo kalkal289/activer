@@ -13,13 +13,13 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary; //画像アップロー
 class MainController extends Controller
 {
     public function create(Category $category) {
-        return view('mains.create')->with(['categories' => $category->get()]);
+        return view('mains.create')->with(['categories' => $category->where('user_id', Auth::id())->get()]);
     }
     
     public function edit(Main $main, Category $category) {
         return view('mains.edit')->with([
             'main' => $main,
-            'categories' => $category->get(),
+            'categories' => $category->where('user_id', Auth::id())->get(),
         ]);
     }
     
@@ -40,6 +40,8 @@ class MainController extends Controller
     
     public function update(Main $main, MainRequest $request) {
         $input = $request['main'];
+        
+        //添付画像をアップロードしURLを取得
         if($request->file('image')) {
             $images = $request->file('image');
             for($i = 0; $i < count($images); $i++) {

@@ -18,26 +18,27 @@
                             'kind' => $kind,
                             ])
                             
-                            @if($user->id == Auth::id())
-                                <div class="contents-create-btn-area">
+                            
+                            <div class="contents-create-btn-area">
+                                @if($user->id == Auth::id())
                                     <a class="post-create-btn" href="{{ route('create') }}"><i class="fa-solid fa-pen contents-create-icon-post contents-create-icon"></i> 投稿する</a>
-                                    <form action="{{ route('mypageCategoryFilter', ['user' => $user->id]) }}" class="category-filter-form">
-                                        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                                        <input type="hidden" name="kind" value="{{ $kind }}">
-                                        <select class="category-filter-select" name="category_id">
-                                            <option value="">【マイカテゴリー】</option>
-                                            @foreach($categories as $category)
-                                                <option value="{{ $category->id }}" {{ $category->id == $category_id ? "selected" : "" }}>{{ $category->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        <input class="category-filter-submit" type="submit" value="絞り込み">
-                                    </form>
-                                </div>
-                            @endif
+                                @endif
+                                <form action="{{ route('mypageCategoryFilter', ['user' => $user->id]) }}" class="category-filter-form">
+                                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                                    <input type="hidden" name="kind" value="{{ $kind }}">
+                                    <select class="category-filter-select" name="category_id">
+                                        <option value="">【マイカテゴリー】</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}" {{ $category->id == $category_id ? "selected" : "" }}>{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <input class="category-filter-submit" type="submit" value="絞り込む">
+                                </form>
+                            </div>
                             <div class="center-container">
                                 <div class="center-mypage-contents-area">
                                     @if(count($posts) == 0)
-                                        <p class="post-nothing">まだ{{ ($kind == 2) ? "ビッグ" : "" }}ポストを投稿をしていません。</p>
+                                        <p class="post-nothing">{{ ($kind == 1) ? "投稿" : "ビッグポスト" }}がありません。</p>
                                     @endif
                                     @foreach ($posts as $post)
                                     

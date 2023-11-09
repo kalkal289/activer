@@ -37,3 +37,14 @@ contentBody.addEventListener('keyup', () => {
         textCountMessage.style.color = "black";
     }
 });
+
+//マイカテゴリー設定へ飛ぶ際の確認
+function jumpConfirm() {
+    if(contentTitle.value == "" && contentBody.value == "") {
+        window.location.href = "/categories";
+    } else {
+        if(confirm('入力した内容は失われます。本当によろしいですか？')) {
+            window.location.href = "/categories";
+        }
+    }
+}

@@ -20,7 +20,7 @@ class PostController extends Controller
     }
     
     public function create(Category $category) {
-        return view('posts.create')->with(['categories' => $category->where('user_id', Auth::id())->get()]);
+        return view('posts.create')->with(['categories' => $category->where('user_id', Auth::id())->orderBy('created_at', 'DESC')->get()]);
     }
     
     public function store(Post $post, PostRequest $request) {

@@ -13,7 +13,7 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary; //画像アップロー
 class MainController extends Controller
 {
     public function create(Category $category) {
-        return view('mains.create')->with(['categories' => $category->where('user_id', Auth::id())->get()]);
+        return view('mains.create')->with(['categories' => $category->where('user_id', Auth::id())->orderBy('created_at', 'DESC')->get()]);
     }
     
     public function edit(Main $main, Category $category) {

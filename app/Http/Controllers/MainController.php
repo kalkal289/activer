@@ -59,7 +59,7 @@ class MainController extends Controller
     
     public function delete(Main $main) {
         $main->delete();
-        return redirect('/mypages/'. Auth::id());
+        return redirect()->back();
     }
     
     //メインコンテンツを検索する関数

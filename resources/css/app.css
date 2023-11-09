@@ -577,7 +577,7 @@
 }
 
 .category-filter-form {
-  @apply flex justify-between items-center rounded border border-orange-300;
+  @apply flex justify-between items-center rounded border border-orange-300 ml-auto;
 }
 
 .category-filter-select {

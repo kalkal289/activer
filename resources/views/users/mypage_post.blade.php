@@ -21,7 +21,17 @@
                             @if($user->id == Auth::id())
                                 <div class="contents-create-btn-area">
                                     <a class="post-create-btn" href="{{ route('create') }}"><i class="fa-solid fa-pen contents-create-icon-post contents-create-icon"></i> 投稿する</a>
-                                    <a class="edit-category-btn" href="{{ route('editCategory') }}">マイカテゴリー設定</a>
+                                    <form action="{{ route('mypageCategoryFilter', ['user' => $user->id]) }}" class="category-filter-form">
+                                        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                                        <input type="hidden" name="kind" value="{{ $kind }}">
+                                        <select class="category-filter-select" name="category_id">
+                                            <option value="">マイカテゴリー</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{ $category->id }}" {{ $category->id == $category_id ? "selected" : "" }}>{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <input class="category-filter-submit" type="submit" value="絞り込み">
+                                    </form>
                                 </div>
                             @endif
                             <div class="center-container">

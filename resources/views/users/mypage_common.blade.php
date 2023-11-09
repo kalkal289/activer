@@ -8,7 +8,7 @@
     
         <div class="profile-body">
             <p>
-                <a href="{{ route('mypageMain', ['user' => $user->id]) }}">{{ $user->message }}</a>
+                <a href="{{ route('mypageMain', ['user' => $user->id]) }}">{!! nl2br($user->message) !!}</a>
             </p>
         </div>
         <div class="mypage-profile-bottom">

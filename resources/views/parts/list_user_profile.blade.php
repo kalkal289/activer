@@ -9,7 +9,7 @@
     
     <div class="post-body">
         <p>
-            <a href="{{ route('mypageMain', ['user' => $user->id]) }}">{{ $user->message }}</a>
+            <a href="{{ route('mypageMain', ['user' => $user->id]) }}">{!! nl2br($user->message) !!}</a>
         </p>
     </div>
 </article>

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Main;
 use App\Models\Store;
 use App\Models\Post;
+use App\Models\Category;
 use App\Models\Usertag;
 use App\Models\UserUsertag;
 use App\Http\Requests\ProfileRequest;
@@ -29,6 +30,8 @@ class MypageController extends Controller
             'posts' => Post::where('user_id', $user->id)->withCount('likes')->orderBy('created_at', 'DESC')->paginate(20),
             'kind' => 1,
             'keyword' => '',
+            'categories' => Category::where('user_id', $user->id)->get(),
+            'category_id' => "",
         ]);
     }
     
@@ -38,6 +41,34 @@ class MypageController extends Controller
             'posts' => Post::where('user_id', $user->id)->withCount('likes')->where('is_big_post', 1)->orderBy('created_at', 'DESC')->paginate(20),
             'kind' => 2,
             'keyword' => '',
+            'categories' => Category::where('user_id', $user->id)->get(),
+            'category_id' => "",
+        ]);
+    }
+    
+    function mypageCategoryFilter(User $user, Request $request) {
+        $kind = $request['kind'];
+        $category_id = $request['category_id'];
+        
+        //投稿絞り込み
+        $query = Post::query();
+        if($category_id) {
+            $query->where('category_id', $category_id);
+        } else {
+            $query->where('user_id', $user->id);
+        }
+        if($kind == 2) {
+            $query->where('is_big_post', 1);
+        }
+        $posts = $query->withCount('likes')->orderBy('created_at', 'DESC')->paginate(20);
+        
+        return view('users.mypage_post')->with([
+            'user' => $user,
+            'posts' => $posts,
+            'kind' => $kind,
+            'keyword' => '',
+            'categories' => Category::where('user_id', $user->id)->get(),
+            'category_id' => $category_id,
         ]);
     }
     

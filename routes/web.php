@@ -59,6 +59,7 @@ Route::controller(MypageController::class)->middleware('auth')->group(function()
     Route::get('/mypages/{user}', 'mypageMain')->name('mypageMain');
     Route::get('/mypages/posts/{user}', 'mypagePost')->name('mypagePost');
     Route::get('/mypages/big/{user}', 'mypageBigPost')->name('mypageBigPost');
+    Route::get('/mypages/categories/{user}', 'mypageCategoryFilter')->name('mypageCategoryFilter');
     Route::get('/mypages/store/{user}', 'mypageStore')->name('mypageStore');
     Route::get('/mypages/posts/{user}/filter', 'filterPost')->name('mypageFilterPost');
     Route::get('/mypages/big/{user}/filter', 'filterBigPost')->name('mypageFilterBigPost');

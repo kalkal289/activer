@@ -64,11 +64,11 @@
                                                 <form action="{{ route('updateCategory', ['category' => $category->id]) }}" id="category-edit{{ $category->id }}" class="hidden" method="post">
                                                     @csrf
                                                     @method('PUT')
-                                                    <div class="category-create-area post-shadow-color">
+                                                    <div class="category-create-area store-shadow-color">
                                                         <input type="hidden" name="category[user_id]" value="{{ Auth::id() }}">
                                                         <input id="category-name{{ $category->id }}" class="category-create-name" type="text" name="category[name]" placeholder="カテゴリー名を入力" value="{{ old('category.name') ? old('category.name') : $category->name }}" onKeyUp="categoryStrCount({{ $category->id }})">
                                                         <div class="flex">
-                                                            <input class="category-create-submit" type="submit" value="更新" onclick="return editFormCheck({{ $category->id }})">
+                                                            <input class="category-update-submit" type="submit" value="更新" onclick="return editFormCheck({{ $category->id }})">
                                                             <div class="category-edit-close-btn" onClick="categoryEditToggle({{ $category->id }})"><i class="fa-solid fa-xmark"></i></div>
                                                         </div>
                                                     </div>

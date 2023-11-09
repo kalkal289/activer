@@ -57,7 +57,7 @@ class StoreController extends Controller
     
     public function delete(Store $store) {
         $store->delete();
-        return redirect('/mypages/store/'. Auth::id());
+        return redirect()->back();
     }
     
     //ストアを検索する関数

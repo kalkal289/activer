@@ -44,7 +44,7 @@
                                             <option value="">カテゴリーなし</option>
                                         </select>
                                         <div class="category-setting-btn-area">
-                                            <a href="{{ route('editCategory') }}" class="category-setting-btn">マイカテゴリー設定</a>
+                                            <span class="category-setting-btn" onClick="jumpConfirm()">マイカテゴリー設定</span>
                                         </div>
                                         <div class="create-main-image-area">
                                             <label class="create-image-label" for="image">○画像を4枚まで添付することができます○</label>

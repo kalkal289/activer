@@ -1121,7 +1121,7 @@
 }
 
 .category-setting-btn {
-  @apply px-1 py-px mt-1 border border-orange-300 rounded text-[0.75rem] active:bg-orange-400;
+  @apply px-1 py-px mt-1 border border-orange-300 rounded text-[0.75rem] cursor-pointer active:bg-orange-400;
 }
 
 .category-setting-btn:hover {

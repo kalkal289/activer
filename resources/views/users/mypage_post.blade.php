@@ -25,7 +25,7 @@
                                         <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                                         <input type="hidden" name="kind" value="{{ $kind }}">
                                         <select class="category-filter-select" name="category_id">
-                                            <option value="">マイカテゴリー</option>
+                                            <option value="">【マイカテゴリー】</option>
                                             @foreach($categories as $category)
                                                 <option value="{{ $category->id }}" {{ $category->id == $category_id ? "selected" : "" }}>{{ $category->name }}</option>
                                             @endforeach

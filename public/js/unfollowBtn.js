@@ -1,9 +1,13 @@
 function onUnfollowBtn(id) {
     const unfollowBtn = document.getElementById(`unfollow_btn${id}`);
-    unfollowBtn.innerHTML = "フォロー解除";
+    if(unfollowBtn.classList.contains('unfollow-btn')) {
+        unfollowBtn.innerHTML = "フォロー解除";
+    }
 }
 
 function outUnfollowBtn(id) {
     const unfollowBtn = document.getElementById(`unfollow_btn${id}`);
-    unfollowBtn.innerHTML = "フォロー中";
+    if(unfollowBtn.classList.contains('unfollow-btn')) {
+        unfollowBtn.innerHTML = "フォロー中";
+    }
 }

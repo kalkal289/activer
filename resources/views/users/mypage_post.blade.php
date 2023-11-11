@@ -58,6 +58,7 @@
             <script src="{{ asset('js/unfollowBtn.js') }}"></script>
             <script src="{{ asset('js/postMenuAppear.js') }}"></script>
             <script src="{{ asset('js/like.js') }}" type="module"></script>
+            <script src="{{ asset('js/follow.js') }}" type="module"></script>
         
         </body>
     </x-app-layout>

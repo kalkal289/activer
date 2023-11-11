@@ -100,7 +100,7 @@
       
       <script src="{{ asset('js/formCheck.js') }}"></script>
       <script src="{{ asset('js/deleteConfirm.js') }}"></script>
-      <script src="{{ asset('js/commentStrCount.js') }}"></script>
+      <script src="{{ asset('js/strCount/comment.js') }}"></script>
       <script src="{{ asset('js/textareaHeight.js') }}"></script>
       <script src="{{ asset('js/commentCreateAppear.js') }}"></script>
       <script src="{{ asset('js/postMenuAppear.js') }}"></script>

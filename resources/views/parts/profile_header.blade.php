@@ -39,9 +39,9 @@
     @if($user->id != Auth::id())
         <div class="follow-btn-area">
             @if($user->is_followed_by_auth_user())
-                <a href="/unfollow/{{ $user->id }}" id="unfollow_btn{{ $user->id }}" class="unfollow-btn" onmouseover="onUnfollowBtn({{ $user->id }})" onmouseout="outUnfollowBtn({{ $user->id }})">フォロー中</a>
+                <span id="unfollow_btn{{ $user->id }}" class="follow-button unfollow-btn" data-user-id="{{ $user->id }}" onmouseover="onUnfollowBtn({{ $user->id }})" onmouseout="outUnfollowBtn({{ $user->id }})">フォロー中</span>
             @else
-                <a href="/follow/{{ $user->id }}" class="follow-btn">フォロー</a>
+                <span id="unfollow_btn{{ $user->id }}" class="follow-button follow-btn" data-user-id="{{ $user->id }}" onmouseover="onUnfollowBtn({{ $user->id }})" onmouseout="outUnfollowBtn({{ $user->id }})">フォロー</span>
             @endif
         </div>
     @else

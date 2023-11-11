@@ -18,9 +18,10 @@
         @method('patch')
 
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+            <x-input-label for="account-name" :value="__('Account Name')" />
+            <x-text-input id="account-name" name="account_name" type="text" class="mt-1 block w-full" :value="old('account_name', $user->account_name)" required autofocus autocomplete="account_name" />
+            <x-input-error class="mt-2" :messages="$errors->get('account_name')" />
+            <p id="account-name-count-message" class="text-right text-gray-500 text-sm">現在 <span id="account-name-count" class="text-count">0</span>文字 / <span id="account-name-limit">50</span>文字</p>
         </div>
 
         <div>
@@ -62,3 +63,5 @@
         </div>
     </form>
 </section>
+
+<script src="{{ asset('js/strCount/profileUpdate.js') }}"></script>

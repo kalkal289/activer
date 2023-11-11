@@ -81,7 +81,7 @@
             </div>
             
             <script src="{{ asset('js/formCheck.js') }}"></script>
-            <script src="{{ asset('js/profileStrCount.js') }}"></script>
+            <script src="{{ asset('js/strCount/profile.js') }}"></script>
             <script src="{{ asset('js/textareaHeight.js') }}"></script>
             
         </body>

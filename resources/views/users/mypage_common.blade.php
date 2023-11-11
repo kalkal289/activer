@@ -14,10 +14,10 @@
         <div class="mypage-profile-bottom">
             <div class="user-follow-info-area">
                 <p class="user-follow-info">
-                    <a href="/followeds/{{ $user->id }}">フォロー中 <span class="follow-count">{{ $user->followeds()->count() }}</span></a>
+                    <a href="/followeds/{{ $user->id }}">フォロー中 <span id="followeds_count" class="follow-count">{{ $user->followeds()->count() }}</span></a>
                 </p>
                 <p class="user-follow-info">
-                    <a href="/followers/{{ $user->id }}">フォロワー <span class="follow-count">{{ $user->followers()->count() }}</span></a>
+                    <a href="/followers/{{ $user->id }}">フォロワー <span id="followers_count" class="follow-count">{{ $user->followers()->count() }}</span></a>
                 </p>
             </div>
             <div>

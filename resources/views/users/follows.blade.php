@@ -21,12 +21,12 @@
                                         'kind' => 1,
                                     ])
                                     
-                                    <div class="user-follow-info-area">
+                                    <div id="main-user-id" data-main-id="{{ $main_user->id }}" class="user-follow-info-area">
                                         <p class="user-follow-info">
-                                            <a href="/followeds/{{ $main_user->id }}">フォロー中 <span class="follow-count">{{ $main_user->followeds()->count() }}</span></a>
+                                            <a href="/followeds/{{ $main_user->id }}">フォロー中 <span id="followeds_count" class="follow-count">{{ $main_user->followeds()->count() }}</span></a>
                                         </p>
                                         <p class="user-follow-info">
-                                            <a href="/followers/{{ $main_user->id }}">フォロワー <span class="follow-count">{{ $main_user->followers()->count() }}</span></a>
+                                            <a href="/followers/{{ $main_user->id }}">フォロワー <span id="followers_count" class="follow-count">{{ $main_user->followers()->count() }}</span></a>
                                         </p>
                                     </div>
                                 </div>
@@ -55,6 +55,7 @@
             </div>
             
             <script src="{{ asset('js/unfollowBtn.js') }}"></script>
+            <script src="{{ asset('js/followList.js') }}" type="module"></script>
             
         </body>
     </x-app-layout>

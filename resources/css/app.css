@@ -1180,6 +1180,10 @@
   @apply inline-block max-w-[calc(100%_-_8rem)] truncate text-black;
 }
 
+.page-back-btn {
+  @apply absolute z-[100] top-2 left-2 flex justify-center items-center w-10 h-10 rounded-full text-orange-300 hover:bg-orange-100/50 btn-duration;
+}
+
 
 
 /* ここから検索サイドバー */

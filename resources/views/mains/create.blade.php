@@ -12,6 +12,7 @@
                 <div class="all-container">
                     <main>
                         <div class="center-area">
+                            <span class="page-back-btn" onClick="history.back()"><i class="fa-solid fa-arrow-left"></i></span>
                             <div class="center-title-area main-border-color">
                                 <h1 class="center-title main-text-color"><i class="fa-solid fa-star"></i> メインコンテンツ作成 　</h1>
                             </div>

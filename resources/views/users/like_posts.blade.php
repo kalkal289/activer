@@ -12,6 +12,7 @@
                 <div class="all-container">
                     <main>
                         <div class="center-area">
+                            <span class="page-back-btn" onClick="history.back()"><i class="fa-solid fa-arrow-left"></i></span>
                             <div class="center-title-area like-posts-title">
                                 <a href="{{ route('mypageMain', ['user' => $user->id]) }}">
                                     @if($user->profile_image)

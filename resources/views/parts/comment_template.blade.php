@@ -26,7 +26,7 @@
         @endif
     </div>
     <div class="post-body">
-        <p>{!! $comment->makeLink(e($comment->content)) !!}</p>
+        <p>{!! nl2br($comment->makeLink(e($comment->content))) !!}</p>
     </div>
     
     @include('parts.post_images', ['post' => $comment])

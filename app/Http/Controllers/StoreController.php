@@ -40,11 +40,17 @@ class StoreController extends Controller
     
     public function update(Store $store, StoreRequest $request) {
         $input = $request['store'];
+        
+        //添付画像をアップロードしURLを取得
         if($request->file('image')) {
             $images = $request->file('image');
-            for($i = 0; $i < count($images); $i++) {
+            $i = 0;
+            for($i; $i < count($images); $i++) {
                 $image_url = Cloudinary::upload($images[$i]->getRealPath())->getSecurePath();
                 $input += ['image'.($i + 1) => $image_url];
+            }
+            for($i; $i < 4; $i++) {
+                $input += ['image'.($i + 1) => ''];
             }
         }
         $store->fill($input)->save();

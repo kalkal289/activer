@@ -58,6 +58,9 @@ function createFormCheck() {
     if(str.length > 30) {
         alert('マイカテゴリー名は30文字以内にしてください。');
         return false
+    } else if(str == "") {
+        alert('マイカテゴリー名をしてください。');
+        return false
     } else {
         return true;
     }
@@ -69,6 +72,9 @@ function editFormCheck(id) {
     let str = categoryName.value;
     if(str.length > 30) {
         alert('マイカテゴリー名は30文字以内にしてください。');
+        return false
+    } else if(str == "") {
+        alert('マイカテゴリー名をしてください。');
         return false
     } else {
         return true;

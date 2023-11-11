@@ -62,4 +62,4 @@
     </form>
 </x-guest-layout>
 
-<script src="{{ asset('js/registerStrCount.js') }}"></script>
+<script src="{{ asset('js/strCount/register.js') }}"></script>

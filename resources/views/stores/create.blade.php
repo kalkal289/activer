@@ -57,7 +57,7 @@
             </div>
             
             <script src="{{ asset('js/formCheck.js') }}"></script>
-            <script src="{{ asset('js/contentsStrCount.js') }}"></script>
+            <script src="{{ asset('js/strCount/contents.js') }}"></script>
             <script src="{{ asset('js/textareaHeight.js') }}"></script>
             
         </body>

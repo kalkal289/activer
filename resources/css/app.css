@@ -412,12 +412,16 @@
   @apply flex justify-center items-center w-24 ml-2;
 }
 
+.follow-button {
+  @apply cursor-pointer;
+}
+
 .follow-btn {
   @apply block w-full p-2 text-center shadow-[0_0_1px_1.5px_rgb(0,0,0,0)] shadow-orange-300 rounded-full active:bg-orange-400;
 }
 
 .follow-btn:hover {
-  @apply md:bg-orange-300 md:text-white btn-duration;
+  @apply md:bg-orange-200 md:text-white btn-duration;
 }
 
 .unfollow-btn {

@@ -15,20 +15,48 @@ class FollowController extends Controller
         $this->middleware(['auth', 'verified'])->only(['follow', 'unfollow']);
     }
     
-    //引数のIDに基づくユーザーをフォローする
-    function follow($user_id) {
-        Follow::create([
-            'follower_id' => Auth::id(),
-            'followed_id' => $user_id,
-        ]);
-        return redirect()->back();
+    function follow(User $user) {
+        $auth_id = Auth::id();
+        $already_followed = Follow::where('follower_id', $auth_id)->where('followed_id', $user->id)->first();
+        if(!$already_followed) {
+            Follow::create([
+                'follower_id' => $auth_id,
+                'followed_id' => $user->id,
+            ]);
+        } else {
+            Follow::where('follower_id', $auth_id)->where('followed_id', $user->id)->delete();
+        }
+        $user_followers_count = $user->followers()->count();
+        $user_followeds_count = $user->followeds()->count();
+        $param = [
+            'user_followers_count' => $user_followers_count,
+            'user_followeds_count' => $user_followeds_count,
+        ];
+        return response()->json($param);
+        
     }
     
-    //引数のIDに基づくユーザーのフォローを解除する
-    function unfollow($user_id) {
-        $follow = Follow::where('follower_id', Auth::id())->where('followed_id', $user_id)->first();
-        $follow->delete();
-        return redirect()->back();
+    function followList(User $user, Request $request) {
+        $auth_id = Auth::id();
+        $main_id = $request->main_id;
+        $main_user = User::find($main_id);
+        $already_followed = Follow::where('follower_id', $auth_id)->where('followed_id', $user->id)->first();
+        if(!$already_followed) {
+            Follow::create([
+                'follower_id' => $auth_id,
+                'followed_id' => $user->id,
+            ]);
+        } else {
+            Follow::where('follower_id', $auth_id)->where('followed_id', $user->id)->delete();
+        }
+        $user_followers_count = $main_user->followers()->count();
+        $user_followeds_count = $main_user->followeds()->count();
+        $param = [
+            'user_followers_count' => $user_followers_count,
+            'user_followeds_count' => $user_followeds_count,
+        ];
+        return response()->json($param);
+        
     }
     
     //引数のユーザーがフォローしているユーザーを返す

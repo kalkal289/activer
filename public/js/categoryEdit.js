@@ -59,7 +59,7 @@ function createFormCheck() {
         alert('マイカテゴリー名は30文字以内にしてください。');
         return false
     } else if(str == "") {
-        alert('マイカテゴリー名をしてください。');
+        alert('マイカテゴリー名を入力してください。');
         return false
     } else {
         return true;
@@ -74,7 +74,7 @@ function editFormCheck(id) {
         alert('マイカテゴリー名は30文字以内にしてください。');
         return false
     } else if(str == "") {
-        alert('マイカテゴリー名をしてください。');
+        alert('マイカテゴリー名を入力してください。');
         return false
     } else {
         return true;

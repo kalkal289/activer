@@ -54,7 +54,7 @@ class PostController extends Controller
         $post = Post::withCount('likes')->find($post_id);
         return view('posts.show')->with([
             'post' => $post,
-            'comments' => Comment::where('post_id', $post_id)->orderBy('created_at', 'DESC')->paginate(20),
+            'comments' => Comment::where('post_id', $post_id)->orderBy('created_at', 'ASC')->paginate(20),
         ]);
     }
     

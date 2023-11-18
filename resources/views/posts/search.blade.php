@@ -26,7 +26,7 @@
                                             <option value="4">ユーザー</option>
                                         </select>
                                         <form id="search_form" action="/posts/filter" method="GET" class="search-form">
-                                            <input class="search-keyword" type="text" name="keyword" placeholder="キーワードを入力" />
+                                            <input class="search-keyword" type="text" name="keyword" placeholder="キーワード　#タグ" />
                                             <div id="follow_checkbox" class="search-checkbox flex">
                                                 <input id="checkbox_follow" class="checkbox-follow" type="checkbox" name="is_followed_user" />
                                                 <label class="checkbox-label" for="checkbox_follow">フォローしている人のみ</label>

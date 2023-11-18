@@ -29,7 +29,7 @@
                                             </ul>
                                         </div>
                                     @endif
-                                    <h2 class="category-edit-title">カテゴリー追加</h2>
+                                    <h2 class="category-edit-title">マイカテゴリー追加</h2>
                                     <form action="{{ route('storeCategory') }}" method="POST" class="mb-4">
                                         @csrf
                                         <input type="hidden" name="category[user_id]" value="{{ Auth::id() }}">
@@ -41,7 +41,7 @@
                                             <p id="text-count-message">現在 <span id="text-count" class="text-count">0</span>文字 / 30文字</p>
                                         </div>
                                     </form>
-                                    <h2 class="category-edit-title">カテゴリー編集</h2>
+                                    <h2 class="category-edit-title">マイカテゴリー編集</h2>
                                     @if(count($categories) == 0)
                                         <p class="post-nothing">マイカテゴリーを作って投稿をまとめよう！！</p>
                                     @endif
@@ -84,7 +84,34 @@
                             </div>
                         </div>
                     </main>
-                    <aside class="side-bar"></aside>
+                    <div class="guide-btn"  onclick="$('#side-bar').toggleClass('guide-up')"><i class="fa-solid fa-circle-info"></i></div>
+                    <aside id="side-bar" class="side-bar">
+                        <div class="guide-x-btn"  onclick="$('#side-bar').toggleClass('guide-up')"><i class="fa-solid fa-xmark"></i></div>
+                        <div class="guide-container">
+                            <h3 class="guide-title">【利用説明】</h3>
+                            <h4 class="guide-sub-title">マイカテゴリーについて</h4>
+                            <ul class="guide-list">
+                                <li>マイカテゴリーは投稿とメインコンテンツに設定することができます。</li>
+                                <li>投稿をまとめたり、投稿とメインコンテンツを紐づけたりすることができます。</li>
+                                <li>マイカテゴリーの数に制限はありません。</li>
+                            </ul>
+                            <h4 class="guide-sub-title">マイカテゴリー追加方法</h4>
+                            <ul class="guide-list">
+                                <li>「マイカテゴリー追加」の欄にカテゴリー名を記入し、「追加」ボタンを押すことでマイカテゴリーを追加できます。</li>
+                                <li>マイカテゴリーの名前は30文字以内です。。</li>
+                            </ul>
+                            <h4 class="guide-sub-title">マイカテゴリー編集方法</h4>
+                            <ul class="guide-list">
+                                <li>「マイカテゴリー編集」から、登録したマイカテゴリーの編集・削除ができます。</li>
+                                <li>編集したいマイカテゴリーの「編集」ボタンを押すことで編集できるようになります。</li>
+                                <li>マイカテゴリーを編集する際、「更新」ボタンを押すことで変更が確定されます。</li>
+                            </ul>
+                            <h4 class="guide-sub-title">マイカテゴリー削除方法</h4>
+                            <ul class="guide-list">
+                                <li>削除したいマイカテゴリーの「削除」ボタンを押し、確認のポップアップで確定することで削除することができます。</li>
+                            </ul>
+                        </div>
+                    </aside>
                 </div>
             </div>
             <script src="{{ asset('js/categoryEdit.js') }}"></script>

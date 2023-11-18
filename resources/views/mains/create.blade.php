@@ -30,7 +30,7 @@
                                             </div>
                                         @endif
                                         <input type="hidden" name="main[user_id]" value="{{ Auth::id() }}" />
-                                        <input id="title" class="create-main-title" type="text" name="main[title]" placeholder="タイトル" value="{{ old('main.title') }}">
+                                        <input id="title" class="create-main-title" type="text" name="main[title]" placeholder="タイトル（必須）" value="{{ old('main.title') }}">
                                         <div class="text-count-area">
                                             <p id="title-count-message">現在 <span id="title-count" class="text-count">0</span>文字 / 50文字</p>
                                         </div>
@@ -57,7 +57,22 @@
                             </div>
                         </div>
                     </main>
-                    <aside class="side-bar"></aside>
+                    <div class="guide-btn"  onclick="$('#side-bar').toggleClass('guide-up')"><i class="fa-solid fa-circle-info"></i></div>
+                    <aside id="side-bar" class="side-bar">
+                        <div class="guide-x-btn"  onclick="$('#side-bar').toggleClass('guide-up')"><i class="fa-solid fa-xmark"></i></div>
+                        <div class="guide-container">
+                            <h3 class="guide-title">【利用説明】</h3>
+                            <h4 class="guide-sub-title">メインコンテンツ方法</h4>
+                            <ul class="guide-list">
+                                <li>タイトルは必須で50文字までです。</li>
+                                <li>本文は500文字までです。</li>
+                                <li>画像は4枚まで添付することができます。</li>
+                                <li>本文か画像のどちらかを入れる必要があります。</li>
+                                <li>カテゴリーは、「マイカテゴリー設定」から追加、編集ができます。</li>
+                                <li>URLを貼ると、投稿後に自動でリンクになります。</li>
+                            </ul>
+                        </div>
+                    </aside>
                 </div>
             </div>
             

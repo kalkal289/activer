@@ -31,7 +31,7 @@
                                             </div>
                                         @endif
                                         <input type="hidden" name="store[user_id]" value="{{ Auth::id() }}" />
-                                        <input id="title" class="create-store-title" type="text" name="store[title]" placeholder="タイトル" value="{{ (old('store.title')) ? old('store.title') : $store->title }}">
+                                        <input id="title" class="create-store-title" type="text" name="store[title]" placeholder="タイトル（必須）" value="{{ (old('store.title')) ? old('store.title') : $store->title }}">
                                         <div class="text-count-area">
                                             <p id="title-count-message">現在 <span id="title-count" class="text-count">0</span>文字 / 50文字</p>
                                         </div>
@@ -57,7 +57,23 @@
                             </div>
                         </div>
                     </main>
-                    <aside class="side-bar"></aside>
+                    <div class="guide-btn"  onclick="$('#side-bar').toggleClass('guide-up')"><i class="fa-solid fa-circle-info"></i></div>
+                    <aside id="side-bar" class="side-bar">
+                        <div class="guide-x-btn"  onclick="$('#side-bar').toggleClass('guide-up')"><i class="fa-solid fa-xmark"></i></div>
+                        <div class="guide-container">
+                            <h3 class="guide-title">【利用説明】</h3>
+                            <h4 class="guide-sub-title">ストアコンテンツ編集方法</h4>
+                            <ul class="guide-list">
+                                <li>タイトルは必須で50文字までです。</li>
+                                <li>本文は500文字までです。</li>
+                                <li>画像は4枚まで添付することができます。</li>
+                                <li>本文か画像のどちらかを入れる必要があります。</li>
+                                <li>すでに画像を添付していた場合、改めて画像を添付しなければその画像が引き継がれます。</li>
+                                <li>カテゴリーは指定のカテゴリーから選んでください。</li>
+                                <li>URLを貼ると、投稿後に自動でリンクになります。</li>
+                            </ul>
+                        </div>
+                    </aside>
                 </div>
             </div>
             

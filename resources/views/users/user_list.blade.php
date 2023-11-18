@@ -37,6 +37,8 @@
                         </div>
                     </main>
                     
+                    <div class="guide-btn" onclick="$('#side-bar').toggleClass('guide-up')"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    
                     @include('parts.search_sidebar')
                 
                 </div>

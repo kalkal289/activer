@@ -1,11 +1,11 @@
 //ポストのformの内容をチェック
-function postFormCheck()
-{
+function postFormCheck() {
+    const target = event.target;
     const content = document.getElementById('post-content');
     const image = document.getElementById('image');
-    // const txt = document.getElementById('error-txt');
-    if(content.value == '' && image.files.length == 0) { //formが空じゃないかどうか
-        // txt.innerHTML = '内容を入力するか、画像を添付してください。';
+    if(target.classList.contains('submit-already')) {
+        return false;
+    } else if(content.value == '' && image.files.length == 0) { //formが空じゃないかどうか
         alert("本文を入力するか、画像を添付してください。");
         return false;
     } else {
@@ -14,17 +14,20 @@ function postFormCheck()
             alert("投稿は300字以内にしてください。");
             return false;
         } else {
+            target.classList.add('submit-already');
             return true;
         }
     }
 }
 
 //コメントのformの内容をチェック
-function commentFormCheck()
-{
+function commentFormCheck() {
+    const target = event.target;
     const content = document.getElementById('content');
     const image = document.getElementById('image');
-    if(content.value == '' && image.files.length == 0) { //formが空じゃないかどうか
+    if(target.classList.contains('submit-already')) {
+        return false;
+    } else if(content.value == '' && image.files.length == 0) { //formが空じゃないかどうか
         alert("コメントを入力するか、画像を添付してください。");
         return false;
     } else {
@@ -33,19 +36,22 @@ function commentFormCheck()
             alert("コメントは150字以内にしてください。");
             return false;
         } else {
+            target.classList.add('submit-already');
             return true;
         }
     }
 }
 
 //コンテンツのformの内容をチェック
-function contentFormCheck()
-{
+function contentFormCheck() {
+    const target = event.target;
     const content = document.getElementById('content');
     const image = document.getElementById('image');
     const title = document.getElementById('title');
     // const txt = document.getElementById('error-txt');
-    if(title.value == '') {
+    if(target.classList.contains('submit-already')) {
+        return false;
+    } else if(title.value == '') {
         alert("タイトルを入力してください。");
         return false;
     } else if(content.value == '' && image.files.length == 0) { //formが空じゃないかどうか
@@ -62,18 +68,21 @@ function contentFormCheck()
             alert("本文は500字以内にしてください。");
             return false;
         } else {
+            target.classList.add('submit-already');
             return true;
         }
     }
 }
 
 //プロフィールのformの内容をチェック
-function profileFormCheck()
-{
+function profileFormCheck() {
+    const target = event.target;
     const name = document.getElementById('name');
     const message = document.getElementById('message');
     // const txt = document.getElementById('error-txt');
-    if(name.value == '') {
+    if(target.classList.contains('submit-already')) {
+        return false;
+    } else if(name.value == '') {
         alert("名前を入力してください。");
         return false;
     } else {
@@ -94,6 +103,7 @@ function profileFormCheck()
                     return false;
                 }
             }
+            target.classList.add('submit-already');
             return true;
         }
     }

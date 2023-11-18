@@ -1,4 +1,5 @@
-<aside class="side-bar">
+<aside id="side-bar" class="side-bar">
+    <div class="guide-x-btn"  onclick="$('#side-bar').toggleClass('guide-up')"><i class="fa-solid fa-xmark"></i></div>
     <div class="search-container">
         <div class="search-area">
             <h4 class="search-title"><i class="fa-solid fa-magnifying-glass"></i> 検索</h4>
@@ -9,7 +10,7 @@
                 <option value="4" {{ Request::routeIs('userFilter') ? "selected" : "" }}>ユーザー</option>
             </select>
             <form id="search_form" action="{{ Request::routeIs('mainFilter') ? "/mains/filter" : (Request::routeIs('storeFilter') ? "/stores/filter" : (Request::routeIs('userFilter') ? "/users/filter" : "/posts/filter" )) }}" method="GET" class="search-form">
-                <input id="search-keyword" class="search-keyword" type="text" name="keyword" placeholder="キーワードを入力"  value="{{ $keyword }}" />
+                <input id="search-keyword" class="search-keyword" type="text" name="keyword" placeholder="キーワード　#タグ"  value="{{ $keyword }}" />
                 <div id="follow_checkbox" class="search-checkbox flex">
                     <input id="checkbox_follow" class="checkbox-follow" type="checkbox" name="is_followed_user" {{ ($is_followed_user) ? "checked" : "" }} />
                     <label class="checkbox-label" for="checkbox_follow">フォローしている人のみ</label>

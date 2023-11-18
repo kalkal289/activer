@@ -51,7 +51,37 @@
                             </div>
                         </div>
                     </main>
-                    <aside id="side" class="side-bar"></aside>
+                    <div class="guide-btn"  onclick="$('#side-bar').toggleClass('guide-up')"><i class="fa-solid fa-circle-info"></i></div>
+                    <aside id="side-bar" class="side-bar">
+                        <div class="guide-x-btn"  onclick="$('#side-bar').toggleClass('guide-up')"><i class="fa-solid fa-xmark"></i></div>
+                        <div class="guide-container">
+                            <h3 class="guide-title">【利用説明】</h3>
+                            <h4 class="guide-sub-title">フォロー中一覧について</h4>
+                            <ul class="guide-list">
+                                @if($main_user->id == Auth::id())
+                                    <li>あなたがフォローしているユーザーを見ることができます。</li>
+                                    <li>新しい順に並んでおり、あなたが直近にフォローしたユーザーが一番上に表示されます。</li>
+                                @else
+                                    <li>上部に表示されたユーザーがフォローしているユーザーを見ることができます。</li>
+                                    <li>新しい順に並んでおり、上部のユーザーが直近にフォローしたユーザーが一番上に表示されます。</li>
+                                @endif
+                            </ul>
+                            <h4 class="guide-sub-title">フォロワー一覧について</h4>
+                            <ul class="guide-list">
+                                @if($main_user->id == Auth::id())
+                                    <li>あなたのフォロワーを見ることができます。</li>
+                                    <li>新しい順に並んでおり、あなたを直近にフォローしたユーザーが一番上に表示されます。</li>
+                                @else
+                                    <li>上部に表示されたユーザーのフォロワーを見ることができます。</li>
+                                    <li>新しい順に並んでおり、上部のユーザーを直近にフォローしたユーザーが一番上に表示されます。</li>
+                                @endif
+                            </ul>
+                            <h4 class="guide-sub-title">ページの切り替えについて</h4>
+                            <ul class="guide-list">
+                                <li>上部のプロフィールの「フォロー中」・「フォロワー」を押すことで表示を切り替えることができます。</li>
+                            </ul>
+                        </div>
+                    </aside>
                 </div>
             </div>
             

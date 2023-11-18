@@ -21,7 +21,6 @@ function categoryEditToggle(id) {
     
     //文字数のセット
     const textCount = document.getElementById(`text-count${id}`);
-    const textCountMessage = document.getElementById(`text-count-message${id}`);
     const categoryName = document.getElementById(`category-name${id}`);
     let textStr = categoryName.value;
     let textNum = textStr.length;
@@ -44,7 +43,7 @@ function categoryStrCount(id) {
 
 //カテゴリーの削除確認
 function deleteCategory(id) {
-    'use strict'
+    'use strict';
     
     if (confirm('復元できません。また、このカテゴリーが設定された投稿は「カテゴリーなし」になります。本当に削除しますか？')) {
         document.getElementById(`deleteCategory${id}`).submit();
@@ -53,15 +52,19 @@ function deleteCategory(id) {
 
 //フォームの内容確認
 function createFormCheck() {
+    const target = event.target;
     const categoryName = document.getElementById('category-create-name');
     let str = categoryName.value;
-    if(str.length > 30) {
+    if(target.classList.contains('submit-already')) {
+        return false;
+    } else if(str.length > 30) {
         alert('マイカテゴリー名は30文字以内にしてください。');
-        return false
+        return false;
     } else if(str == "") {
         alert('マイカテゴリー名を入力してください。');
-        return false
+        return false;
     } else {
+        target.classList.add('submit-already');
         return true;
     }
     
@@ -72,10 +75,10 @@ function editFormCheck(id) {
     let str = categoryName.value;
     if(str.length > 30) {
         alert('マイカテゴリー名は30文字以内にしてください。');
-        return false
+        return false;
     } else if(str == "") {
         alert('マイカテゴリー名を入力してください。');
-        return false
+        return false;
     } else {
         return true;
     }

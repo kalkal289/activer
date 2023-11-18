@@ -165,7 +165,7 @@
 }
 
 .center-title {
-  @apply text-3xl text-center font-bold text-orange-300 whitespace-nowrap;
+  @apply text-2xl text-center font-bold text-orange-300 whitespace-nowrap md:text-3xl;
 }
 
 .center-container {
@@ -301,15 +301,15 @@
 } */
 
 .post-image-one {
-  @apply block w-4/5 h-auto first:m-0 rounded;
+  @apply block w-4/5 md:w-3/5 h-auto max-h-[100vw] md:max-h-[80vw] first:m-0 rounded;
 }
 
 .post-image-two {
-  @apply block w-[calc(50%_-_0.5rem)] h-[20vw] ml-1 first:m-0 rounded md:h-[13vw] md:ml-2;
+  @apply block w-[calc(50%_-_0.5rem)] h-[50vw] ml-1 first:m-0 rounded md:h-[25vw] md:ml-2;
 }
 
 .post-image-many {
-  @apply block w-2/5 min-w-[40%] h-[20vw] ml-1 first:m-0 rounded bg-gray-200 md:h-[13vw] md:ml-2;
+  @apply block w-2/5 min-w-[40%] h-[30vw] ml-1 first:m-0 rounded bg-gray-200 md:h-[20vw] md:ml-2;
 }
 
 .post-image {
@@ -649,7 +649,7 @@
 }
 
 .create-submit {
-  @apply inline-block w-1/2 py-3 mt-2 mx-auto border border-orange-200 rounded-md shadow-[0_2px_0_0_rgba(253,186,116,1)] text-xl text-orange-400;
+  @apply inline-block w-1/2 py-3 mt-2 mx-auto text-center cursor-pointer border border-orange-200 rounded-md shadow-[0_2px_0_0_rgba(253,186,116,1)] text-xl text-orange-400;
 }
 
 .create-submit:hover {
@@ -901,7 +901,7 @@
 /* ここからメニューバー */
 
 .menu-bar {
-  @apply fixed z-[60] right-0 bottom-0 left-0 w-full h-16 border-t-2 border-orange-200 bg-white rounded-t-xl block md:hidden;
+  @apply fixed z-[90] right-0 bottom-0 left-0 w-full h-16 border-t-2 border-orange-200 bg-white rounded-t-xl block md:hidden;
 }
 
 .menu-bar-list {
@@ -1189,7 +1189,7 @@
 /* ここから検索サイドバー */
 
 .side-bar {
-  @apply fixed z-30 top-0 right-0 bottom-0 h-screen w-1/5 border-x border-gray-300 hidden md:block;
+  @apply fixed z-[80] top-0 right-0 bottom-0 left-0 w-screen min-h-[100vh] bg-orange-50/95 origin-[calc(100%_-_1.75rem)_1.75rem] scale-0 opacity-0 md:z-30 md:left-auto md:w-1/5 md:border-x md:bg-white md:border-gray-300 md:scale-100 md:opacity-100;
 }
 
 .search-container {
@@ -1233,7 +1233,7 @@
 }
 
 .search-btn {
-  @apply inline-block w-1/2 py-2 mt-6 mx-auto border-2 border-orange-200 rounded-md shadow-[0_2px_0_0_rgba(253,186,116,1)];
+  @apply inline-block w-1/2 py-2 mt-6 mx-auto border-2 border-orange-200 rounded-md shadow-[0_2px_0_0_rgba(253,186,116,1)] bg-white;
 }
 
 .search-btn:hover {
@@ -1244,3 +1244,42 @@
   @apply translate-y-0.5 shadow-none;
 }
 
+.guide-btn {
+  @apply absolute top-2 right-2 z-[70] flex justify-center items-center w-10 h-10 text-2xl text-orange-300 opacity-90 md:hidden;
+}
+
+.guide-x-btn {
+  @apply absolute top-2 right-2 z-[90] flex justify-center items-center w-12 h-12 text-3xl rounded-full text-orange-400 hover:bg-white/10 btn-duration md:hidden;
+}
+
+.guide-btn:hover {
+  @apply md:text-orange-500 btn-duration;
+}
+
+.guide-container {
+  @apply w-full h-full px-4 pt-10 pb-16 md:pb-6 overflow-y-auto;
+}
+
+.guide-container::-webkit-scrollbar{
+  @apply hidden;
+}
+
+.guide-title {
+  @apply mb-5 text-2xl text-center text-orange-400;
+}
+
+.guide-sub-title {
+  @apply text-center text-lg text-orange-400;
+}
+
+.guide-list {
+  @apply list-decimal pl-4 pb-4 text-black;
+}
+
+.guide-list>li {
+  @apply py-2;
+}
+
+.guide-up {
+  @apply scale-100 opacity-100 duration-500;
+}

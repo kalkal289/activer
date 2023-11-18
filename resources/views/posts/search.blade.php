@@ -26,7 +26,7 @@
                                             <option value="4">ユーザー</option>
                                         </select>
                                         <form id="search_form" action="/posts/filter" method="GET" class="search-form">
-                                            <input class="search-keyword" type="text" name="keyword" placeholder="キーワード　#タグ" />
+                                            <input class="search-keyword" type="text" name="keyword" placeholder="キーワード （#タグ）" />
                                             <div id="follow_checkbox" class="search-checkbox flex">
                                                 <input id="checkbox_follow" class="checkbox-follow" type="checkbox" name="is_followed_user" />
                                                 <label class="checkbox-label" for="checkbox_follow">フォローしている人のみ</label>
@@ -42,7 +42,22 @@
                             </div>
                         </div>
                     </main>
-                    <aside class="side-bar"></aside>
+                    <div class="guide-btn"  onclick="$('#side-bar').toggleClass('guide-up')"><i class="fa-solid fa-circle-info"></i></div>
+                    <aside id="side-bar" class="side-bar">
+                        <div class="guide-x-btn"  onclick="$('#side-bar').toggleClass('guide-up')"><i class="fa-solid fa-xmark"></i></div>
+                        <div class="guide-container">
+                            <h3 class="guide-title">【利用説明】</h3>
+                            <h4 class="guide-sub-title">検索方法</h4>
+                            <ul class="guide-list">
+                                <li>最初に調べたいものを「投稿」「メインコンテンツ」「ストアコンテンツ」「ユーザー」の中から選択してください。</li>
+                                <li>投稿とユーザーはタグも同時に検索することができます。</li>
+                                <li>キーワードとタグはいくつでも同時に検索することができます。</li>
+                                <li>キーワードかタグが複数ある場合は、全てを含むものが検索されます。</li>
+                                <li>「フォローしている人のみ」にチェックを入れることで、検索範囲があなたが現在フォローしている人に限定されます。</li>
+                                <li>投稿検索に限り、「ビッグポストのみ」にチェックを入れることで、検索範囲がビッグポストに限定されます。</li>
+                            </ul>
+                        </div>
+                    </aside>
                 </div>
             </div>
             

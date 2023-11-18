@@ -54,7 +54,7 @@
                   </ul>
                   <div class="entrance-message-area">
                     <span>※</span>
-                    <p class="entrance-message">テストアカウントご希望の方は、ログイン画面にテストアカウントが記載してありますので、そちらをご利用ください。</p>
+                    <p class="entrance-message">ゲストアカウントご希望の方は、ログイン画面にテストアカウントが記載してありますので、そちらをご利用ください。</p>
                   </div>
                 </div>
               </div>

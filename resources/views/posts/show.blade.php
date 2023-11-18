@@ -97,7 +97,41 @@
               </div>
             </div>
           </main>
-          <aside class="side-bar"></aside>
+          <div class="guide-btn"  onclick="$('#side-bar').toggleClass('guide-up')"><i class="fa-solid fa-circle-info"></i></div>
+          <aside id="side-bar" class="side-bar">
+              <div class="guide-x-btn"  onclick="$('#side-bar').toggleClass('guide-up')"><i class="fa-solid fa-xmark"></i></div>
+              <div class="guide-container">
+                  <h3 class="guide-title">【利用説明】</h3>
+                  @if($post->user_id == Auth::id())
+                    <h4 class="guide-sub-title">投稿編集について</h4>
+                    <ul class="guide-list">
+                        <li>投稿は編集することができません。そのため、日々の頑張りや出来事の証拠として残しておくことができます。</li>
+                    </ul>
+                    <h4 class="guide-sub-title">投稿削除方法</h4>
+                    <ul class="guide-list">
+                        <li>投稿右上の「<i class="fa-solid fa-ellipsis"></i>」を押し、表示される「削除」ボタンを押すことで、投稿を削除することができます。</li>
+                    </ul>
+                  @endif
+                  <h4 class="guide-sub-title">コメント一覧について</h4>
+                  <ul class="guide-list">
+                      <li>「コメント一覧」ではこの投稿の全てのコメントを見ることができます。</li>
+                      <li>コメントは新しい順になっており、新しいコメントが一番上に表示されます。</li>
+                      <li>コメントにいいね・コメントをすることはできません。</li>
+                  </ul>
+                  <h4 class="guide-sub-title">コメント方法</h4>
+                  <ul class="guide-list">
+                      <li>「コメント一覧」にある「コメントをする」ボタンを押すことで、コメント入力欄が現れます。</li>
+                      <li>コメントの本文は150字までです。</li>
+                      <li>コメントに4枚まで画像を添付することができます。</li>
+                      <li>本文のみ、画像のみのコメントも可能です。</li>
+                  </ul>
+                  <h4 class="guide-sub-title">いいね一覧について</h4>
+                  <ul class="guide-list">
+                      <li>「いいね一覧」ではこの投稿にいいねした全てのユーザーを見ることができます。</li>
+                      <li>「いいね一覧」は新しい順になっており、直近にいいねしたユーザーが一番上に表示されます。</li>
+                  </ul>
+              </div>
+          </aside>
         </div>
       </div>
       

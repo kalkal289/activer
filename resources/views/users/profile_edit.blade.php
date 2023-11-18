@@ -77,7 +77,40 @@
                             </div>
                         </div>
                     </main>
-                    <aside class="side-bar"></aside>
+                    <div class="guide-btn"  onclick="$('#side-bar').toggleClass('guide-up')"><i class="fa-solid fa-circle-info"></i></div>
+                    <aside id="side-bar" class="side-bar">
+                        <div class="guide-x-btn"  onclick="$('#side-bar').toggleClass('guide-up')"><i class="fa-solid fa-xmark"></i></div>
+                        <div class="guide-container">
+                            <h3 class="guide-title">【利用説明】</h3>
+                            <h4 class="guide-sub-title">プロフィールについて</h4>
+                            <ul class="guide-list">
+                                <li>これらの情報はマイページの他に、投稿やユーザー一覧などで表示されます。</li>
+                            </ul>
+                            <h4 class="guide-sub-title">名前について</h4>
+                            <ul class="guide-list">
+                                <li>名前は必須です。</li>
+                                <li>最大50文字までです。</li>
+                            </ul>
+                            <h4 class="guide-sub-title">自己紹介文について</h4>
+                            <ul class="guide-list">
+                                <li>自己紹介文の入力は任意です。</li>
+                                <li>最大100文字までです。</li>
+                            </ul>
+                            <h4 class="guide-sub-title">プロフィール画像について</h4>
+                            <ul class="guide-list">
+                                <li>プロフィール画像は、設定した画像の中央が切り抜かれます。</li>
+                            </ul>
+                            <h4 class="guide-sub-title">ユーザータグについて</h4>
+                            <ul class="guide-list">
+                                <li>ユーザータグは、自分の立場や活動内容など、どのような人なのかが一目で分かる単語や短文を設定しましょう。</li>
+                                <li>5つまで設定することができ、それぞれ30文字までです。</li>
+                                <li>ユーザータグは、基本的に名前などと一緒に表示されます。</li>
+                                <li>ユーザータグを設定することで、他のユーザーから自分がどのような人なのか、何をしている人なのかが一目でわかるようになります。</li>
+                                <li>また、ユーザー検索の際にユーザータグ検索でヒットされるようになります。</li>
+                                <li>設定後は、ユーザータグを押すだけでそのタグで絞り込んだユーザーの一覧を表示できるようになります。</li>
+                            </ul>
+                        </div>
+                    </aside>
                 </div>
             </div>
             

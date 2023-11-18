@@ -38,7 +38,9 @@
                             </div>
                         </div>
                     </main>
-                    <aside class="side-bar"></aside>
+                    
+                    @include('parts.mypage_guide')
+                    
                 </div>
             </div>
             

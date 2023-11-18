@@ -38,7 +38,23 @@
                             </div>
                         </div>
                     </main>
-                    <aside class="side-bar"></aside>
+                    <div class="guide-btn"  onclick="$('#side-bar').toggleClass('guide-up')"><i class="fa-solid fa-circle-info"></i></div>
+                    <aside id="side-bar" class="side-bar">
+                        <div class="guide-x-btn"  onclick="$('#side-bar').toggleClass('guide-up')"><i class="fa-solid fa-xmark"></i></div>
+                        <div class="guide-container">
+                            <h3 class="guide-title">【利用説明】</h3>
+                            <h4 class="guide-sub-title">このページについて</h4>
+                            <ul class="guide-list">
+                                @if($user->id == Auth::id())
+                                    <li>あなたがいいねした投稿を見ることができます。</li>
+                                    <li>新しい順に並んでおり、あなたが直近にいいねした投稿が一番上に表示されます。</li>
+                                @else
+                                    <li>タイトルに表示されたユーザーがいいねした投稿を見ることができます。</li>
+                                    <li>新しい順に並んでおり、タイトルに表示されたユーザーが直近にいいねした投稿が一番上に表示されます。</li>
+                                @endif
+                            </ul>
+                        </div>
+                    </aside>
                 </div>
             </div>
             

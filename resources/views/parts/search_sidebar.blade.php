@@ -10,7 +10,7 @@
                 <option value="4" {{ Request::routeIs('userFilter') ? "selected" : "" }}>ユーザー</option>
             </select>
             <form id="search_form" action="{{ Request::routeIs('mainFilter') ? "/mains/filter" : (Request::routeIs('storeFilter') ? "/stores/filter" : (Request::routeIs('userFilter') ? "/users/filter" : "/posts/filter" )) }}" method="GET" class="search-form">
-                <input id="search-keyword" class="search-keyword" type="text" name="keyword" placeholder="キーワード　#タグ"  value="{{ $keyword }}" />
+                <input id="search-keyword" class="search-keyword" type="text" name="keyword" placeholder="キーワード （#タグ）"  value="{{ $keyword }}" />
                 <div id="follow_checkbox" class="search-checkbox flex">
                     <input id="checkbox_follow" class="checkbox-follow" type="checkbox" name="is_followed_user" {{ ($is_followed_user) ? "checked" : "" }} />
                     <label class="checkbox-label" for="checkbox_follow">フォローしている人のみ</label>

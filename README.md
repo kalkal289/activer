@@ -133,7 +133,6 @@ Activerがたくさんの人の活動と人生をより良いものにするこ�
 1. 通知機能
 2. APIログイン機能
 3. トレンド機能
-4. ヘルプ機能
 
 ## DB設計（ER図）
 <img src="https://github.com/kalkal289/activer/assets/101095592/d76c2b7c-6993-401a-8254-bb6257a3f779" width="60%">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Follow;
 use App\Models\User;
+use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -23,6 +24,32 @@ class FollowController extends Controller
                 'follower_id' => $auth_id,
                 'followed_id' => $user->id,
             ]);
+            
+            //通知を登録
+            $user_ids = [$auth_id];
+            $group_key = 'follow_'. $user->id. '_'. now()->format('Ymd');
+            $follow_group = Notification::where('group_key', $group_key)->first();
+            if($follow_group) {
+                if(!in_array($auth_id, $follow_group->data['follow_users'], true)) {
+                    $user_ids = array_merge($user_ids, $follow_group->data['follow_users']);
+                    $follow_group->data = [
+                        'follow_users' => $user_ids,
+                        'follow_count' => count($user_ids),
+                    ];
+                    $follow_group->save();
+                }
+            } else {
+                Notification::create([
+                    'user_id' => $user->id,
+                    'type' => 'follow',
+                    'data'  => [
+                        'follow_users' => $user_ids,
+                        'follow_count' => 1,
+                    ],
+                    'group_key' => $group_key,
+                ]);
+            }
+            
         } else {
             Follow::where('follower_id', $auth_id)->where('followed_id', $user->id)->delete();
         }
@@ -46,6 +73,32 @@ class FollowController extends Controller
                 'follower_id' => $auth_id,
                 'followed_id' => $user->id,
             ]);
+            
+            //通知を登録
+            $user_ids = [$auth_id];
+            $group_key = 'follow_'. $user->id. '_'. now()->format('Ymd');
+            $follow_group = Notification::where('group_key', $group_key)->first();
+            if($follow_group) {
+                if(!in_array($auth_id, $follow_group->data['follow_users'], true)) {
+                    $user_ids = array_merge($user_ids, $follow_group->data['follow_users']);
+                    $follow_group->data = [
+                        'like_users' => $user_ids,
+                        'like_count' => count($user_ids),
+                    ];
+                    $follow_group->save();
+                }
+            } else {
+                Notification::create([
+                    'user_id' => $user->id,
+                    'type' => 'follow',
+                    'data'  => [
+                        'follow_users' => $user_ids,
+                        'follow_count' => 1,
+                    ],
+                    'group_key' => $group_key,
+                ]);
+            }
+            
         } else {
             Follow::where('follower_id', $auth_id)->where('followed_id', $user->id)->delete();
         }

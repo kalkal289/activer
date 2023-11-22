@@ -317,7 +317,7 @@
 }
 
 .post-btn-area {
-  @apply mt-2 flex justify-between;
+  @apply mt-2 flex justify-between flex-col md:flex-row;
 }
 
 .post-act-area {
@@ -361,7 +361,7 @@
 }
 
 .post-detail-btn {
-  @apply flex w-full p-1 text-center text-gray-500 items-center justify-center text-sm rounded-md cursor-pointer grow max-w-[50%] ml-2;
+  @apply flex w-full p-1 text-center text-gray-500 items-center justify-center text-sm rounded-md cursor-pointer grow max-w-[50%] md:ml-2;
 }
 
 .post-detail-btn:hover {
@@ -1134,6 +1134,46 @@
 
 
 
+/*通知画面*/
+
+.notice-article {
+  @apply w-full p-3 border-b border-orange-400 hover:bg-gray-50 btn-duration;
+}
+
+.notice-mark {
+  @apply text-2xl w-8;
+}
+
+.notice-user-images {
+  @apply flex justify-start overflow-x-auto;
+}
+
+.notice-user-image {
+  @apply ml-1 w-8 h-8 rounded-full object-cover bg-slate-200 md:w-10 md:h-10;
+}
+
+.notice-plus-mark {
+  @apply flex justify-center items-center ml-1 w-10 h-10;
+}
+
+.notice-user-tags-list {
+  @apply flex items-center overflow-x-auto whitespace-nowrap;
+}
+
+.notice-user-tags-list::-webkit-scrollbar{
+  @apply hidden;
+}
+
+.notice-user-tags-list>li {
+  @apply mr-2 leading-4;
+}
+
+.no-bar::-webkit-scrollbar{
+  @apply hidden;
+}
+
+
+
 /* ここからその他のページ */
 
 .hyper-link {
@@ -1181,7 +1221,7 @@
 }
 
 .page-back-btn {
-  @apply absolute z-[100] top-2 left-2 flex justify-center items-center w-10 h-10 rounded-full text-orange-300 hover:bg-orange-100/50 btn-duration;
+  @apply fixed z-[100] top-2 left-2 flex justify-center items-center w-10 h-10 rounded-full text-orange-300 hover:bg-orange-100/50 btn-duration;
 }
 
 
@@ -1245,11 +1285,11 @@
 }
 
 .guide-btn {
-  @apply absolute top-2 right-2 z-[70] flex justify-center items-center w-10 h-10 text-2xl text-orange-300 opacity-90 md:hidden;
+  @apply fixed top-2 right-2 z-[70] flex justify-center items-center w-10 h-10 text-2xl text-orange-300 opacity-90 md:hidden;
 }
 
 .guide-x-btn {
-  @apply absolute top-2 right-2 z-[90] flex justify-center items-center w-12 h-12 text-3xl rounded-full text-orange-400 hover:bg-white/10 btn-duration md:hidden;
+  @apply fixed top-2 right-2 z-[90] flex justify-center items-center w-12 h-12 text-3xl rounded-full text-orange-400 hover:bg-white/10 btn-duration md:hidden;
 }
 
 .guide-btn:hover {

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Notification;
 use App\Http\Requests\CommentRequest; 
+use Illuminate\Support\Facades\Auth;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary; //画像アップロード
 
 class CommentController extends Controller
@@ -18,6 +21,21 @@ class CommentController extends Controller
             }
         }
         $comment->fill($input)->save();
+        
+        //通知を登録
+        $post = Post::find($input['post_id']);
+        if(Auth::id() != $post->user_id) {
+            Notification::create([
+                'user_id' => $post->user_id,
+                'type' => 'comment',
+                'data'  => [
+                    'comment_id' => $comment->id,
+                    'post_id' => $post->id,
+                ],
+                'group_key' => 'comment_'. $comment->id,
+            ]);
+        }
+        
         return redirect('/posts/'. $comment->post_id); 
     }
     

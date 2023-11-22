@@ -11,7 +11,7 @@
             <li><a href="{{ route('followedsPost') }}"><i class="fa-solid fa-user-group"></i></a></li>
             <li><a href="{{ !Auth::guest() ? route('mypageMain', ['user' => Auth::id()]) : route('login') }}"><i class="fa-solid fa-user"></i></a></li>
             <li><a href="{{ route('search') }}"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-            <li><a href="#"><i class="fa-solid fa-bell"></i></a></li>
+            <li><a href="{{ route('showNotifications') }}"><i class="fa-solid fa-bell"></i></a></li>
         @endif
     </ul>
 </div>

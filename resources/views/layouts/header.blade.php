@@ -38,7 +38,7 @@
         <li><a href="{{ route('followedsPost') }}"><i class="fa-solid fa-user-group header-icon"></i>フォロー中</a></li>
         <li><a href="{{ !Auth::guest() ? route('mypageMain', ['user' => Auth::id()]) : route('login') }}"><i class="fa-solid fa-user header-icon"></i>マイページ</a></li>
         <li><a href="{{ route('search') }}"><i class="fa-solid fa-magnifying-glass header-icon"></i>検索</a></li>
-        <li><a href="#"><i class="fa-solid fa-bell header-icon"></i>通知</a></li>
+        <li><a href="{{ route('showNotifications') }}"><i class="fa-solid fa-bell header-icon"></i>通知</a></li>
       </ul>
     </nav>
     <div class="create-btn-area">

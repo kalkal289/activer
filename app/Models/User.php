@@ -49,6 +49,10 @@ class User extends Authenticatable
     ];
     
     //ここからリレーション設定
+    public function checktime() {
+        return $this->hasOne(Checktime::class);
+    }
+    
     public function usertags() {
         return $this->belongsToMany(Usertag::class, 'user_usertags', 'user_id', 'usertag_id');
     }
@@ -79,6 +83,10 @@ class User extends Authenticatable
     
     public function categories() {
         return $this->hasMany(Category::class);
+    }
+    
+    public function notifications() {
+        return $this->hasMany(Notification::class);
     }
     
     //利用中のユーザーが指定のユーザーをフォローしているかの判定

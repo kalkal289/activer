@@ -62,7 +62,7 @@
                         <div class="guide-x-btn"  onclick="$('#side-bar').toggleClass('guide-up')"><i class="fa-solid fa-xmark"></i></div>
                         <div class="guide-container">
                             <h3 class="guide-title">【利用説明】</h3>
-                            <h4 class="guide-sub-title">メインコンテンツ方法</h4>
+                            <h4 class="guide-sub-title">メインコンテンツ作成方法</h4>
                             <ul class="guide-list">
                                 <li>タイトルは必須で50文字までです。</li>
                                 <li>本文は500文字までです。</li>

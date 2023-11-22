@@ -7,11 +7,8 @@ $(function() {
             headers: {
                 'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
             },
-            url: '/like',
+            url: `/like/${postId}`,
             method: 'POST',
-            data: {
-                'post_id': postId
-            },
         })
         
         .done(function(data) {

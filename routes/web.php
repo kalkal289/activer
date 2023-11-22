@@ -12,6 +12,7 @@ use App\Http\Controllers\FollowController;
 use App\Http\Controllers\EntranceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,7 +90,7 @@ Route::controller(StoreController::class)->middleware('auth')->group(function() 
 });
 
 Route::controller(LikeController::class)->middleware('auth')->group(function() {
-    Route::post('/like', 'like')->name('like');
+    Route::post('/like/{post}', 'like')->name('like');
 });
 
 Route::controller(FollowController::class)->middleware('auth')->group(function() {
@@ -108,6 +109,10 @@ Route::controller(CategoryController::class)->middleware('auth')->group(function
     Route::post('/categories', 'store')->name('storeCategory');
     Route::put('/categories/{category}', 'update')->name('updateCategory');
     Route::delete('/categories/{category}', 'delete')->name('deleteCategory');
+});
+
+Route::controller(NotificationController::class)->middleware('auth')->group(function() {
+    Route::get('/notifications', 'show')->name('showNotifications');
 });
 
 require __DIR__.'/auth.php';

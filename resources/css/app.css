@@ -209,7 +209,11 @@
 }
 
 .post-user-name {
-  @apply flex h-1/2 items-center font-bold leading-5;
+  @apply flex w-full h-1/2 items-center font-bold leading-5;
+}
+
+.user-name {
+  @apply whitespace-nowrap overflow-x-auto no-bar;
 }
 
 .list-account-name {
@@ -493,7 +497,7 @@
 }
 
 .profile-user-name {
-  @apply flex h-1/2 items-center text-lg font-bold leading-5;
+  @apply flex w-full h-1/2 items-center text-lg font-bold leading-5;
 }
 
 .mypage-profile-bottom {

@@ -15,7 +15,7 @@
             </div>
             <div class="post-user-info">
                 <div class="{{ ($kind == 2) ? "profile-user-name" : "post-user-name" }}">
-                    <a href="{{ route('mypageMain', ['user' => $user->id]) }}">
+                    <a class="user-name" href="{{ route('mypageMain', ['user' => $user->id]) }}">
                         <h3>{{ $user->name }}</h3>
                     </a>
                 </div>

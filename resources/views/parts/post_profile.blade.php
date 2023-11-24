@@ -13,7 +13,7 @@
     </div>
     <div class="post-user-info">
         <div class="post-user-name">
-            <a href="{{ Auth::guest() ? route('entrance', ['kind' => 8]) : route('mypageMain', ['user' => $post->user->id]) }}">
+            <a class="user-name" href="{{ Auth::guest() ? route('entrance', ['kind' => 8]) : route('mypageMain', ['user' => $post->user->id]) }}">
                 <h3>{{ $post->user->name }}</h3>
             </a>
         </div>

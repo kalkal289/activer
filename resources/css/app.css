@@ -1221,7 +1221,7 @@
 }
 
 .page-back-btn {
-  @apply fixed z-[100] top-2 left-2 flex justify-center items-center w-10 h-10 rounded-full text-orange-300 hover:bg-orange-100/50 btn-duration;
+  @apply fixed z-[100] top-2 left-2 md:left-[calc(20%_+_0.5rem)] flex justify-center items-center w-10 h-10 rounded-full text-orange-300 hover:bg-orange-100/50 btn-duration;
 }
 
 

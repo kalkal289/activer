@@ -22,7 +22,7 @@
                             
                             <div class="contents-create-btn-area">
                                 @if($user->id == Auth::id())
-                                    <a class="post-create-btn" href="{{ route('create') }}"><i class="fa-solid fa-pen contents-create-icon-post contents-create-icon"></i> 投稿する</a>
+                                    <a class="post-create-btn sm-text" href="{{ route('create') }}"><i class="fa-solid fa-pen contents-create-icon-post contents-create-icon"></i> 投稿する</a>
                                 @endif
                                 <form action="{{ route('mypageCategoryFilter', ['user' => $user->id]) }}" class="category-filter-form">
                                     <input type="hidden" name="user_id" value="{{ Auth::id() }}">

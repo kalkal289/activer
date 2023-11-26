@@ -46,7 +46,7 @@
         </div>
     @else
         <div class="edit-profile-btn-area">
-            <a href="{{ route('editProfile', ['user' => $user->id]) }}" class="edit-profile-btn">プロフィール編集</a>
+            <a href="{{ route('editProfile', ['user' => $user->id]) }}" class="edit-profile-btn"><span class="sm-text">プロフィール</span><span class="sm-text">編集</span></a>
         </div>    
     @endif
 </div>

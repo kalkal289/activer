@@ -1331,3 +1331,7 @@
 .guide-up {
   @apply scale-100 opacity-100 duration-500;
 }
+
+.text-gray {
+  @apply text-gray-500;
+}

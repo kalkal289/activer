@@ -32,7 +32,11 @@
                 </div>
                 @if(Request::routeIs('show'))
                   <div class="comment-create-btn-area">
-                    <span id="comment-create-btn" class="comment-create-btn" onClick="commentAreaAppear()"><i id="comment-create-btn-icon" class="fa-solid fa-comment comment-create-btn-icon"></i> コメントをする</span>
+                    @if(Auth::guest())
+                      <a href="{{ route('entrance', ['kind' => 1]) }}" id="comment-create-btn" class="comment-create-btn"><i id="comment-create-btn-icon" class="fa-solid fa-comment comment-create-btn-icon"></i> コメントをする</a>
+                    @else
+                      <span id="comment-create-btn" class="comment-create-btn" onClick="commentAreaAppear()"><i id="comment-create-btn-icon" class="fa-solid fa-comment comment-create-btn-icon"></i> コメントをする</span>
+                    @endif
                   </div>
                 @endif
                 <div class="center-container">

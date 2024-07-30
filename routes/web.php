@@ -37,16 +37,17 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/entrance/{kind}', [entranceController::class,'entrance'])->name('entrance');
 
-Route::get('/', [PostController::class,'index'])->name('index');
-
-Route::controller(PostController::class)->middleware('auth')->group(function() {
-    // Route::get('/', 'index')->name('index');
-    Route::post('/posts', 'store')->name('store');
-    Route::get('/posts/create', 'create')->name('create');
-    Route::get('/posts/followeds', 'followeds')->name('followedsPost');
+Route::controller(PostController::class)->group(function() {
+    Route::get('/', 'index')->name('index');
     Route::get('/posts/filter', 'filter')->name('postFilter');
     Route::get('/posts/search', 'search')->name('search');
     Route::get('/posts/{post_id}', 'show')->name('show');
+});
+
+Route::controller(PostController::class)->middleware('auth')->group(function() {
+    Route::post('/posts', 'store')->name('store');
+    Route::get('/posts/create', 'create')->name('create');
+    Route::get('/posts/followeds', 'followeds')->name('followedsPost');
     Route::get('/posts/{post_id}/likes', 'showLikes')->name('showLikes');
     Route::delete('/posts/{post}', 'delete')->name('deletePost');
 });

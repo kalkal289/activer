@@ -21,16 +21,29 @@
                                     <div class="search-page-container">
                                         <select id="type_select" class="type-select" name="type" onChange="typeChange()">
                                             <option value="1" selected>投稿</option>
-                                            <option value="2">メインコンテンツ</option>
-                                            <option value="3">ストアコンテンツ</option>
-                                            <option value="4">ユーザー</option>
+                                            @if(Auth::guest())
+                                                <option disabled="disabled">メインコンテンツ<br>(ログイン時のみ選択可)</option>
+                                                <option disabled="disabled">ストアコンテンツ<br>(ログイン時のみ選択可)</option>
+                                                <option disabled="disabled">ユーザー<br>(ログイン時のみ選択可)</option>
+                                            @else
+                                                <option value="2">メインコンテンツ</option>
+                                                <option value="3">ストアコンテンツ</option>
+                                                <option value="4">ユーザー</option>
+                                            @endif
                                         </select>
                                         <form id="search_form" action="/posts/filter" method="GET" class="search-form">
                                             <input class="search-keyword" type="text" name="keyword" placeholder="キーワード （#タグ）" />
-                                            <div id="follow_checkbox" class="search-checkbox flex">
-                                                <input id="checkbox_follow" class="checkbox-follow" type="checkbox" name="is_followed_user" />
-                                                <label class="checkbox-label" for="checkbox_follow">フォローしている人のみ</label>
-                                            </div>
+                                            @if(Auth::guest())
+                                                <div id="follow_checkbox" class="search-checkbox flex">
+                                                    <input id="checkbox_follow" class="checkbox-follow" type="checkbox" disabled />
+                                                    <label class="checkbox-label text-gray" for="checkbox_follow">フォローしている人のみ<br>(ログイン時のみ選択可)</label>
+                                                </div>
+                                            @else
+                                                <div id="follow_checkbox" class="search-checkbox flex">
+                                                    <input id="checkbox_follow" class="checkbox-follow" type="checkbox" name="is_followed_user" {{ ($is_followed_user) ? "checked" : "" }} />
+                                                    <label class="checkbox-label" for="checkbox_follow">フォローしている人のみ</label>
+                                                </div>
+                                            @endif
                                             <div id="bigpost_checkbox" class="search-checkbox flex">
                                                 <input id="checkbox_big_post" class="checkbox-big-post" type="checkbox" name="is_big_post" />
                                                 <label class="checkbox-label" for="checkbox_big_post">ビッグポストのみ</label>

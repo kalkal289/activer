@@ -58,7 +58,7 @@
             @endif
         </div>
         @if(!Request::routeIs('show'))
-            <a href="{{ Auth::guest() ? route('entrance', ['kind' => 7]) : route('show', ['post_id' => $post->id]) }}" class="post-detail-btn">詳細ページへ</a>
+            <a href="{{ route('show', ['post_id' => $post->id]) }}" class="post-detail-btn">詳細ページへ</a>
         @endif
     </div>
     <div class="post-info">

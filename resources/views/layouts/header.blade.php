@@ -12,7 +12,7 @@
         <li><a href="{{ route('index') }}"><i class="fa-solid fa-house header-icon"></i>トップ</a></li>
         <li><a href="{{ route('entrance', ['kind' => 3]) }}"><i class="fa-solid fa-user-group header-icon"></i>フォロー中</a></li>
         <li><a href="{{ route('entrance', ['kind' => 4]) }}"><i class="fa-solid fa-user header-icon"></i>マイページ</a></li>
-        <li><a href="{{ route('entrance', ['kind' => 5]) }}"><i class="fa-solid fa-magnifying-glass header-icon"></i>検索</a></li>
+        <li><a href="{{ route('search') }}"><i class="fa-solid fa-magnifying-glass header-icon"></i>検索</a></li>
         <li><a href="{{ route('entrance', ['kind' => 6]) }}"><i class="fa-solid fa-bell header-icon"></i>通知</a></li>
       </ul>
     </nav>
